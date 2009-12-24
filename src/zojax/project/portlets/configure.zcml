@@ -1,0 +1,102 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <!-- portlet managers -->
+  <zojax:portletManager
+     name="columns.left"
+     for="..interfaces.IProjects"
+     title="Projects workspace left column"
+     schema=".interfaces.IProjectsLeftPortletManager"
+     class="zojax.portlet.manager.PortletManagerWithStatus" />
+
+  <zojax:portletManager
+     name="columns.right"
+     for="..interfaces.IProjects"
+     title="Projects workspace right column"
+     schema=".interfaces.IProjectsRightPortletManager"
+     class="zojax.portlet.manager.PortletManagerWithStatus" />
+
+  <!-- portlet managers -->
+  <zojax:portletManager
+     name="columns.left"
+     for="..interfaces.IProject"
+     title="Project left column"
+     schema=".interfaces.IProjectLeftPortletManager"
+     class="zojax.portlet.manager.PortletManagerWithStatus" />
+
+  <zojax:portletManager
+     name="columns.right"
+     for="..interfaces.IProject"
+     title="Project right column"
+     schema=".interfaces.IProjectRightPortletManager"
+     class="zojax.portlet.manager.PortletManagerWithStatus" />
+
+  <!-- central column portlets -->
+  <zojax:portletManager
+     name="columns.content"
+     title="Project content column"
+     for="..interfaces.IProject"
+     schema=".interfaces.IProjectContentPortletManager"
+     class="zojax.portlet.manager.PortletManagerWithStatus"
+     provides="zojax.content.space.portlets.interfaces.IContentPortletsManager" />
+
+  <!-- project overview portlet -->
+  <zojax:portlet
+     title="Project overview"
+     for="..interfaces.IProject"
+     name="portlet.projectoverview"
+     description="Basic project information (logo, members, project type, etc)."
+     class=".overview.ProjectOverviewPortlet"
+     schema=".interfaces.IProjectOverviewPortlet" />
+
+  <zojax:pagelet
+     type="portlet.view"
+     template="overview.pt"
+     for=".interfaces.IProjectOverviewPortlet" />
+
+  <!-- project overview portlet -->
+  <zojax:portlet
+     title="Project overview"
+     for="..interfaces.IProject"
+     name="portlet.projectoverview"
+     description="Basic project information (logo, members, project type, etc)."
+     class=".overview.ProjectOverviewPortlet"
+     manager="zojax.content.space.portlets.interfaces.IContentPortletsManager"
+     schema=".interfaces.IProjectOverviewContentPortlet" />
+
+  <zojax:pagelet
+     type="portlet.view"
+     template="overviewcontent.pt"
+     for=".interfaces.IProjectOverviewContentPortlet" />
+
+  <!-- projects portlet -->
+  <zojax:portlet
+     title="Projects"
+     name="portlet.projects"
+     description="Projects listing."
+     class=".projects.ProjectsPortlet"
+     schema=".interfaces.IProjectsPortlet" />
+
+  <zojax:pagelet
+     type="portlet.view"
+     template="projects.pt"
+     for=".interfaces.IProjectsPortlet" />
+
+  <!-- projects portlet -->
+  <zojax:portlet
+     title="Projects"
+     name="portlet.projects"
+     description="Projects listing."
+     class=".projects.ProjectsPortlet"
+     manager="zojax.content.space.portlets.interfaces.IContentPortletsManager"
+     schema=".interfaces.IProjectsContentPortlet" />
+
+  <zojax:pagelet
+     type="portlet.view"
+     template="projectscontent.pt"
+     for=".interfaces.IProjectsContentPortlet" />
+
+</configure>

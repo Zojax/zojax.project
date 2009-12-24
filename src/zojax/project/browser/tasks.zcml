@@ -1,0 +1,166 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <zojax:pageletType
+     name="task.comments"
+     interface=".interfaces.ICommentsView" />
+
+  <zojax:pageletType
+     name="task.attachments"
+     interface=".interfaces.IAttachmentsView" />
+
+  <!-- task view -->
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.ITask"
+     template="task.pt"
+     class=".task.TaskView"
+     permission="zope.View" />
+
+  <zojax:pagelet
+     name="delete.html"
+     for="..interfaces.ITask"
+     template="taskdelete.pt"
+     class=".task.TaskDelete"
+     permission="zojax.DeleteContent" />
+
+  <zojax:pagelet
+     name="attributes"
+     type="form.subform"
+     for="..interfaces.ITask
+	  zojax.content.forms.interfaces.IContentStep"
+     class=".task.TaskAttributesForm"
+     weight="20" />
+
+  <zojax:pagelet
+     name="configure"
+     type="form.subform"
+     for="..interfaces.ITaskAttributesConfig
+	  zojax.content.forms.interfaces.IContentStep"
+     class=".task.TaskAttributesConfigureForm"
+     weight="20" />
+
+  <!-- view/upload files/images -->
+  <zojax:pagelet
+     name="upload.html"
+     for="..interfaces.ITask"
+     class=".taskattachments.UploadAttachments"
+     permission="zojax.AddContentAttachment" />
+
+  <zojax:pagelet
+     type="task.attachments"
+     for="..interfaces.ITask"
+     template="taskattachments.pt"
+     class=".taskattachments.TaskAttachments"
+     permission="zope.View" />
+
+  <!-- view/add comments -->
+  <adapter factory=".taskcomment.TaskCommentAdapter" />
+
+  <zojax:pagelet
+     name="comment.html"
+     for="..interfaces.ITask"
+     class=".taskcomment.TaskCommentForm"
+     permission="zojax.AddComment" />
+
+  <zojax:pagelet
+     type="form.viewspace"
+     for=".taskcomment.TaskCommentForm"
+     template="taskcommentform.pt" />
+
+  <zojax:pagelet
+     type="task.comments"
+     for="..interfaces.ITask"
+     template="taskcomments.pt"
+     class=".taskcomment.TaskComments"
+     permission="zope.View" />
+
+  <zojax:pagelet
+     type="pagelet"
+     for="..interfaces.ITaskComment"
+     template="taskcomment.pt"
+     class=".taskcomment.TaskCommentView"
+     permission="zope.Public" />
+
+  <!-- complete/reopen task -->
+  <zojax:pagelet
+     name="complete.html"
+     for="..interfaces.ITask"
+     class=".task.CompleteTask"
+     permission="zojax.CompleteTask" />
+
+  <zojax:pagelet
+     name="reopen.html"
+     for="..interfaces.ITask"
+     class=".task.ReopenTask"
+     permission="zojax.ReopenTask" />
+
+  <!-- tasks table -->
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.ITasks" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.ITasks"
+     template="tasks.pt"
+     permission="zope.View" />
+
+  <adapter
+     name="project.tasks"
+     provides="zope.contentprovider.interfaces.IContentProvider"
+     factory=".tasks.Tasks" />
+
+  <adapter
+     name="project.tasks.completed"
+     provides="zope.contentprovider.interfaces.IContentProvider"
+     factory=".tasks.CompletedTasks" />
+
+  <adapter
+     name="id"
+     factory=".tasks.IdColumn" />
+
+  <adapter
+     name="title"
+     factory=".tasks.TitleColumn" />
+
+  <adapter
+     name="author"
+     factory=".tasks.AuthorColumn" />
+
+  <adapter
+     name="created"
+     factory=".tasks.CreatedColumn" />
+
+  <adapter
+     name="modified"
+     factory=".tasks.ModifiedColumn" />
+
+  <adapter
+     name="severity"
+     factory=".tasks.SeverityColumn" />
+
+  <adapter
+     name="milestone"
+     factory=".tasks.MilestoneColumn" />
+
+  <adapter
+     name="status"
+     factory=".tasks.StatusColumn" />
+
+  <adapter
+     name="category"
+     factory=".tasks.CategoryColumn" />
+
+  <adapter
+     name="date"
+     factory=".tasks.DateColumn" />
+
+  <adapter
+     name="assigned"
+     factory=".tasks.AssignedColumn" />
+
+</configure>

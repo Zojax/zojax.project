@@ -1,0 +1,156 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <zojax:pageletType
+     name="project.task.mail"
+     interface=".interfaces.ITaskMailView" />
+
+  <!-- tasks email notifications -->
+  <adapter 
+     name="tasks"
+     factory=".notifications.TasksNotification" />
+
+  <adapter
+     name="tasks"
+     for="zojax.project.interfaces.IProject"
+     factory=".notifications.TasksNotification" />
+
+  <class class=".notifications.TasksNotification">
+    <require
+       permission="zope.View"
+       interface=".interfaces.ITasksNotification" />
+  </class>
+
+  <utility
+     name="tasks"
+     factory=".notifications.TasksNotificationDescription" />
+
+  <!-- assignee notifications -->
+  <adapter 
+     name="assigneetasks"
+     factory=".notifications.AssigneeTasksNotification" />
+
+  <adapter
+     name="assigneetasks"
+     for="zojax.project.interfaces.IProject"
+     factory=".notifications.AssigneeTasksNotification" />
+
+  <class class=".notifications.AssigneeTasksNotification">
+    <require
+       permission="zope.View"
+       interface=".interfaces.IAssigneeTasksNotification" />
+  </class>
+
+  <utility
+     name="assigneetasks"
+     factory=".notifications.AssigneeTasksNotificationDescription" />
+
+  <!-- milestones notifications -->
+  <adapter 
+     name="milestones"
+     factory=".notifications.MilestonesNotification" />
+
+  <adapter 
+     name="milestones"
+     for="zojax.project.interfaces.IProject"
+     factory=".notifications.MilestonesNotification" />
+
+  <class class=".notifications.MilestonesNotification">
+    <require
+       permission="zope.View"
+       interface=".interfaces.IMilestonesNotification" />
+  </class>
+
+  <utility
+     name="milestones"
+     factory=".notifications.MilestonesNotificationDescription" />
+
+  <subscriber handler=".notifications.taskHandler"
+	      for="zojax.project.interfaces.ITask
+		   zojax.content.draft.interfaces.IDraftPublishedEvent" />
+
+  <subscriber handler=".notifications.taskHandler"
+	      for="zojax.project.interfaces.ITask
+		   zojax.project.interfaces.IStateChangedEvent" />
+
+  <subscriber handler=".notifications.taskHandler"
+	      for="zojax.project.interfaces.ITask
+		   zope.app.container.interfaces.IObjectRemovedEvent" />
+
+  <subscriber handler=".notifications.taskModified" />
+  <subscriber handler=".notifications.taskAssigned" />
+  <subscriber handler=".notifications.taskCommentAdded" />
+
+  <!-- task preview -->
+  <zojax:pagelet
+     type="project.task.mail"
+     for=".templates.TaskNotification"
+     template="taskpreview.pt" />
+
+  <!-- task added -->
+  <zojax:mailtemplate
+     for="..interfaces.ITask 
+	  zojax.content.draft.interfaces.IDraftPublishedEvent"
+     contentType="text/html"
+     template="added.pt"
+     class=".templates.TaskAddedNotification"
+     provides="zojax.content.notifications.interfaces.INotificationMailTemplate"
+     />
+
+  <!-- task deleted -->
+  <zojax:mailtemplate
+     for="..interfaces.ITask 
+	  zope.app.container.interfaces.IObjectRemovedEvent"
+     contentType="text/html"
+     template="deleted.pt"
+     class=".templates.TaskDeletedNotification"
+     provides="zojax.content.notifications.interfaces.INotificationMailTemplate"
+     />
+
+  <!-- task modified -->
+  <zojax:mailtemplate
+     for="..interfaces.ITask
+	  zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+     contentType="text/html"
+     template="modified.pt"
+     class=".modified.TaskModifiedTemplate"
+     provides="zojax.content.notifications.interfaces.INotificationMailTemplate"
+     />
+
+  <!-- task modified -->
+  <zojax:mailtemplate
+     for="..interfaces.ITask
+	  zojax.project.interfaces.IStateChangedEvent"
+     contentType="text/html"
+     template="state.pt"
+     class=".state.TaskStateTemplate"
+     provides="zojax.content.notifications.interfaces.INotificationMailTemplate"
+     />
+
+  <!-- files uploaded -->
+  <zojax:mailtemplate
+     for="..interfaces.ITask
+	  .interfaces.ITaskAttachments"
+     contentType="text/html"
+     template="files.pt"
+     class=".files.TaskAttachmentsTemplate"
+     provides="zojax.content.notifications.interfaces.INotificationMailTemplate"
+     />
+
+  <!-- comment notification -->
+  <zojax:mailtemplate
+     for="..interfaces.ITask ..interfaces.ITaskComment"
+     contentType="text/html"
+     template="comment.pt"
+     class=".templates.CommentNotificationMail"
+     provides="zojax.content.notifications.interfaces.INotificationMailTemplate"
+     />
+
+  <!-- styles -->
+  <zojax:resource
+     name="project-notification-styles"
+     file="styles.css" type="zrt" />
+
+</configure>

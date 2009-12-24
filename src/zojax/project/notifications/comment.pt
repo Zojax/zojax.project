@@ -1,0 +1,81 @@
+<div class="container">
+  <strong>
+    <tal:block tal:condition="not:view/context0/changes">
+      <tal:block content="view/author"/> has added a comment to task
+    </tal:block>
+    <tal:block tal:condition="view/context0/changes">
+      <tal:block content="view/author"/> has modified a task
+    </tal:block>
+    "<a tal:attributes="href view/url" tal:content="view/title"></a>"
+  </strong>
+  <br />
+
+  <div class="changes">
+    <div class="information" style="float: none">
+      <table>
+	<tr tal:condition="view/milestone">
+	  <th>&bull; Milestone</th>
+	  <td>
+	    <a tal:attributes="href view/milestoneURL" 
+	       tal:content="view/milestone"></a></td>
+	</tr>
+	<tr>
+	  <th>&bull; Project</th>
+	  <td>
+	    <a tal:attributes="href view/projectUrl" 
+	       tal:content="view/projectTitle"></a></td>
+	</tr>
+      </table>
+    </div>
+  </div>
+  <br />
+
+  <div tal:condition="view/context0/comment">
+    <span class="discreet">Comment:</span>
+    <div tal:content="structure view/context0/comment"></div>
+  </div>
+  <br />
+
+  <div class="changes" tal:condition="python:view.changes or view.attachments">
+    <span class="discreet">Changes:</span>
+    <br />
+
+    <div class="information" style="float:none">
+      <table>
+	<tr>
+	  <th></th>
+	  <tal:block condition="view/changes">
+	    <th>Old value</th>
+	    <th>New value</th>
+	  </tal:block>
+	  <tal:block condition="not:view/changes">
+	    <th colspan="2">&nbsp;</th>
+	  </tal:block>
+	</tr>
+	<tr tal:repeat="item view/changes">
+	  <th>&bull; <tal:block content="item/title" /></th>
+	  <td tal:content="python:item['old'] or '---'"></td>
+	  <td tal:content="python:item['new'] or '---'"></td>
+	</tr>
+	<tr tal:condition="view/attachments">
+	  <th>&bull; Attachments</th>
+	  <td colspan="2">
+	    <div>
+	      <ul>
+		<li tal:repeat="attach view/attachments">
+		  <a target="_blank" tal:content="attach/title" 
+		     tal:attributes="href attach/attach/@@absolute_url"></a>
+		  <span class="discreet">
+		    (<tal:block i18n:translate="" content="attach/size"/>)
+		  </span>
+		</li>
+	      </ul>
+	    </div>
+	  </td>
+	</tr>
+      </table>
+    </div>
+  </div>
+
+  <tal:block content="structure view/@@pagelet/project.task.mail" />
+</div>

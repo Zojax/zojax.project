@@ -1,0 +1,22 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   i18n_domain="zojax.project">
+
+  <utility
+     name="project.task.status"
+     factory=".vocabulary.StatusVocabulary" />
+
+  <utility
+     name="project.task.severity"
+     factory=".vocabulary.SeverityVocabulary" />
+
+  <utility
+     name="project.milestone.active"
+     provides="zope.schema.interfaces.IVocabularyFactory"
+     component=".vocabulary.ActiveMilestonesVocabulary" />
+
+  <utility
+     name="project.task.categories"
+     factory=".taskcategory.CategoriesVocabulary" />
+
+</configure>

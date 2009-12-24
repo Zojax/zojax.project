@@ -1,0 +1,72 @@
+<div class="statusWarningMessage" tal:condition="view/overdue" i18n:translate="">
+  Milestone over due,
+  <tal:block i18n:name="days" tal:content="python:view.overdue.days"/> days late.
+</div>
+<tal:block content="structure pagelet:+context.actions" />
+
+<h1 class="project-task-heading">
+  <span class="project-task-heading-title" tal:content="context/title"></span>
+</h1>
+
+<div class="project-task-information">
+  <table>
+    <tr>
+      <th>&bull; Completed</th>
+      <td class="project-task-stats">
+	<tal:block content="view/percent"/>%,
+	<tal:block content="view/tcompleted" /> tasks of
+	<tal:block content="view/total" />
+      </td>
+    </tr>
+    <tr>
+      <th>&bull; State</th>
+      <td class="project-task-state"
+	  tal:attributes="class python:context.state == 1 and 
+			  'project-task-active' or 'project-task-completed'"
+	  tal:content="python:context.state == 1 and 'Active' or 'Completed'"></td>
+    </tr>
+    <tr>
+      <th>&bull; Due Date</th>
+      <td class="project-task-duedate" tal:content="structure formatter:date,full:context/date"></td>
+    </tr>
+    <tr>
+      <th>&bull; Submitted by</th>
+      <td tal:content="view/owner/title"></td>
+    </tr>
+    <tr>
+      <th>&bull; Created</th>
+      <td class="nowrap" tal:content="structure formatter:fancyDatetime,medium:view/created"></td>
+    </tr>
+    <tr>
+      <th>&bull; Last updates</th>
+      <td class="nowrap" tal:content="structure formatter:fancyDatetime,medium:view/modified"></td>
+    </tr>
+    <tr>
+      <th>&bull; Assigned to</th>
+      <td>
+	<tal:block condition="view/assignments"
+		   content="python:', '.join(view.assignments)" />
+	<tal:block condition="not:view/assignments" i18n:translate="">
+	  Not assigned
+	</tal:block>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="project-task-description"
+     tal:content="structure context/text/cooked"></div>
+
+<div class="visualClear"></div>
+
+<div class="project-tasks">
+  <h3>Active tasks</h3>
+
+  <tal:block content="structure view/tasks/render" />
+</div>
+
+<div class="project-tasks" tal:condition="view/completed">
+  <h3>Completed tasks</h3>
+    
+  <tal:block content="structure view/completed/render" />
+</div>

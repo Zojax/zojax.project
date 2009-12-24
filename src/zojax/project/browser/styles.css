@@ -1,0 +1,392 @@
+/* zrt-cssregistry: */
+
+@media all {
+
+  .projects-browse .z-content-byline {
+    padding-top: 0.5em;
+  }
+
+  .project-information {
+    width: 80%;
+    padding-right: 0.5em;
+  }
+
+  .project-managers {
+    float: right;
+    width: 20%;
+    font-size: 90%;
+  }
+
+  .groups-group.groups-header .project-managers { 
+    font-size: 100%;
+  }
+
+  .project-managers a { 
+    text-decoration: none;
+  }
+
+  .project-info span { 
+    color: discreetColor;
+  }
+
+  .project-milestones {
+    padding-top: 2em;
+  }
+
+  .project-milestones .project-milestone {
+    padding: 1em;
+    border-bottom: borderWidth borderStyleAnnotations globalBorderColor;
+  }
+
+  .project-milestones .z-table-container { 
+    padding-top: 1em;
+    padding-bottom: 0;
+  }
+
+  .project-milestones table.z-table td {
+    padding: 0.25em;
+    border-bottom: borderWidth dotted globalBorderColor;
+  }
+
+  .project-milestones table.z-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .project-tasks {
+    margin-top: 2em;
+  }
+
+  .project-tasks h3 {
+    display: inline;
+  }
+
+  .project-tasks .z-table-container { 
+    padding-top: 1em;
+  }
+
+  .project-tasks table.z-table td { 
+    padding: 0.25em 0.5em;
+    border-bottom: borderWidth dotted globalBorderColor;
+  }
+
+  .project-milestone dt {
+    float: left;
+    padding-right: 1.5em;
+    width: 9em;
+    font-size: 90%;
+    font-weight: normal;
+    overflow: hidden;
+    text-align: right;
+  }
+
+  .project-milestone dt .project-milestone-date { 
+  }
+
+  .project-milestone dt .project-milestone-overdue { 
+    color: notifyBorderColor;
+    font-weight: bold;
+    font-size: 110%;
+  }
+
+  .project-milestone dt .project-milestone-stats {
+    padding-top: 2em;
+  }
+
+  .project-milestone dt .project-milestone-stats span {
+    font-weight: bold;
+  }
+
+  .project-milestone dd { 
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+
+  .project-milestone dd a:visited {
+    color: linkColor;
+  }
+  
+  .project-milestone dd { 
+    overflow: hidden;
+    white-space: normal;
+  }
+
+  .project-milestone dd .project-milestone-title {
+    font-size: 130%;
+    font-weight: normal;
+    padding-bottom: 0.25em;
+  }
+
+  .project-milestone dd .project-milestone-title a {
+    text-decoration: none;
+    line-height: 1em;
+    border-bottom: 1px solid globalExtraColor;
+  }
+
+  .project-milestone dd .project-milestone-title a:hover {
+    color: globalExtraColor;
+  }
+
+  .project-milestone dd .project-milestone-byline { 
+    font-size: 90%;
+    color: discreetColor;
+    padding-bottom: 0.5em;
+  }
+
+  .project-milestone dd .project-milestone-byline a {
+    text-decoration: none;
+    color: globalExtraColor;
+  }
+
+  .project-milestone dd .project-milestone-byline a:hover {
+    color: linkColor;
+  }
+
+  .project-task-heading { 
+    font-weight: normal;
+  }
+
+  .project-task-heading span {
+    font-size: 90%;
+    font-weight: normal;
+  }
+  
+  span.project-task-heading-title {
+    font-weight: bold;
+  }
+
+  .project-task-heading-milestone {
+    font-style: italic;
+    color: discreetColor;
+  }
+
+  .project-task-heading-milestone a {
+    color: fontColor;
+    font-style: normal;
+  }
+
+  .project-task-heading-milestone a:hover {
+    color: linkColor;
+  }
+
+  .project-task-overdue { 
+    float: right;
+    font-size: 130%;
+    font-weight: bold;
+    color: notifyBorderColor;
+  }
+
+  .project-task-description {
+    font-size: 100%;
+    margin-top: 1em;
+    line-height: 1.25em;
+    padding: 0.5em 1em 0.5em 1em;
+    background-color: backgroundColor;
+  }
+
+  .project-task-information {
+    float: right;
+    font-size: 90%;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    background-color: contentBackgroundColor;
+    max-width: 40%;
+  }
+
+  .project-task-information table {
+    margin-top: 0.75em;
+    border-top: borderWidth borderStyle globalBorderColor;
+  }
+
+  .project-task-information a {
+    text-decoration: none;
+  }
+
+  .project-task-information a:hover {
+    text-decoration: underline;
+  }
+
+  .project-task-information tr {
+    vertical-align: top;
+  }
+
+  .project-task-information td {
+    border-right: borderWidth borderStyle globalBorderColor;
+    border-bottom: borderWidth borderStyle globalBorderColor;
+    padding: 0.2em 0.5em;
+    width: 50%;
+  }
+
+  .project-task-information th {
+    background-color: globalBackgroundColor;
+    border-left: borderWidth borderStyle globalBorderColor;
+    border-right: borderWidth borderStyle globalBorderColor;
+    border-bottom: borderWidth borderStyle globalBorderColor;
+    color: discreetColor;
+    white-space: nowrap;
+    padding: 0.2em 0.5em;
+    width: auto;
+  }
+
+  .project-tasks-table .odd {
+    background-color: contentBackgroundColor;
+  }
+
+  .project-milestones table.project-tasks-table .odd {
+    background-color: oddRowBackgroundColor;
+  }
+
+  .project-task-active {
+    color: linkColor;
+    font-weight: bold;
+  }
+
+  .project-task-completed {
+    color: green;
+    font-weight: bold;
+  }
+
+  .project-task-duedate { 
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .project-task-comments {
+    padding-top: 2em;
+  }
+
+  .project-task-comments .project-task-information { 
+    float: none;
+    margin-top: 1em;
+    margin-left: 0em;
+    padding: 0;
+    max-width: 100%;
+    background-color: transparent;
+  }
+
+  .project-task-comments .project-task-information table {
+    width: auto;
+    border-top: none;
+    background: transparent;
+  }
+
+  .project-task-comments .project-task-information table td { 
+    width: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-right: none;
+    border-left: borderWidth dotted globalBorderColor;
+    border-bottom: borderWidth dotted globalBorderColor;
+  }
+
+  .project-task-comments .project-task-information th {
+    border-left: none;
+    border-right: none;
+    border-bottom: borderWidth dotted globalBorderColor;
+  }
+
+  .project-task-comments .project-task-information thead th {
+    border-top: none;
+    border-right: none;
+    text-align: center;
+    background-color: transparent;
+    border-bottom: borderWidth borderStyle globalBorderColor;
+  }
+
+  .project-task-comments .project-task-attachments {
+    margin:0;
+    padding: 0em;
+    background-color: transparent;
+  }
+
+  .project-task-comments .project-task-attachments ul { 
+    padding: 0;
+  }
+
+  .project-task-commentform textarea { 
+    width: 100%;
+    height: 8em;
+  }
+
+  .project-task-addcomment { 
+    font-size: 100%;
+    padding-top: 2em;
+  }
+
+  #z-content .project-task-addcomment h1.z-form-label { 
+    font-size: 100%;
+  }
+
+  .project-task-attachments {
+    margin-top: 1em;
+    padding: 0.5em 1em 0.5em 1em;
+    background-color: backgroundColor;
+  }
+
+  .project-task-attachments h3 { 
+    font-weight: normal;
+  }
+
+  .project-task-attachments ul { 
+    padding: 1em;
+    padding-top: 0.5em;
+    margin: 0;
+    list-style: none;
+    list-style-image: none;
+    list-style-type: none;
+  }
+
+  .project-task-attachments ul li { 
+    margin-bottom: 0.25em;
+  }
+
+  .project-task-attachments .byline { 
+    font-size: 90%;
+    color: discreetColor;
+    padding: 0;
+    margin: 0;
+  }
+
+  .project-task-thumbnails {
+    float: right;
+    padding-left: 1em;
+    background-color: transparent;
+  }
+
+  .project-task-thumbnail {
+    float: left;
+    padding: 3px;
+    margin: 0.25em 0 0.25em 0.5em;
+    border: borderWidth borderStyle globalBorderColor;
+  }
+
+  .project-task-thumbnail:hover {
+    background-color: globalBackgroundColor;
+  }
+
+  .t-task-id {
+    color: discreetColor;
+  }
+
+  table.z-table td.t-task-title { 
+    min-width: 30%;
+  }
+
+  .t-task-status { 
+    text-align: left;
+  }
+
+  .t-task-severity {
+    text-align: center;
+  }
+
+  .t-task-overdue {
+    color: notifyBorderColor;
+    font-weight: bold;
+  }
+
+  table.z-table td.t-task-modified {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+}

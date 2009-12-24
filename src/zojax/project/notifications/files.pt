@@ -1,0 +1,42 @@
+<div class="container">
+  <strong>
+    <tal:block content="view/author"/> uploaded files to
+    task "<a tal:attributes="href view/url" tal:content="view/title"></a>"
+  </strong>
+
+  <div class="changes">
+    <div class="information" style="float: none">
+      <table>
+	<tr tal:condition="view/milestone">
+	  <th>&bull; Milestone</th>
+	  <td>
+	    <a tal:attributes="href view/milestoneURL" 
+	       tal:content="view/milestone"></a></td>
+	</tr>
+	<tr>
+	  <th>&bull; Project</th>
+	  <td>
+	    <a tal:attributes="href view/projectUrl" 
+	       tal:content="view/projectTitle"></a></td>
+	</tr>
+      </table>
+    </div>
+  </div>
+  <br />
+
+  <div>
+    <span class="discreet">Files:</span>
+    <div tal:repeat="file view/attachs">
+      <a tal:content="file/__name__"
+	 tal:attributes="href file/@@absolute_url"></a>
+    </div>
+  </div>
+
+  <br />
+  <div tal:condition="view/comment">
+    <span class="discreet">Comment:</span>
+    <div tal:content="structure view/comment"></div>
+  </div>
+
+  <tal:block content="structure view/@@pagelet/project.task.mail" />
+</div>

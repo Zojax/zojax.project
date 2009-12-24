@@ -1,0 +1,78 @@
+<div class="z-comment">
+  <a tal:attributes="name string:comment${context/__name__}"></a>
+  <table>
+    <tbody>
+      <tr>
+	<td class="z-comment-avatar">
+	  <img tal:attributes="src view/avatar" />
+	</td>
+	<td class="z-comment-body">
+	  <div class="z-comment-info">
+	    <span>
+	      Posted by
+	      <a tal:attributes="href string:${view/url}/"
+		 tal:omit-tag="not:view/url"
+		 tal:content="view/author|string:Anonymous"></a>
+	      at
+	      <tal:block content="structure
+				  formatter:fancyDatetime,full:context/date" />
+	    </span>
+	  </div>
+
+	  <div tal:condition="view/hasImages" class="project-task-thumbnails">
+	    <tal:block tal:repeat="attach view/attachments">
+	      <div class="project-task-thumbnail" tal:condition="attach/image">
+		<a target="_blank" tal:define="url attach/attach/@@absolute_url"
+		   tal:attributes="href string:$url/; title attach/title">
+		  <img tal:attributes="src string:$url/preview/70x70/" />
+		</a>
+	      </div>
+	    </tal:block>
+	  </div>
+
+	  <div class="z-comment-text" tal:content="structure view/comment" />
+
+	  <div class="project-task-information"
+	       tal:condition="python:view.data or view.attachments">
+	    <table>
+	      <thead>
+		<tr>
+		  <th></th>
+		  <tal:block condition="view/data">
+		    <th>Old value</th>
+		    <th>New value</th>
+		  </tal:block>
+		  <tal:block condition="not:view/data">
+		    <th colspan="2">List</th>
+		  </tal:block>
+		</tr>
+	      </thead>
+	      <tr tal:repeat="item view/data">
+		<th>&bull; <tal:block content="item/title" /></th>
+		<td tal:content="python:item['old'] or '---'"></td>
+		<td tal:content="python:item['new'] or '---'"></td>
+	      </tr>
+	      <tr tal:condition="view/attachments">
+		<th>&bull; Attachments</th>
+		<td colspan="2">
+		  <div class="project-task-attachments">
+		    <ul>
+		      <li tal:repeat="attach view/attachments">
+			<a target="_blank" tal:content="attach/title" 
+			   tal:attributes="href attach/attach/@@absolute_url"></a>
+			<span class="discreet">
+			  (<tal:block i18n:translate="" content="attach/size"/>)
+			</span>
+		      </li>
+		    </ul>
+		  </div>
+		</td>
+	      </tr>
+	    </table>
+	  </div>
+	</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

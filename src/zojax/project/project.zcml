@@ -1,0 +1,120 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <!-- project -->
+  <zojax:content
+     title="Project"
+     name="content.project"
+     description="Project"
+     schema=".interfaces.IProject"
+     class=".project.Project"
+     containers="workspace.projects"
+     contains="zojax.content.space.interfaces.ISpaceContentType"
+     type="zojax.content.type.interfaces.IActivePortalType
+           zojax.content.schema.interfaces.ISchemaAware
+           zojax.content.space.interfaces.IContentSpaceType"
+     permission="zojax.AddProject" />
+
+  <class class=".project.Project">
+    <implements interface="zojax.activity.interfaces.IActivityAware" />
+    <implements interface="zojax.cache.interfaces.IVisibleContext" />
+    <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+    <implements interface="zojax.catalog.interfaces.ISearchContext" />
+    <implements interface="zojax.content.type.interfaces.ITitleBasedName" />
+    <implements interface="zojax.content.type.interfaces.IShareableContent" />
+    <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+    <implements interface="zojax.content.space.interfaces.IContentSpaceLayout" />
+    <implements interface="zojax.content.tagging.interfaces.IContentTaggable" />
+    <implements
+       interface="zojax.content.draft.browser.interfaces.ILocationContainer" />
+
+    <require
+       permission="zope.View"
+       interface=".interfaces.IProject
+                  zojax.content.space.interfaces.IContentSpaceLayout
+		  zojax.content.space.interfaces.IWorkspacesManagement" />
+
+    <require
+       permission="zojax.AccessGroup"
+       interface="zope.app.container.interfaces.IReadContainer" />
+
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.IProject
+                   zojax.content.space.interfaces.IContentSpaceLayout
+		   zojax.content.space.interfaces.IWorkspacesManagement"
+       interface="zope.app.container.interfaces.IWriteContainer" />
+  </class>
+
+  <adapter factory=".project.projectMembers" />
+
+  <!-- standalone project -->
+  <zojax:content
+     title="Standalone Project"
+     name="content.standaloneproject"
+     description="Project with membership."
+     schema=".interfaces.IStandaloneProject"
+     class=".project.StandaloneProject"
+     containers="workspace.standaloneprojects"
+     contains="zojax.content.space.interfaces.ISpaceContentType"
+     type="zojax.content.type.interfaces.IActivePortalType
+           zojax.content.schema.interfaces.ISchemaAware
+           zojax.content.space.interfaces.IContentSpaceType"
+     permission="zojax.AddProject" />
+
+  <class class=".project.StandaloneProject">
+   <require
+       permission="zope.View"
+       interface=".interfaces.IStandaloneProject
+                  zojax.content.space.interfaces.IContentSpaceLayout
+		  zojax.content.space.interfaces.IWorkspacesManagement" />
+
+    <require
+       permission="zojax.AccessGroup"
+       interface="zope.app.container.interfaces.IReadContainer" />
+
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.IStandaloneProject
+                   zojax.content.space.interfaces.IContentSpaceLayout
+		   zojax.content.space.interfaces.IWorkspacesManagement"
+       interface="zope.app.container.interfaces.IWriteContainer" />
+  </class>
+
+  <!-- subscribers -->
+  <subscriber handler=".project.projectModified" />
+
+  <!-- SearchableText adapter -->
+  <adapter factory=".project.ProjectSearchableText" />
+
+  <!-- draft -->
+  <zojax:draft
+     content="content.project"
+     publish="zojax.AddProject"
+     submit="zojax.SubmitProject"
+     destination="workspace.projects" />
+
+  <zojax:draft
+     content="content.standaloneproject"
+     publish="zojax.AddProject"
+     submit="zojax.SubmitProject"
+     destination="workspace.standaloneprojects" />
+
+  <!-- IObjectCopier -->
+  <adapter factory=".project.ProjectCopier" />
+
+  <!-- overview workspace -->
+  <adapter
+     name="overview"
+     factory=".overview.OverviewWorkspaceFactory" />
+
+  <class class=".overview.OverviewWorkspaceFactory">
+    <require
+       permission="zojax.AccessGroup"
+       interface="zojax.content.space.interfaces.IOverviewWorkspace" />
+  </class>
+
+</configure>

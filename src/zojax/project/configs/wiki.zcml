@@ -1,0 +1,22 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   zcml:condition="installed zojax.wiki">
+
+  <include package="zojax.wiki" />
+
+  <!-- wiki workspace factory -->
+  <adapter
+     name="wiki"
+     for="..interfaces.IProject"
+     factory="zojax.wiki.workspace.WikiWorkspaceFactory" />
+
+  <!-- default project permissions -->
+  <permissions for="zojax.project.interfaces.IProject" name="project.permissions">
+    <grant permission="zojax.ModifyWikiContent"
+	   role="group.Member
+		 group.Manager
+		 zope.Manager" />
+  </permissions>
+
+</configure>

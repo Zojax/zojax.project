@@ -1,0 +1,27 @@
+<div class="z-portlet portlet-group-overview" i18n:domain="zojax.project">
+  <h2 class="z-portlet-header" i18n:translate="">
+    Project overview
+  </h2>
+
+  <div class="z-portlet-body" tal:define="info context/getProjectInfo">
+    <div class="group-image">
+      <img tal:condition="info/default"
+	   tal:attributes="src context/++resource++groupEmptyImage.png" />
+      <img tal:condition="not:info/default"
+	   tal:attributes="src string:${context/context/@@absolute_url}/++attribute++logo" />
+      <div tal:content="info/description"></div>
+    </div>
+
+    <div class="z-portlet-item">
+      <div tal:condition="python:info['members'] is not None">
+	<tal:block content="info/members"/> Member(s) </div>
+      <div><strong i18n:translate="">Owned by:</strong>
+	<tal:block content="info/owner/title" /></div>
+      <div><strong i18n:translate="">Created:</strong>
+	<tal:block content="structure formatter:date,medium:info/created" /></div>
+      <div><strong i18n:translate="">Project Type:</strong>
+	<tal:block content="info/ptype/title" /></div>
+    </div>
+  </div>
+
+</div>

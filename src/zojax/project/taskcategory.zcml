@@ -1,0 +1,56 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <!-- category -->
+  <zojax:content
+     title="Category"
+     schema=".interfaces.ITaskCategory"
+     name="project.task.category"
+     description="Task category."
+     class=".taskcategory.Category"
+     containers="project.task.categorycontainer"
+     permission="zojax.ModifyContent" />
+
+  <class class=".taskcategory.Category">
+    <require
+       permission="zope.Public"
+       attributes="entries"
+       interface=".interfaces.ITaskCategory" />
+
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.ITaskCategory" />
+  </class>
+
+  <!-- category container -->
+  <zojax:content
+     title="Category container"
+     schema=".interfaces.ITaskCategoryContainer"
+     name="project.task.categorycontainer"
+     class=".taskcategory.CategoryContainer"
+     type="zojax.content.type.interfaces.IInactiveType"
+     contains="project.task.category" />
+
+  <class class=".taskcategory.CategoryContainer">
+    <implements interface="zojax.content.type.interfaces.IRenameNotAllowed" />
+    <implements interface="zojax.content.type.interfaces.IUnremoveableContent" />
+    <implements interface="zojax.content.type.interfaces.IContainerContentsAware" />
+    <implements interface="zope.app.container.interfaces.IContainerNamesContainer" />
+
+    <require
+       permission="zope.Public"
+       interface=".interfaces.ITaskCategoryContainer
+		  zojax.content.type.interfaces.IItem
+		  zope.app.container.interfaces.IReadContainer" />
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.ITaskCategoryContainer"
+       interface="zope.app.container.interfaces.IWriteContainer" />
+  </class>
+
+  <!-- Name chooser -->
+  <adapter factory=".taskcategory.CategoryContainerNameChooser" />
+
+</configure>

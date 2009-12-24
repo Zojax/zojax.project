@@ -1,0 +1,50 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <!-- projects tasks workspace -->
+  <zojax:content
+     title="Tasks"
+     name="project.tasks"
+     schema=".interfaces.ITasks"
+     class=".tasks.Tasks"
+     contains="project.task"
+     type="zojax.content.type.interfaces.IInactiveType"
+     permission="zojax.ModifyContent" />
+
+  <class class=".tasks.Tasks">
+    <implements interface="zojax.catalog.interfaces.ISearchContext" />
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+    <implements interface="zojax.content.type.interfaces.IRenameNotAllowed" />
+    <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+    <implements interface="zojax.content.type.interfaces.IUnremoveableContent" />
+    <implements interface="zojax.content.type.interfaces.IContainerContentsAware" />
+    <implements interface="zope.app.container.interfaces.IContainerNamesContainer" />
+
+    <require
+       permission="zope.View"
+       interface=".interfaces.ITasks
+		  .interfaces.ITaskAttributesConfig
+		  zope.app.container.interfaces.IReadContainer" />
+
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.ITasks
+		  .interfaces.ITaskAttributesConfig"
+       interface="zope.app.container.interfaces.IWriteContainer" />
+  </class>
+
+  <zojax:reservedNames
+     names="tasks"
+     for=".interfaces.IProject" />
+
+  <!-- workspace factory -->
+  <adapter
+     name="tasks"
+     factory=".tasks.TasksWorkspaceFactory" />
+
+  <!-- Name chooser -->
+  <adapter factory=".tasks.TasksNameChooser" />
+
+</configure>

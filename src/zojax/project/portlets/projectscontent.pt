@@ -1,0 +1,44 @@
+<div class="z-portlet portlet-projects-content" i18n:domain="zojax.project">
+  <h2 class="z-portlet-header">
+    <tal:block condition="context/label" tal:content="context/label">Portlet Header</tal:block>
+    <tal:block condition="not:context/label" tal:content="context/title">Open an account</tal:block>
+  </h2>
+  <div class="z-portlet-body">
+    <tal:block repeat="item context/items">
+      <div class="z-portlet-item" tal:define="info python:context.getProjectInfo(item)">
+        <div class="z-portlet-item-title">
+          <a tal:content="info/title" tal:attributes="title info/description;
+                                                        href string:${info/project/@@absolute_url}/" />
+        </div>
+        <div class="group-image" tal:condition="context/showLogo">
+          <div class="group-image-wrapper">
+            <a tal:attributes="title info/description;
+                               href string:${info/project/@@absolute_url}/">
+            <img tal:condition="info/default"
+                 tal:attributes="src context/++resource++groupEmptyImage.png" />
+            <img tal:condition="not:info/default"
+                 tal:attributes="src string:${context/context/@@absolute_url}/++attribute++logo" />
+            </a>
+            <div tal:condition="python:info['members'] is not None">
+              <tal:block content="info/members"/> Member(s) </div>
+            <div tal:condition="info/owner"><strong i18n:translate="">Owned by:</strong>
+              <tal:block content="info/owner/title" /></div>
+                  <div><strong i18n:translate="">Created:</strong>
+              <tal:block content="structure formatter:date,medium:info/created" /></div>
+            <div><strong i18n:translate="">Project Type:</strong>
+              <tal:block content="info/ptype/title" /></div>
+           </div>
+        </div>
+
+        <div class="z-content-description" tal:content="info/description"></div>
+
+        <div tal:content="structure info/project/text/cooked" />
+
+        <div tal:define="schema python:context.getContentSchema(info['project'])"
+       tal:content="structure schema/@@pagelet" />
+       </div>
+    </tal:block>
+  </div>
+</div>
+<div class="visualClear"></div>
+<br />

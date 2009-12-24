@@ -1,0 +1,159 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <include file="actions.zcml" />
+
+  <include file="tasks.zcml" />
+
+  <include file="taskcategory.zcml" />
+
+  <include file="milestone.zcml" />
+
+  <include file="milestones.zcml" />
+
+  <include file="state.zcml" />
+
+  <!-- browse projects -->
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IProjects" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IProjects"
+     template="browse.pt"
+     class=".browse.BrowseProjects"
+     permission="zope.View" />
+
+  <!-- project view -->
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IProject" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IStandaloneProject"
+     template="project.pt"
+     class="zojax.groups.browser.group.GroupView"
+     permission="zope.View" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IProject"
+     class="zojax.content.space.browser.space.ContentSpace"
+     permission="zope.View" />
+
+  <!-- overview workspace -->
+  <zojax:pagelet
+     name="overview"
+     for="..interfaces.IProject"
+     template="overview.pt"
+     provides="zojax.content.space.interfaces.IOverviewWorkspace"
+     permission="zojax.AccessGroup" />
+
+  <!-- security tab -->
+  <zojax:pagelet
+     name="permissions"
+     type="form.subform"
+     for="..interfaces.IProject
+	  zojax.content.forms.interfaces.ISecurityStep"
+     class="zojax.members.browser.security.MembersAwareContentPermissions"
+     provides="zojax.layoutform.interfaces.IPageletFormView"
+     weight="100" />
+
+  <!-- icons -->
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.content_project"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.content_standaloneproject"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.workspace_projects"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.workspace_standaloneprojects"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IProject"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IProjects"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IProjectsFactory"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IMilestone"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IMilestones"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IMilestonesFactory"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_milestone"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_milestones"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITask"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITasks"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITasksFactory"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_task"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_tasks"
+     file="icons/task.png" />
+
+  <!-- styles -->
+  <zojax:resourceinclude
+     name="zojax-project.css"
+     file="styles.css"
+     library="zojax" type="stylesheet" filetype="zrt" />
+
+</configure>

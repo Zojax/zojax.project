@@ -1,0 +1,30 @@
+<div i18n:domain="zojax.project" class="project-task-attachments">
+  <h3>Attachments</h3>
+
+  <tal:block tal:repeat="info view/attachments">
+    <div class="project-task-attachment" tal:define="url info/attach/@@absolute_url">
+      <div class="project-task-thumbnail" tal:condition="info/image|nothing">
+	<a tal:attributes="href string:$url/; title info/title">
+	  <img tal:attributes="src string:$url/preview/70x70/" />
+	</a>
+      </div>
+      <div class="project-task-heading">
+	<a tal:attributes="href string:$url/" tal:content="info/title"></a>
+      </div>
+      <div class="project-task-byline">
+	by <tal:block content="info/owner" /> at 
+	<tal:block content="structure formatter:fancyDatetime,medium:info/created" />
+      </div>
+      <div class="project-task-size" i18n:translate="">
+	size: <tal:block content="info/size" i18n:name="size" />
+      </div>
+      <div class="project-task-attachment-description"
+	   tal:content="info/description"></div>
+      <div class="visualClear"></div>
+    </div>
+  </tal:block>
+
+  <tal:block tal:condition="not:view/attachments">
+    There are no uploaded files.
+  </tal:block>
+</div>

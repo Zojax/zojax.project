@@ -1,0 +1,12 @@
+<div class="container">
+  <strong>
+    <tal:block content="view/author"/> has added new task 
+    "<a tal:attributes="href view/url" tal:content="view/title"></a>"
+    to the
+    "<a tal:attributes="href view/projectUrl" 
+	tal:content="view/projectTitle"></a>"
+  </strong>
+  <br /><br />
+
+  <tal:block content="structure view/@@pagelet/project.task.mail" />
+</div>

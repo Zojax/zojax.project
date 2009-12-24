@@ -1,0 +1,31 @@
+<div class="container">
+  <strong>
+    <tal:block content="view/author"/> has 
+    <tal:block condition="python:view.state==1">re-opened</tal:block>
+    <tal:block condition="python:view.state==2">completed</tal:block>
+    task "<a tal:attributes="href view/url" tal:content="view/title"></a>"
+  </strong>
+  <br />
+
+  <div class="changes">
+    <div class="information" style="float: none">
+      <table>
+	<tr tal:condition="view/milestone">
+	  <th>&bull; Milestone</th>
+	  <td>
+	    <a tal:attributes="href view/milestoneURL" 
+	       tal:content="view/milestone"></a></td>
+	</tr>
+	<tr>
+	  <th>&bull; Project</th>
+	  <td>
+	    <a tal:attributes="href view/projectUrl" 
+	       tal:content="view/projectTitle"></a></td>
+	</tr>
+      </table>
+    </div>
+  </div>
+  <br /><br />
+
+  <tal:block content="structure view/@@pagelet/project.task.mail" />
+</div>

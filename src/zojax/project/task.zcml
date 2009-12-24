@@ -1,0 +1,73 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <!-- task -->
+  <zojax:content
+     title="Task"
+     name="project.task"
+     description="Project task"
+     schema=".interfaces.ITask"
+     class=".task.Task"
+     type="zojax.content.type.interfaces.IActivePortalType"
+     containers="project.tasks"
+     permission="zojax.AddMilestone" />
+
+  <class class=".task.Task">
+    <implements interface="zojax.activity.interfaces.IActivityAware" />
+    <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+    <implements interface="zojax.content.attachment.interfaces.IAttachmentsAware" />
+    <implements interface="zojax.content.tagging.interfaces.IContentTaggable" />
+    <implements interface="zojax.content.discussion.interfaces.IOpenDiscussible" />
+
+    <require
+       permission="zope.View"
+       attributes="description state"
+       interface=".interfaces.ITask
+		  .interfaces.ITaskAttributes
+		  zope.app.container.interfaces.IReadContainer" />
+
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.ITask
+		   .interfaces.IState"
+       interface="zope.app.container.interfaces.IWriteContainer" />
+
+    <require
+       permission="zojax.ModifyTaskStatus"
+       set_attributes="status" />
+
+    <require
+       permission="zojax.ModifyTaskAttributes"
+       set_attributes="severity priority category" />
+    
+    <require
+       permission="zojax.CompleteTask"
+       attributes="completeTask" />
+    
+    <require
+       permission="zojax.ReopenTask"
+       attributes="reopenTask" />
+  </class>
+
+  <!-- ISearchableContent adapter -->
+  <adapter factory=".task.taskSearchable" />
+
+  <!-- ITaskAttributesConfig adapter -->
+  <adapter factory=".task.taskAttributesConfig" />
+
+  <!-- IAssigneesProvider adapter -->
+  <adapter factory=".task.TaskAssigneesProvider" />
+
+  <!-- SearchableText adapter -->
+  <adapter factory=".task.TaskSearchableText" />
+
+  <!-- draft -->
+  <zojax:draft
+     content="project.task"
+     publish="zojax.AddTask"
+     submit="zojax.SubmitTask" />
+
+</configure>

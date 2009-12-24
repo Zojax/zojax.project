@@ -1,0 +1,19 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <!-- support comments notifications -->
+  <class class=".project.Project"
+	 zcml:condition="installed zojax.content.discussion">
+    <implements
+       interface="zojax.content.discussion.interfaces.ICommentsNotificationsAware" />
+  </class>
+
+  <!-- top contributors -->
+  <class class=".project.Project"
+	 zcml:condition="installed zojax.topcontributors">
+    <implements
+       interface="zojax.topcontributors.interfaces.ITopContributorsAware" />
+  </class>
+
+</configure>
