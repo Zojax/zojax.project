@@ -1,0 +1,18 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IMilestones" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IMilestones"
+     template="milestones.pt"
+     class=".milestones.BrowseMilestones"
+     permission="zope.View" />
+
+</configure>

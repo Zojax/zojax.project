@@ -1,0 +1,20 @@
+<tal:block i18n:domain="zojax.project">
+  <h1 i18n:translate="">Complete milestone</h1>
+
+  <br />
+  <div class="z-form-fieldset">
+    <h3 i18n:translate="">Active tasks</h3>
+    
+    <tal:block content="structure view/table/render" />
+  </div>
+  
+  <form action="complete.html" method="post">
+    <div class="z-form-controls">
+      <hr />
+      <input type="submit" name="button.complete" 
+	     class="z-form-button" value="Complete all tasks" i18n:attributes="value" />
+      <input type="submit" name="button.cancel"
+	     class="z-form-cancelbutton" value="Cancel" i18n:attributes="value" />
+    </div>
+  </form>
+</tal:block>

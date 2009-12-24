@@ -1,0 +1,12 @@
+<tal:block tal:define="overview provider:columns.content">
+  <div tal:condition="overview"
+       tal:content="structure overview"></div>
+  <tal:block tal:condition="not:overview">
+    <tal:block content="structure pagelet:+context.actions" />
+    <h1 class="z-content-title" tal:content="context/title"></h1>
+    <div class="z-page-description" tal:content="context/description"></div>
+    <div tal:define="listing nocall:context/@@listing.html;dummy listing/update"
+	 tal:content="structure listing/render" />
+  </tal:block>
+</tal:block>
+

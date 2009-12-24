@@ -1,0 +1,47 @@
+<div class="z-portlet portlet-projects" i18n:domain="zojax.project">
+  <h2 class="z-portlet-header">
+    <span class="z-portlet-topleft" />
+    <span class="z-portlet-topright" />
+    <span tal:condition="context/label" tal:content="context/label">Portlet Header</span>
+    <span tal:condition="not:context/label" tal:content="context/title">Open an account</span>
+  </h2>
+
+  <div class="z-portlet-body">
+    <tal:block repeat="item context/items">
+    <div class="z-portlet-item" tal:define="info python: context.getProjectInfo(item)">
+
+        <div class="z-portlet-item-title">
+          <a tal:content="info/title"
+       tal:attributes="title info/description;
+                       href string:${info/project/@@absolute_url}/">Project Title</a>
+        </div>
+
+        <div class="z-portlet-item-description" tal:condition="python:info['members'] is not None">
+    <div class="portlet-projects-members">
+            <tal:block content="info/members"/> Member(s)
+    </div>
+    <div class="portlet-projects-owner">
+       <strong i18n:translate="">Owned by:</strong>
+             <tal:block content="info/owner/title" />
+    </div>
+    <div class="portlet-projects-created">
+            <strong i18n:translate="">Created:</strong>
+            <tal:block content="structure formatter:date,medium:info/created" />
+    </div>
+    <div class="portlet-projects-type">
+            <strong i18n:translate="">Project Type:</strong>
+            <tal:block content="info/ptype/title" />
+    </div>
+        </div>
+
+    </div>
+    </tal:block>
+  </div>
+
+  <div class="z-portlet-footer">
+    <span class="z-portlet-topleft" />
+    <span class="z-portlet-topright" />
+    <a tal:attributes="href string:${context/context/@@absolute_url}/projects/" i18n:translate="">More projects...</a>
+  </div>
+
+</div>

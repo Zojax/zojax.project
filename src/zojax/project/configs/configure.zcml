@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <include file="blogger.zcml" />
+  <include file="documents.zcml" />
+  <include file="forum.zcml" />
+  <include file="photos.zcml" />
+  <include file="wiki.zcml" />
+  <include file="news.zcml" />
+
+</configure>

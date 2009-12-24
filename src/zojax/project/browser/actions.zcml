@@ -1,0 +1,53 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <!-- create task action -->
+  <adapter
+     name="project.task.add"
+     factory=".actions.AddTask" />
+
+  <adapter
+     name="project.task.add"
+     for="..interfaces.IMilestones *"
+     factory=".actions.AddTask" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.IAddTaskAction"
+     file="icons/task.png" />
+
+  <!-- create milestone action -->
+  <adapter
+     name="project.milestone.add"
+     factory=".actions.AddMilestone" />
+
+  <adapter
+     name="project.milestone.add"
+     for="..interfaces.ITasks *"
+     factory=".actions.AddMilestone" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.IAddMilestoneAction"
+     file="icons/milestone.png" />
+
+  <!-- upload attachments action -->
+  <adapter
+     name="project.task.upload"
+     factory=".actions.UploadAttachmentsAction" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.IUploadAttachmentsAction"
+     file="icons/upload.png" />
+
+  <!-- join project -->
+  <adapter
+     name="join"
+     for="..interfaces.IStandaloneProject *"
+     factory=".actions.JoinAction" />
+
+</configure>

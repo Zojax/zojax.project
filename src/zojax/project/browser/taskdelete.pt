@@ -1,0 +1,18 @@
+<tal:block i18n:domain="zojax.project">
+  <h1>Are you sure you want remove this task?</h1>
+
+  <form action="delete.html" method="post">
+    <div class="z-form-controls">
+      <input type="submit"
+	     name="form.delete.cancel" value="Cancel" />
+      <input type="submit" class="z-form-removebutton"
+	     name="form.delete.content" value="Delete" />
+    </div>
+  </form>
+  <br /><br />
+
+  <tal:block define="view nocall:view/task/@@index.html;
+		     dummy view/update;"
+	     content="structure view/render" />
+
+</tal:block>

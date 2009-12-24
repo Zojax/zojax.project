@@ -1,0 +1,20 @@
+<div i18n:domain="zojax.project" class="project-task-comments"
+     tal:condition="view/comments">
+  <a name="comments"></a>
+  <h3>
+    <a title="Comments rss feed"
+       class="z-portlet-feed"
+       tal:define="context nocall:view/context"
+       tal:attributes="href string:${context/@@absolute_url}/@@feeds/comments">
+      <img tal:attributes="src context/++resource++rss-icon.png" />
+    </a>
+    Comments
+  </h3>
+
+  <tal:block content="structure pagelet:+content.discussion" />
+</div>
+<div class="visualClear"></div>
+
+<div class="project-task-addcomment"
+     tal:condition="view/reply|nothing"
+     tal:content="structure view/reply/render" />

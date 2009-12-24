@@ -1,0 +1,48 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <!-- create category action -->
+  <adapter
+     name="project.task.addcategory"
+     factory=".taskcategory.AddCategory" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.IAddCategoryAction"
+     file="icons/category.png" />
+
+  <!-- manage categories action -->
+  <adapter
+     name="project.task.categories"
+     factory=".taskcategory.ManageCategories" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.IManageCategoriesAction"
+     file="icons/category_go.png" />
+
+  <!-- icons -->
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITaskCategory"
+     file="icons/category.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITaskCategoryContainer"
+     file="icons/category.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_task_category"
+     file="icons/category.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_task_categorycontainer"
+     file="icons/category.png" />
+
+</configure>

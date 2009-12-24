@@ -1,0 +1,34 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <!-- milestone permissions -->
+  <subscriber handler=".milestone.milestoneModified" />
+
+  <permissions name="project.milestone.active" title="Active milestone">
+    <grant permission="zojax.AddContentAttachment"
+	   role="group.Member
+		 group.Manager" />
+
+    <grant permission="zojax.CompleteTask"
+	   role="content.Assignee
+		 group.Manager" />
+    <denyAll permission="zojax.ReopenTask" />
+  </permissions>
+
+  <permissions name="project.milestone.completed" title="Completed milestone">
+    <grant permission="zojax.AddComment"
+	   role="group.Member
+		 group.Manager" />
+
+    <grant permission="zojax.ReopenTask"
+	   role="content.Assignee
+		 group.Manager" />
+
+    <denyAll permission="zojax.CompleteTask" />
+    <denyAll permission="zojax.ModifyContent" />
+    <denyAll permission="zojax.AddContentAttachment" />
+  </permissions>
+
+</configure>

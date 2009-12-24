@@ -1,0 +1,47 @@
+<div class="container">
+  <strong>
+    <tal:block content="view/author"/> has modified task
+    "<a tal:attributes="href view/url" tal:content="view/title"></a>"
+  </strong>
+  <br />
+
+  <div class="changes">
+    <div class="information" style="float: none">
+      <table>
+	<tr tal:condition="view/milestone">
+	  <th>&bull; Milestone</th>
+	  <td>
+	    <a tal:attributes="href view/milestoneURL" 
+	       tal:content="view/milestone"></a></td>
+	</tr>
+	<tr>
+	  <th>&bull; Project</th>
+	  <td>
+	    <a tal:attributes="href view/projectUrl" 
+	       tal:content="view/projectTitle"></a></td>
+	</tr>
+      </table>
+    </div>
+  </div>
+  <br />
+
+  <span class="discreet">Changes:</span>
+  <br />
+  
+  <div class="changes" tal:condition="view/data">
+    <div class="information" style="float: none">
+      <table>
+	<tr>
+	  <th></th>
+	  <th style="text-align: center">New value</th>
+	</tr>
+	<tr tal:repeat="item view/data">
+	  <th>&bull; <tal:block content="python:item[0]" /></th>
+	  <td tal:content="structure python:item[1] or '---'"></td>
+	</tr>
+      </table>
+    </div>
+  </div>
+
+  <tal:block content="structure view/@@pagelet/project.task.mail" />
+</div>

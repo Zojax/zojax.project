@@ -1,0 +1,100 @@
+<tal:block i18n:domain="zojax.company" tal:define="hasGroups view/hasGroups">
+  <h1 tal:content="context/title">Projects</h1>
+  <div class="z-page-description" tal:content="context/description"></div>
+
+  <div tal:condition="not:hasGroups" i18n:translate="">
+    No projects have been created.
+  </div>
+
+  <form action="index.html" method="post" tal:condition="hasGroups">
+    <input type="text" name="form.searchText" 
+	   tal:attributes="value request/form.searchText|nothing" />
+    <input type="submit" class="z-form-button"
+	   name="form.search" value="Search for a project" />
+    <input type="submit" class="z-form-cancelbutton"
+	   name="form.search.clear" value="Clear"
+	   tal:condition="request/form.searchText|nothing" />
+  </form>
+
+  <div class="groups-manager projects-browse" tal:condition="hasGroups">
+    <tal:block content="structure view/batch/@@pagelet/batch.view" />
+
+    <div class="groups-group groups-header">
+      <dl>
+	<dt>
+	  &nbsp;
+	</dt>
+	<dd>
+	  <div class="project-managers">
+	    Managers
+	  </div>
+	  Project
+	</dd>
+      </dl>
+    </div>
+    
+    <tal:block tal:repeat="uid view/batch"
+	       tal:define="url context/@@absolute_url">
+      <div class="groups-group"
+	   tal:define="info python:view.getGroupInfo(uid);
+		       userurl uid/@@absolute_url"
+	   tal:condition="info"
+	   tal:attributes="class python:repeat['uid'].odd() 
+			   and 'groups-group even' or 'groups-group odd'">
+	<dl>
+	  <dt>
+	    <a tal:attributes="href string:$userurl/; title info/title">
+	      <img tal:condition="info/default"
+		   tal:attributes="src context/++resource++groupEmptyImage.png" />
+	      <img tal:condition="not:info/default"
+		   tal:attributes="src string:$userurl/++attribute++logo" />
+	    </a>
+	  </dt>
+	  <dd>
+	    <div class="project-managers" tal:condition="info/managers">
+	      <div tal:repeat="manager info/managers">
+		<a tal:attributes="href manager/space"
+		   tal:omit-tag="not:manager/space" tal:content="manager/title">
+		</a>
+	      </div>
+	    </div>
+
+	    <div class="project-information">
+	      <h4>
+		<a tal:attributes="href string:$userurl/; title info/description"
+		   tal:content="info/title"></a>
+		<span>(<tal:block content="info/type/title" />)</span>
+	      </h4>
+	      <div class="groups-group-description" tal:content="info/description"></div>
+	      <div class="z-content-byline">
+		<tal:block condition="python:info['members'] is not None">
+		  <a tal:attributes="href info/membersURL">
+		    <tal:block content="info/members"/> Member(s)</a>,
+		</tal:block>
+		Created on
+		<tal:block content="structure formatter:date,medium:info/created" />
+		<tal:block condition="not:info/created">Unknown</tal:block>
+		<br />
+	      </div>
+	      <div class="project-info">
+		<span>Total tasks: </span>
+		<tal:block content="python:info['tasks'][0]"/>,
+		<span>Completed tasks: </span>
+		<tal:block content="python:info['tasks'][1]"/>
+		(<tal:block content="python:info['tasks'][2]"/>%),
+	      </div>
+	    </div>
+	    <tal:block define="context info/project"
+		       content="structure pageelement:projects.inform" />
+	  </dd>
+	</dl>
+	<div class="visualClear"></div>
+      </div>
+    </tal:block>
+
+    <tal:block condition="not:view/batch">
+      Projects are not found.
+    </tal:block>
+
+  </div>
+</tal:block>

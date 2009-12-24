@@ -1,0 +1,175 @@
+/* zrt-cssregistry: */
+
+body {
+  color: fontColor;
+  margin: 0;
+  padding: 0;
+  font: 90% fontFamily;
+  background-color: contentBackgroundColor;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,cite,
+pre,form,fieldset,input,textarea,p,blockquote,th,td{
+  margin:0;
+  padding:0;
+}
+table {
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: inherit;
+  font: 100%;
+}
+address,caption,cite,code,dfn,th,var {
+  font-style: normal;
+  font-weight: normal;
+}
+caption,th {
+  text-align: left;
+}
+a {
+  color: linkColor;
+  background-color: transparent;
+}
+p {
+  margin: 0 0 0.75em 0;
+  line-height: 1.5em;
+}
+hr {
+  border: 0;
+  height: borderWidth;
+  color: globalBorderColor;
+  background-color: globalBorderColor;
+  margin: 0.5em 0 1em 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+  color: fontColor;
+  background-color: transparent;
+  font-family: headingFontFamily;
+  margin: 0 0 0.25em 0;
+  border-bottom: borderWidth borderStyle globalBorderColor;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  text-decoration: none;
+}
+ul {
+  padding: 0;
+  margin: 0.5em 0 0 1.5em;
+  line-height: 1.5em;
+}
+ol {
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0.5em 0 0 1.8em;
+}
+li {
+    margin-bottom: 0.5em;
+}
+
+.container { 
+  margin: 1em;
+}
+.discreet { 
+  color: discreetColor;
+  font-size: 90%;
+}
+.heading {
+  clear: both;
+  padding-top: 1.5em;
+  font-weight: normal;
+}
+.heading span {
+  font-size: 90%;
+  font-weight: normal;
+}
+a.heading-title {
+  font-weight: bold;
+}
+.heading-milestone {
+  font-style: italic;
+  color: discreetColor;
+}
+.heading-milestone a {
+  color: fontColor;
+  font-style: normal;
+}
+.heading-milestone a:hover {
+  color: linkColor;
+}
+.task-overdue { 
+  float: right;
+  font-size: 130%;
+  font-weight: bold;
+  color: notifyBorderColor;
+}
+.task-description {
+  margin-top: 1em;
+  line-height: 1.25em;
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: backgroundColor;
+}
+.information {
+  clear: both;
+  float: right;
+  font-size: 90%;
+  padding-left: 1em;
+  background-color: transparent;
+  max-width: 50%;
+}
+.information table {
+  margin-top: 0.75em;
+  background: contentBackgroundColor;
+  border-top: borderWidth borderStyle globalBorderColor;
+}
+.information a {
+  text-decoration: none;
+}
+.information a:hover {
+  text-decoration: underline;
+}
+.information tr {
+  vertical-align: top;
+}
+.information td {
+  border-right: borderWidth borderStyle globalBorderColor;
+  border-bottom: borderWidth borderStyle globalBorderColor;
+  padding: 0.2em 0.5em;
+  width: 50%;
+}
+.information th {
+  background-color: globalBackgroundColor;
+  border-left: borderWidth borderStyle globalBorderColor;
+  border-right: borderWidth borderStyle globalBorderColor;
+  border-bottom: borderWidth borderStyle globalBorderColor;
+  color: discreetColor;
+  white-space: nowrap;
+  padding: 0.2em 0.5em;
+}
+.active {
+  color: linkColor;
+  font-weight: bold;
+}
+.completed {
+  color: green;
+  font-weight: bold;
+}
+.duedate { 
+  font-weight: bold;
+  white-space: nowrap;
+}
+.task-footer {
+  clear: both;
+  margin-top: 1em;
+  border-top: borderWidth borderStyle globalBorderColor;
+}
+.task-footer a { 
+  text-decoration: none;
+}
+.changes .information {
+  font-size: 90%;
+  padding-top: 0em;
+}
+.changes .information table td {
+  width: auto;
+}

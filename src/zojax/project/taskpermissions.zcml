@@ -1,0 +1,67 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <permission
+     id="zojax.AddTask"
+     title="Add task"
+     description="Allow create new project tasks." />
+
+  <permission
+     id="zojax.SubmitTask"
+     title="Submit task"
+     description="Allow submit new project tasks." />
+
+  <permission
+     id="zojax.ReopenTask"
+     title="Reopne task"
+     description="Allow reopen task." />
+
+  <permission
+     id="zojax.CompleteTask"
+     title="Complete task"
+     description="Allow complete task." />
+
+  <permission
+     id="zojax.ModifyTaskAttributes"
+     title="Modify task attributes" />
+
+  <!-- task permissions -->
+  <subscriber handler=".task.taskModified" />
+
+  <permissions name="project.task.active" title="Active task">
+    <grant permission="zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="group.Member
+		 group.Manager" />
+
+    <grant permission="zojax.CompleteTask"
+	   role="content.Assignee
+		 group.Manager" />
+
+    <grant permission="zojax.ModifyTaskAttributes"
+	   role="content.Owner
+		 group.Manager" />
+
+    <denyAll permission="zojax.ReopenTask" />
+  </permissions>
+
+  <permissions name="project.task.completed" title="Completed task">
+    <grant permission="zojax.AddComment"
+	   role="group.Member
+		 group.Manager
+		 zope.Manager" />
+
+    <grant permission="zojax.ReopenTask"
+	   role="content.Assignee
+		 group.Manager
+		 zope.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <denyAll permission="zojax.AddContentAttachment" />
+    <denyAll permission="zojax.CompleteTask
+			 zojax.ModifyTaskAttributes" />
+  </permissions>
+
+</configure>

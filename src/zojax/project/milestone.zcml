@@ -1,0 +1,102 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <!-- milestone -->
+  <zojax:content
+     title="Milestone"
+     name="project.milestone"
+     description="Project milestone"
+     schema=".interfaces.IMilestone"
+     class=".milestone.Milestone"
+     type="zojax.content.type.interfaces.IActivePortalType"
+     contains="unknown"
+     containers="project.milestones"
+     permission="zojax.AddMilestone" />
+
+  <class class=".milestone.Milestone">
+    <implements interface="zojax.activity.interfaces.IActivityAware" />
+    <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+    <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+    <implements interface="zojax.content.type.interfaces.ITitleBasedName" />
+    <implements interface="zojax.content.tagging.interfaces.IContentTaggable" />
+
+    <require
+       permission="zope.View"
+       attributes="description state"
+       interface=".interfaces.IMilestone
+		  zope.app.container.interfaces.IReadContainer" />
+
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.IMilestone"
+       interface="zope.app.container.interfaces.IWriteContainer" />
+
+    <require
+       permission="zojax.CompleteTask"
+       attributes="completeTask" />
+
+    <require
+       permission="zojax.ReopenTask"
+       attributes="reopenTask" />
+  </class>
+
+  <zojax:draft
+     content="project.milestone"
+     publish="zojax.AddMilestone" />
+
+  <!-- ITaskAttributesConfig adapter -->
+  <adapter factory=".milestone.taskAttributesConfig" />
+
+  <!-- IAssigneesProvider adapter -->
+  <adapter factory=".milestone.MilestoneAssigneesProvider" />
+
+  <!-- milestones workspace -->
+  <zojax:reservedNames
+     names="milestones"
+     for=".interfaces.IProject" />
+
+  <zojax:content
+     title="Milestones"
+     name="project.milestones"
+     schema=".interfaces.IMilestones"
+     class=".milestone.Milestones"
+     contains="project.milestone"
+     type="zojax.content.type.interfaces.IInactiveType
+	   zojax.content.space.interfaces.ISpaceContentType"
+     containers="content.project content.standaloneproject"
+     permission="zojax.ModifyContent" />
+
+  <class class=".milestone.Milestones">
+    <implements interface="zojax.catalog.interfaces.ISearchContext" />
+    <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+    <implements interface="zojax.content.type.interfaces.IRenameNotAllowed" />
+    <implements interface="zojax.content.type.interfaces.IUnremoveableContent" />
+    <implements interface="zojax.content.type.interfaces.IContainerContentsAware" />
+
+    <require
+       permission="zope.View"
+       interface=".interfaces.IMilestones
+      zope.app.container.interfaces.IReadContainer" />
+
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.IMilestones"
+       interface="zope.app.container.interfaces.IWriteContainer" />
+  </class>
+
+  <adapter
+     name="milestones"
+     factory=".milestone.MilestonesWorkspaceFactory" />
+
+  <!-- ISearchableContent adapter -->
+  <adapter factory=".milestone.milestoneSearchable" />
+
+  <!-- SearchableText adapter -->
+  <adapter factory=".milestone.MilestoneSearchableText" />
+
+</configure>

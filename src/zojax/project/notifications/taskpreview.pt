@@ -1,0 +1,75 @@
+<h2 class="heading">Task information</h2>
+
+<div class="information">
+  <table>
+    <tr>
+      <th>&bull; State</th>
+      <td class="task-state"
+	  tal:attributes="class python:context.context.state == 1 and 
+			  'active' or 'completed'"
+	  tal:content="python:context.context.state == 1 and 'Active' or 'Completed'"></td>
+    </tr>
+    <tr>
+      <th>&bull; Due Date</th>
+      <td class="duedate" tal:content="structure formatter:date,full:context/context/date"></td>
+    </tr>
+    <tr tal:condition="context/project">
+      <th>&bull; Project</th>
+      <td><a tal:attributes="href context/projectUrl"
+	     tal:content="context/projectTitle"></a></td>
+    </tr>
+    <tr tal:condition="context/milestone">
+      <th>&bull; Milestone</th>
+      <td><a tal:attributes="href context/milestoneURL"
+	     tal:content="context/milestone"></a></td>
+    </tr>
+    <tr tal:condition="context/priority">
+      <th>&bull; Priority</th>
+      <td tal:content="context/priority"></td>
+    </tr>
+    <tr tal:condition="context/status">
+      <th>&bull; Status</th>
+      <td tal:content="context/status"></td>
+    </tr>
+    <tr tal:condition="context/severity">
+      <th>&bull; Severity</th>
+      <td tal:content="context/severity"></td>
+    </tr>
+    <tr tal:condition="context/categories">
+      <th>&bull; Category</th>
+      <td tal:content="python:u', '.join(context.categories)"></td>
+    </tr>
+    <tr>
+      <th>&bull; Submitted by</th>
+      <td tal:content="context/owner/title"></td>
+    </tr>
+    <tr>
+      <th>&bull; Created</th>
+      <td class="nowrap" 
+	  tal:content="structure formatter:fancyDatetime,medium:context/created"></td>
+    </tr>
+    <tr>
+      <th>&bull; Last updated</th>
+      <td class="nowrap"
+	  tal:content="structure formatter:fancyDatetime,medium:context/modified"></td>
+    </tr>
+    <tr>
+      <th>&bull; Assigned to</th>
+      <td>
+	<tal:block condition="context/assignments"
+		   content="python:', '.join(context.assignments)" />
+	<tal:block condition="not:context/assignments" i18n:translate="">
+	  Not assigned
+	</tal:block>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="task-description"
+     tal:content="structure context/text"></div>
+<div style="clear:both;"></div>
+
+<style tal:define="styles nocall:context/++resource++project-notification-styles"
+       tal:content="structure python:styles.render(request)">
+</style>

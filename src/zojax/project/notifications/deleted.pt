@@ -1,0 +1,11 @@
+<div class="container">
+  <strong>
+    <tal:block content="view/author"/> has deleted task.
+  </strong>
+  <br /><br />
+
+  Task: <tal:block content="context/title" />
+  <br />
+  Project: <a tal:attributes="href view/projectUrl" 
+	      tal:content="view/projectTitle"></a>
+</div>

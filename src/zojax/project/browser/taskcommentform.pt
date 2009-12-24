@@ -1,0 +1,42 @@
+<h1 class="z-form-label"
+    tal:condition="context/label" tal:content="context/label">Do something</h1>
+<div class="z-form-description"
+     tal:condition="context/description" tal:content="context/description"></div>
+
+<div class="z-form-fieldset project-task-commentform"
+     tal:define="widgets context/widgets" tal:condition="widgets">
+
+  <tal:block content="structure widgets/comment/@@pagelet/form.widget" />
+
+  <table>
+    <tr>
+      <td style="padding-right: 2em">
+	<tal:block
+	   condition="widgets/priority|nothing"
+	   content="structure widgets/priority/@@pagelet/form.widget" />
+	<tal:block
+	   condition="widgets/severity|nothing"
+	   content="structure widgets/severity/@@pagelet/form.widget" />
+	<tal:block
+	   condition="widgets/file|nothing"
+	   content="structure widgets/file/@@pagelet/form.widget" />
+	<tal:block
+	   condition="widgets/assigned|nothing"
+	   content="structure widgets/assigned/@@pagelet/form.widget" />
+      </td>
+      <td>
+	<tal:block
+	   condition="widgets/transition|nothing"
+	   content="structure widgets/transition/@@pagelet/form.widget" />
+     </td>
+    </tr>
+  </table>
+</div>
+
+<div tal:condition="context/subscribers">
+  <span class="discreet">Email subscribers:</span>
+  <tal:block tal:content="python:u', '.join(context.subscribers)" />
+  <tal:block condition="context/manageSubscribers">
+    <a target="_blank" tal:attributes="href string:${context/manageSubscribers}/context.html/notifications/">(Configure Email  Notifications for this Project)</a>
+  </tal:block>
+</div>

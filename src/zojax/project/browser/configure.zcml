@@ -1,0 +1,85 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <include file="actions.zcml" />
+
+  <include file="tasks.zcml" />
+
+  <include file="taskcategory.zcml" />
+
+  <include file="milestone.zcml" />
+
+  <include file="milestones.zcml" />
+
+  <include file="state.zcml" />
+
+  <!-- browse projects -->
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IProjects" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IProjects"
+     template="browse.pt"
+     class=".browse.BrowseProjects"
+     permission="zope.View" />
+
+  <!-- project view -->
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IProject" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IStandaloneProject"
+     template="project.pt"
+     class="zojax.groups.browser.group.GroupView"
+     permission="zope.View" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IProject"
+     class="zojax.content.space.browser.space.ContentSpace"
+     permission="zope.View" />
+
+  <!-- overview workspace -->
+  <zojax:pagelet
+     name="overview"
+     for="..interfaces.IProject"
+     template="overview.pt"
+     provides="zojax.content.space.interfaces.IOverviewWorkspace"
+     permission="zojax.AccessGroup" />
+
+  <!-- security tab -->
+  <zojax:pagelet
+     name="permissions"
+     type="form.subform"
+     for="..interfaces.IProject
+	  zojax.content.forms.interfaces.ISecurityStep"
+     class="zojax.members.browser.security.MembersAwareContentPermissions"
+     provides="zojax.layoutform.interfaces.IPageletFormView"
+     weight="100" />
+
+  <!-- configlet -->
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IProjectProduct"
+     class="zojax.controlpanel.browser.wizard.ConfigletEditWizard"
+     permission="zojax.Configure" />
+
+  <!-- info -->
+  <zojax:pageelement
+     name="project.info"
+     for="..interfaces.IProject"
+     provides=".interfaces.IProjectInformation" />
+
+  <zojax:pageelement
+     name="projects.inform"
+     for="..interfaces.IProject"
+     provides=".interfaces.IProjectsInformation" />
+
+</configure>

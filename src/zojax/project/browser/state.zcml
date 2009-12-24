@@ -1,0 +1,37 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <!-- complete task/milestone action -->
+  <adapter
+     name="project.task.complete"
+     factory=".state.CompleteTask" />
+
+  <adapter
+     name="project.milestone.complete"
+     for="..interfaces.IMilestone *"
+     factory=".state.CompleteTask" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.ICompleteTaskAction"
+     file="icons/complete.png" />
+
+  <!-- reopen task/milestone action -->
+  <adapter
+     name="project.task.reopen"
+     factory=".state.ReopenTask" />
+
+  <adapter
+     name="project.milestone.reopen"
+     for="..interfaces.IMilestone *"
+     factory=".state.ReopenTask" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.IReopenTaskAction"
+     file="icons/reopen.png" />
+
+</configure>

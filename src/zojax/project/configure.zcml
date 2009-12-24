@@ -1,0 +1,90 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:i18n="http://namespaces.zope.org/i18n"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <!-- permissions declarations -->
+  <include file="permissions.zcml" />
+
+  <!-- task permissions -->
+  <include file="taskpermissions.zcml" />
+
+  <!-- workflow permissions -->
+  <include file="workflowpermissions.zcml" />
+
+  <!-- product -->
+  <zojax:product
+     name="zojax-project"
+     title="Simple Project Management"
+     description="Simple project management for zojax."
+     schema=".interfaces.IProjectProduct"
+     configurable="true" />
+
+  <registerIn registry="zojax.product.zojax-project">
+    <!-- activity -->
+    <include file="activity.zcml" />
+
+    <!-- projects workspace declaration -->
+    <include file="workspace.zcml" />
+
+    <!-- project declarations -->
+    <include file="project.zcml" />
+
+    <!-- milestone declaration -->
+    <include file="milestone.zcml" />
+
+    <!-- milestone permissions -->
+    <include file="milestonepermissions.zcml" />
+
+    <!-- task -->
+    <include file="task.zcml" />
+
+    <!-- task comment -->
+    <include file="taskcomment.zcml" />
+
+    <!-- task category -->
+    <include file="taskcategory.zcml" />
+
+    <!-- tasks workspace -->
+    <include file="tasks.zcml" />
+
+    <!-- vocabularies -->
+    <include file="vocabulary.zcml" />
+
+    <!-- indexes -->
+    <include file="indexes.zcml" />
+    
+    <!-- capabilities -->
+    <include file="capability.zcml" />
+
+    <!-- workflow -->
+    <include file="workflow.zcml" />
+    
+    <!-- notifications -->
+    <include package=".notifications" />
+
+    <!-- portlets -->
+    <include package=".portlets" />
+
+    <!-- browser views -->
+    <include package=".browser" />
+
+  </registerIn>
+
+  <!-- extra packages configs -->
+  <include package=".configs" />
+
+  <!-- styles -->
+  <include package=".browser" file="styles.zcml" />
+
+  <!-- translations -->
+  <i18n:registerTranslations directory="locales"/>
+
+  <!-- generations -->
+  <utility
+     name="zojax.project"
+     provides="zope.app.generations.interfaces.ISchemaManager"
+     component=".generations.schemaManager" />
+
+</configure>

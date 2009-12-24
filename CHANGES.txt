@@ -1,0 +1,106 @@
+=======
+CHANGES
+=======
+
+0.5.0 (Unreleased)
+------------------
+
+- Use projects workspace title for projects browsing
+
+- Tasks feed added
+
+- Tasks view fixes added
+
+- Use workflow for task status
+
+- Warp code to 'zojax-project' product
+
+- Fix upload view
+
+- Milestone assignees bug fixed
+
+- Searchable to milestones
+
+
+0.4.0 (2009-08-27)
+------------------
+
+- Use 'Add ...' actions instead of 'Create ...'
+
+- Task UI refactoring
+
+
+0.3.1 (2009-08-22)
+------------------
+
+- Added workspaces management support
+
+
+0.3.0 (2009-08-13)
+------------------
+
+- News support
+
+- Projects portlet added
+
+- Use title based namechooser for projects and milestones
+
+- Render images in task notifications
+
+- Fixed permissions on members only project
+
+
+0.2.0 (2009-06-25)
+------------------
+
+- Activity aware to workspace
+
+- Change portlet managers to with status ones
+
+- Added custom project schema support
+
+- Added wiki support
+
+- Added custom comment implementation
+
+- Added task added/modified/deleted/state changed/file uploaded email notifications
+
+- Allow browse projects in all sub spaces
+
+- Show task subscriber in add comment form
+
+- Allow change assignees in add comment form
+
+- Fixed task draft form
+
+- Fixed project/standalone project destination location
+
+- Fixed milestone view without tasks
+
+- Fixed task reopening
+
+- Fixed adding task comment
+
+- Show projects title for workspace tab
+
+- Fixed activity record verb
+
+- Copyright changed to 'Zope Foundation and Contributors'
+
+- Searchable Text adapters to milestone and task added
+
+- Active portal type to project types
+
+- Comments to task searchable text added
+
+- Attachments to task searchable text added
+
+- Active portal type to task and milestone
+
+- Content Space type to project
+
+
+0.1.0 (2009-05-05)
+------------------
+
+- Initial release

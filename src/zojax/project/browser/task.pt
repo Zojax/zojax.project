@@ -1,0 +1,101 @@
+<div class="statusWarningMessage" tal:condition="view/overdue" i18n:translate="">
+  Task over due,
+  <tal:block i18n:name="days" tal:content="python:view.overdue.days"/> days late.
+</div>
+<tal:block content="structure pagelet:+context.actions" />
+
+<h1 class="project-task-heading">
+  <span class="discreet" tal:content="view/name" />
+  <span class="project-task-heading-title" tal:content="context/title"></span>
+  <span class="project-task-heading-milestone" tal:condition="view/milestone" i18n:translate="">
+    assigned to
+    <a href="#" tal:attributes="href string:${view/milestoneURL}/"
+       tal:content="view/milestone" i18n:name="milestone">Milestone</a>
+  </span>
+</h1>
+
+<div class="project-task-information">
+  <table>
+    <tr>
+      <th>&bull; State</th>
+      <td class="project-task-state"
+	  tal:attributes="class python:context.state == 1 and 
+			  'project-task-active' or 'project-task-completed'"
+	  tal:content="python:context.state == 1 and 'Active' or 'Completed'"></td>
+    </tr>
+    <tr>
+      <th>&bull; Due Date</th>
+      <td class="project-task-duedate" tal:content="structure formatter:date,full:context/date"></td>
+    </tr>
+    <tr tal:condition="view/project">
+      <th>&bull; Project</th>
+      <td><a tal:attributes="href view/projectURL" tal:content="view/project"></a></td>
+    </tr>
+    <tr tal:condition="view/milestone">
+      <th>&bull; Milestone</th>
+      <td><a tal:attributes="href view/milestoneURL" tal:content="view/milestone"></a></td>
+    </tr>
+    <tr tal:condition="view/priority">
+      <th>&bull; Priority</th>
+      <td tal:content="view/priority"></td>
+    </tr>
+    <tr tal:condition="view/status">
+      <th>&bull; Status</th>
+      <td tal:content="view/status"></td>
+    </tr>
+    <tr tal:condition="view/severity">
+      <th>&bull; Severity</th>
+      <td tal:content="view/severity"></td>
+    </tr>
+    <tr tal:condition="view/categories">
+      <th>&bull; Category</th>
+      <td tal:content="python:u', '.join(view.categories)"></td>
+    </tr>
+    <tr>
+      <th>&bull; Submitted by</th>
+      <td tal:content="view/owner/title"></td>
+    </tr>
+    <tr>
+      <th>&bull; Created</th>
+      <td class="nowrap" tal:content="structure formatter:fancyDatetime,medium:view/created"></td>
+    </tr>
+    <tr>
+      <th>&bull; Last updated</th>
+      <td class="nowrap" tal:content="structure formatter:fancyDatetime,medium:view/modified"></td>
+    </tr>
+    <tr>
+      <th>&bull; Assigned to</th>
+      <td>
+	<tal:block condition="view/assignments"
+		   content="python:', '.join(view.assignments)" />
+	<tal:block condition="not:view/assignments" i18n:translate="">
+	  Not assigned
+	</tal:block>
+      </td>
+    </tr>
+  </table>
+
+  <tal:block content="structure pageelement:task.information" />
+</div>
+
+<div class="project-task-description"
+     tal:content="structure context/text/cooked"></div>
+
+<div class="project-task-attachments"
+     tal:condition="view/attachments">
+  <h3>Attachments</h3>
+  <ul>
+    <li tal:repeat="attach view/attachments">
+      <a target="_blank" tal:content="attach/title" 
+	 tal:attributes="href attach/attach/@@absolute_url"></a>
+      <div class="byline">
+	<tal:block i18n:translate="" content="attach/size"/>, by
+	<tal:block content="attach/owner" />,
+	<tal:block content="structure formatter:fancyDatetime,medium:attach/created" />
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="visualClear"></div>
+<tal:block content="structure pageelement:task.footer" />

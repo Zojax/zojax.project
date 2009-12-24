@@ -1,0 +1,67 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <!-- milestone default view -->
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IMilestone"
+     template="milestone.pt"
+     class=".milestone.MilestoneView"
+     permission="zope.View" />
+
+  <adapter factory=".milestone.MilestonePublisher" />
+
+  <!-- complete/reopen milestone -->
+  <zojax:pagelet
+     name="complete.html"
+     for="..interfaces.IMilestone"
+     template="milestonecomplete.pt"
+     class=".milestone.CompleteMilestone"
+     permission="zojax.CompleteTask" />
+
+  <zojax:pagelet
+     name="reopen.html"
+     for="..interfaces.IMilestone"
+     class=".milestone.ReopenMilestone"
+     permission="zojax.ReopenTask" />
+
+  <!-- milestone tasks table -->
+  <adapter
+     name="project.tasks"
+     provides="zope.contentprovider.interfaces.IContentProvider"
+     factory=".milestone.MilestoneTasks" />
+
+  <adapter
+     name="project.tasks.completed"
+     provides="zope.contentprovider.interfaces.IContentProvider"
+     factory=".milestone.CompletedMilestoneTasks" />
+
+  <adapter
+     name="project.tasks.browseactive"
+     provides="zope.contentprovider.interfaces.IContentProvider"
+     factory=".milestone.BrowseActiveMilestoneTasks" />
+
+  <adapter
+     name="project.tasks.browsecompleted"
+     provides="zope.contentprovider.interfaces.IContentProvider"
+     factory=".milestone.BrowseCompletedMilestoneTasks" />
+
+  <adapter
+     name="title"
+     factory=".milestone.TitleColumn" />
+
+  <!-- task.information pageelement -->
+  <zojax:pageelement
+     name="milestone.information"
+     for="..interfaces.IMilestone"
+     provides=".interfaces.IMilestoneInformation" />
+
+  <zojax:pageelement
+     name="milestones.information"
+     for="..interfaces.IMilestone"
+     provides=".interfaces.IMilestonesInformation" />
+
+</configure>

@@ -1,0 +1,109 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <!-- icons -->
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.content_project"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.content_standaloneproject"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.workspace_projects"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.workspace_standaloneprojects"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IProject"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IProjects"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IProjectsFactory"
+     file="icons/project.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IMilestone"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IMilestones"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IMilestonesFactory"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_milestone"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_milestones"
+     file="icons/milestone.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITask"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITasks"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITasksFactory"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_task"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="zojax.content.project_tasks"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IProjectTasksRSSFeed"
+     file="icons/task.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.ITasksRSSFeed"
+     file="icons/task.png" />
+
+  <!-- styles -->
+  <zojax:resourceinclude
+     name="zojax-project.css"
+     file="styles.css"
+     library="zojax" type="stylesheet" filetype="zrt" />
+
+</configure>

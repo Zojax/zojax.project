@@ -1,0 +1,11 @@
+<div class="project-tasks">
+  <h3>Active tasks</h3>
+
+  <tal:block content="structure provider:project.tasks" />
+</div>
+
+<div class="project-tasks">
+  <h3>Completed tasks</h3>
+
+  <tal:block content="structure provider:project.tasks.completed" />
+</div>

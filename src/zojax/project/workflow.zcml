@@ -1,0 +1,302 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax">
+
+  <include package="zojax.content.workflow" file="meta.zcml" />
+
+  <!-- workflow -->
+  <zojax:workflow
+     type="project.task"
+     workflow=".workflow.defaultWorkflow"
+     default="true" />
+
+  <permissions name="zojax.project.task.pending"
+	       title="Project task pending state permissions">
+    <grant permission="zojax.project.workflow.Accept
+		       zojax.project.workflow.Reject
+		       zojax.project.workflow.Deferred
+		       zojax.project.workflow.Approving"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zojax.project.workflow.Accept"
+	   role="content.Assignee" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Member
+		 group.Manager
+		 zope.Manager" />
+   
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="content.Owner
+		 content.Assignee
+		 zope.Manager
+		 group.Manager
+		 group.Member" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.accepted"
+	       title="Project task 'accepted' state permissions">
+    <grant permission="zojax.project.workflow.Approving
+		       zojax.project.workflow.Reject
+		       zojax.project.workflow.WaitData
+		       zojax.project.workflow.Start
+		       zojax.project.workflow.Deferred
+		       zojax.project.workflow.Hold
+		       zojax.project.workflow.Release"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager
+		 group.Member
+		 zope.Manager" />
+    
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+
+  <permissions name="zojax.project.task.in-process"
+	       title="Project task 'in-process' state permissions">
+    <grant permission="zojax.project.workflow.Reject
+		       zojax.project.workflow.WaitData
+		       zojax.project.workflow.Test
+		       zojax.project.workflow.Deferred
+		       zojax.project.workflow.Hold
+		       zojax.project.workflow.Release"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager
+		 zope.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+
+  <permissions name="zojax.project.task.waiting-data"
+	       title="Project task 'waiting-data' state permissions">
+    <grant permission="zojax.project.workflow.Restart"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager
+		 group.Member
+		 zope.Manager" />
+    
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.approving"
+	       title="Project task 'approving' state permissions">
+    <grant permission="zojax.project.workflow.Reject
+		       zojax.project.workflow.Accept"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+    
+    <grant permission="zojax.project.workflow.Approve"
+	   role="content.Owner
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager
+		 group.Member
+		 zope.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.approved"
+	       title="Project task 'approved' state permissions">
+    <grant permission="zojax.project.workflow.WaitData
+		       zojax.project.workflow.Start
+		       zojax.project.workflow.Hold
+		       zojax.project.workflow.Release"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager
+		 zope.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.released"
+	       title="Project task 'released' state permissions">
+    <grant permission="zojax.project.workflow.Accept"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 group.Manager" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.testing"
+	       title="Project task 'testing' state permissions">
+    <grant permission="zojax.project.workflow.Rework
+		       zojax.project.workflow.Reject
+		       zojax.project.workflow.Release"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.deferred"
+	       title="Project task 'deferred' state permissions">
+    <grant permission="zojax.project.workflow.Accept
+		       zojax.project.workflow.Reject"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager
+		 zope.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 group.Manager" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.rework"
+	       title="Project task 'rework' state permissions">
+    <grant permission="zojax.project.workflow.Reject
+		       zojax.project.workflow.Test
+		       zojax.project.workflow.Restart
+		       zojax.project.workflow.Release"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 content.Assignee
+		 group.Manager
+		 zope.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+
+  <permissions name="zojax.project.task.on-hold"
+	       title="Project task 'on-hold' state permissions">
+    <grant permission="zojax.project.workflow.Reject
+		       zojax.project.workflow.Restart
+		       zojax.project.workflow.Deferred"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment
+		       zojax.AddContentAttachment"
+	   role="content.Owner
+		 group.Member
+		 group.Manager
+		 content.Assignee
+		 zope.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.rejected"
+	       title="Project task 'rejected' state permissions">
+    <grant permission="zojax.project.workflow.Accept
+		       zojax.project.workflow.Deferred"
+	   role="zope.Manager
+		 group.Manager" />
+    
+    <grant permission="zope.View
+		       zojax.AddComment"
+	   role="content.Owner
+		 group.Member
+		 group.Manager
+		 content.Assignee
+		 zope.Manager" />
+
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+	   role="zope.Manager
+		 content.Assignee
+		 group.Manager" />
+  </permissions>
+
+</configure>

@@ -1,0 +1,56 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.project">
+
+  <!-- workflow permissions -->
+  <permission
+     id="zojax.project.workflow.Accept"
+     title="Permission that allow change task workflow state to Accepted" />
+
+  <permission
+     id="zojax.project.workflow.Approve"
+     title="Permission that allow change task workflow state to Approved" />
+  
+  <permission
+     id="zojax.project.workflow.Approving"
+     title="Permission that allow change task workflow state to Approving" />
+
+  <permission
+     id="zojax.project.workflow.Reject"
+     title="Permission that allow change task workflow state to Rejected" />
+
+  <permission
+     id="zojax.project.workflow.Start"
+     title="Permission that allow change task workflow state to In-process" />
+
+  <permission
+     id="zojax.project.workflow.Hold"
+     title="Permission that allow change task workflow state to On-Hold" />
+
+  <permission
+     id="zojax.project.workflow.Rework"
+     title="Permission that allow change task workflow state to Rework" />
+
+  <permission
+     id="zojax.project.workflow.WaitData"
+     title="Permission that allow change task workflow state to Waitint-Data" />
+
+  <permission
+     id="zojax.project.workflow.Test"
+     title="Permission that allow change task workflow state to Testing" />
+
+  <permission
+     id="zojax.project.workflow.Deferred"
+     title="Permission that allow change task workflow state to Deferred" />
+
+  <permission
+     id="zojax.project.workflow.Restart"
+     title="Permission that allow change task workflow state to Restart" />
+
+  <permission
+     id="zojax.project.workflow.Release"
+     title="Permission that allow change task workflow state to Released" />
+
+</configure>

@@ -1,0 +1,63 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   zcml:condition="installed zojax.photoalbum">
+
+  <include package="zojax.photoalbum" />
+
+  <!-- photos workspace factory -->
+  <registerIn registry="zojax.product.photoalbum">
+    <adapter
+       name="photos"
+       for="..interfaces.IProject"
+       factory="zojax.photoalbum.workspace.PhotosWorkspaceFactory" />
+  </registerIn>
+
+  <!-- default group permissions -->
+  <permissions for="..interfaces.IProject" name="project.permissions">
+    <denyAll permission="zojax.AddPhoto" />
+    <denyAll permission="zojax.AddPhotoAlbum" />
+    <denyAll permission="zojax.SubmitPhoto" />
+    <denyAll permission="zojax.SubmitPhotoAlbum" />
+  </permissions>
+
+  <!-- 'open' project -->
+  <permissions name="project.open">
+    <grant
+       role="group.Manager"
+       permission="zojax.AddPhoto
+		   zojax.AddPhotoAlbum" />
+    <grant
+       role="group.Member"
+       permission="zojax.SubmitPhoto
+		   zojax.SubmitPhotoAlbum" />
+  </permissions>
+
+  <!-- 'members' project -->
+  <permissions name="project.members">
+    <grant
+       role="group.Member
+	     group.Manager"
+       permission="zojax.AddPhoto
+		   zojax.AddPhotoAlbum" />
+  </permissions>
+
+  <!-- 'private' project -->
+  <permissions name="project.private">
+    <grant
+       role="group.Manager
+	     group.Member"
+       permission="zojax.AddPhoto
+		   zojax.AddPhotoAlbum" />
+  </permissions>
+
+  <!-- 'secret' project -->
+  <permissions name="project.secret">
+    <grant
+       role="group.Manager
+	     group.Member"
+       permission="zojax.AddPhoto
+		   zojax.AddPhotoAlbum" />
+  </permissions>
+
+</configure>

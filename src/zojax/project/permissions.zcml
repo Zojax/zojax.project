@@ -1,0 +1,95 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.project">
+
+  <include package="zojax.permissionsmap" file="meta.zcml" />
+  <include package="zojax.content.permissions" file="meta.zcml" />
+  <include package="zojax.assignment" />
+
+  <!-- permissions -->
+  <permission
+     id="zojax.AddProject"
+     title="Add project"
+     description="Allow create new projects." />
+
+  <permission
+     id="zojax.SubmitProject"
+     title="Submit project"
+     description="Allow submit new projects."/>
+
+  <permission
+     id="zojax.AddMilestone"
+     title="Add milestone"
+     description="Allow create new milestones." />
+
+  <zojax:permission
+     permission="zojax.AddProject"
+     category="zojax.content.permissions.interfaces.IAddPermission" />
+
+  <zojax:permission
+     permission="zojax.SubmitProject"
+     category="zojax.content.permissions.interfaces.ISubmitPermission" />
+
+  <!-- default project permissions -->
+  <permissions for=".interfaces.IProject" name="project.permissions">
+    <grant permission="zojax.AssignTo
+		       zojax.ModifyContent
+                       zojax.ModifyMembersSettings"
+	   role="group.Manager
+		 zope.Manager" />
+
+    <grant permission="zojax.AddComment"
+	   role="group.Member
+		 group.Manager" />
+
+    <grant permission="zojax.AddTask"
+	   role="group.Member
+		 group.Manager" />
+
+    <grant permission="zojax.AddMilestone"
+	   role="group.Manager" />
+  </permissions>
+
+  <!-- 'open' project -->
+  <permissions name="project.open" title="Open project">
+    <grantAll permission="zojax.AddComment" />
+    <grantAll permission="zojax.AccessGroup" />
+  </permissions>
+  
+  <!-- 'members' project -->
+  <permissions name="project.members" title="Members project">
+    <grantAll permission="zojax.AccessGroup" />
+  </permissions>
+
+  <!-- 'private' project -->
+  <permissions name="project.private" title="Private project">
+    <denyAll permission="zojax.AccessGroup" />
+    <grant permission="zojax.AccessGroup"
+	   role="zope.Manager
+		 group.Member
+		 group.Manager" />
+  </permissions>
+
+  <!-- 'secret' project -->
+  <permissions name="project.secret" title="Secret project">
+    <grant permission="zope.View"
+	   role="zope.Manager
+		 group.Member
+		 group.Manager" />
+
+    <denyAll permission="zope.View" />
+    <grantAll permission="zojax.AccessGroup" />
+
+    <grant permission="zope.View"
+	   role="zope.Manager
+		 group.Member
+		 group.Manager" />
+
+    <grant permission="zojax.AccessGroup"
+	   role="zope.Manager
+		 group.Member
+		 group.Manager" />
+  </permissions>
+
+</configure>

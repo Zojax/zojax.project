@@ -1,0 +1,26 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   zcml:condition="installed zojax.contenttype.newsitem">
+
+  <include package="zojax.contenttypes" />
+  <include package="zojax.contenttype.newsitem" />
+
+  <!-- news workspace factory -->
+  <registerIn registry="zojax.product.zojax-contenttypes">
+    <adapter
+       name="news"
+       for="..interfaces.IProject"
+       factory="zojax.contenttype.newsitem.workspace.NewsWorkspaceFactory" />
+  </registerIn>
+
+  <!-- default project permissions -->
+  <permissions for="zojax.project.interfaces.IProject"
+	       name="project.permissions">
+    <grant permission="zojax.contenttype.AddNewsItem"
+	   role="group.Manager
+		 group.Member
+		 zope.Manager" />
+  </permissions>
+
+</configure>

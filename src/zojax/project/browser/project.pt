@@ -1,0 +1,13 @@
+<div id="z-portal-workspace" i18n:domain="zojax.project">
+
+  <h1 class="z-content-title" tal:content="context/title"></h1>
+  <div class="z-page-description" tal:content="context/description"></div>
+
+  <div class="z-content-body" i18n:translate="">
+    These is private project. You have to be member of this project to view content and participate.
+
+    <br /><br />
+    <a href="../" i18n:translate="">Back to projects listing</a>
+  </div>
+
+</div>

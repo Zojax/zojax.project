@@ -1,0 +1,70 @@
+<tal:block i18n:domain="zojax.project"
+	   tal:define="milestones view/listMilestones">
+
+  <h1 class="z-content-title">Milestones</h1>
+  <div class="z-page-description" tal:content="context/description"></div>
+
+  <div tal:condition="not:milestones" i18n:translate="">
+    No milestones have been created.
+  </div>
+
+  <div class="project-milestones" tal:define="url context/@@absolute_url">
+    <div class="project-milestone"
+	 tal:repeat="info milestones"
+	 tal:attributes="class python:repeat['info'].odd() 
+			 and 'project-milestone odd' or 'project-milestone even'">
+      <dl>
+	<dt>
+	  <div class="project-milestone-date" tal:content="structure info/date" />
+	  <div class="project-milestone-overdue"
+	       tal:condition="info/overdue" i18n:translate="">
+	    <tal:block content="info/overdue/days" i18n:name="days" /> days late
+	  </div>
+
+	  <div class="project-milestone-stats">
+	    <div>
+	      <span><tal:block content="info/percent"/>%
+		<tal:block i18n:translate="">complete</tal:block></span>
+	    </div>
+	    <div i18n:translate="">
+	      <tal:block content="info/completed" i18n:name="completed" /> tasks of
+	      <tal:block content="info/total" i18n:name="total" />
+	    </div>
+	  </div>
+	  <tal:block define="context info/milestone"
+		     content="structure pageelement:milestones.information" />
+	</dt>
+	<dd>
+	  <div class="project-milestone-title">
+	    <a tal:attributes="href string:$url/${info/name}/" tal:content="info/title"></a>
+	  </div>
+	  <div class="project-milestone-byline" tal:condition="not:info/creator">
+	    Created on
+	    <tal:block content="structure info/created" />
+	  </div>
+	  <div class="project-milestone-byline" tal:condition="info/creator">
+	    Created by <a tal:omit-tag="not:info/space"
+			  tal:attributes="href info/space" tal:content="info/creator" />
+	    on <tal:block content="structure info/created" />
+	  </div>
+
+	  <div tal:condition="info/tasks">
+	    <tal:block tal:content="structure info/tasks/render" />
+	    <br />
+	  </div>
+	  <div tal:condition="not:info/tasks">
+	    <br />
+	    <tal:block i18n:translate="">There are no active tasks.</tal:block>
+	  </div>
+	  <div tal:condition="info/completedtasks">
+	    <br />
+	    <h3>Completed tasks</h3>
+	    <tal:block tal:content="structure info/completedtasks/render" />
+	    <br />
+	  </div>
+	</dd>
+      </dl>
+      <div class="visualClear"></div>
+    </div>
+  </div>
+</tal:block>

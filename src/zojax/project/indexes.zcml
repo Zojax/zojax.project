@@ -1,0 +1,29 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   i18n_domain="zojax.project">
+
+  <!-- date index -->
+  <utility
+     name="projectTaskDate"
+     component=".indexes.dateIndex"
+     provides="zojax.catalog.interfaces.ICatalogIndexFactory" />
+
+  <!-- state index -->
+  <utility
+     name="projectTaskState"
+     component=".indexes.stateIndex"
+     provides="zojax.catalog.interfaces.ICatalogIndexFactory" />
+
+  <!-- category index -->
+  <utility
+     name="projectTaskCategory"
+     component=".indexes.taskCategoryIndex"
+     provides="zojax.catalog.interfaces.ICatalogIndexFactory" />
+
+  <!-- milestone index -->
+  <utility
+     name="projectTaskMilestone"
+     component=".indexes.taskMilestoneIndex"
+     provides="zojax.catalog.interfaces.ICatalogIndexFactory" />
+
+</configure>
