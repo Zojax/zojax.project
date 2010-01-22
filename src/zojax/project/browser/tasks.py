@@ -117,7 +117,7 @@ class AuthorColumn(Column):
             if profile is not None:
                 return profile.title
         else:
-            return principal.title
+            return getattr(principal,'title', default)
 
 
 class CreatedColumn(Column):
