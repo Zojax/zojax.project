@@ -51,7 +51,7 @@
       <th>&bull; Category</th>
       <td tal:content="python:u', '.join(view.categories)"></td>
     </tr>
-    <tr>
+    <tr tal:condition="view/owner">
       <th>&bull; Submitted by</th>
       <td tal:content="view/owner/title"></td>
     </tr>

@@ -29,7 +29,7 @@
       <th>&bull; Due Date</th>
       <td class="project-task-duedate" tal:content="structure formatter:date,full:context/date"></td>
     </tr>
-    <tr>
+    <tr tal:condition="view/owner">
       <th>&bull; Submitted by</th>
       <td tal:content="view/owner/title"></td>
     </tr>
