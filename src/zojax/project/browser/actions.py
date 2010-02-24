@@ -20,6 +20,7 @@ from zope.security import checkPermission
 from zope.traversing.browser import absoluteURL
 from zojax.content.actions.action import Action
 from zojax.members.browser.join import JoinAction
+from zojax.content.draft.interfaces import IDraftedContent
 from zojax.project.interfaces import _, ITask, IMilestone, IProject, ITasks
 
 from interfaces import \
@@ -39,9 +40,10 @@ class AddTask(Action):
         return '%s/tasks/+/project.task/'%absoluteURL(self.context,self.request)
 
     def isAvailable(self):
-        return (checkPermission('zojax.AddTask', self.context) or
+        return (not IDraftedContent.providedBy(self.context)) and \
+             ((checkPermission('zojax.AddTask', self.context) or
                 checkPermission('zojax.SubmitTask', self.context)) and \
-                'tasks' in self.context
+                'tasks' in self.context)
 
 
 class AddMilestone(Action):
@@ -58,7 +60,8 @@ class AddMilestone(Action):
             self.context, self.request)
 
     def isAvailable(self):
-        return checkPermission('zojax.AddMilestone', self.context) and \
+        return (not IDraftedContent.providedBy(self.context)) and \
+               checkPermission('zojax.AddMilestone', self.context) and \
             'milestones' in self.context
 
 
