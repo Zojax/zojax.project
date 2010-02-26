@@ -59,6 +59,10 @@ s_waitdata = State(
     'waiting-data', 'Waiting-Data',
     permissionsmap='zojax.project.task.waiting-data')
 
+s_waitdataadded = State(
+    'waiting-data-added', 'Waiting-Data-Added',
+    permissionsmap='zojax.project.task.waiting-data-added')
+
 s_rejected = State(
     'rejected', 'Rejected',
     permissionsmap='zojax.project.task.rejected')
@@ -86,7 +90,7 @@ start = ManualTransition(
     permission='zojax.project.workflow.Start')
 
 restart = ManualTransition(
-    'restart', 'Restart', (s_onhold, s_rework, s_waitdata), s_inprocess,
+    'restart', 'Restart', (s_onhold, s_rework, s_waitdata, s_waitdataadded), s_inprocess,
     permission='zojax.project.workflow.Restart')
 
 reaccept = ManualTransition(
@@ -94,8 +98,12 @@ reaccept = ManualTransition(
     permission='zojax.project.workflow.Accept')
 
 waitdata = ManualTransition(
-    'waitdata', 'Wait customer data', (s_accepted, s_approved, s_inprocess),
+    'waitdata', 'Wait customer data', (s_accepted, s_approved, s_inprocess, s_waitdataadded),
     s_waitdata, permission='zojax.project.workflow.WaitData')
+
+waitdataadd = ManualTransition(
+    'waitdataadd', 'Add customer data', (s_waitdata, ),
+    s_waitdataadded, permission='zojax.project.workflow.WaitDataAdd')
 
 approving = ManualTransition(
     'approving', 'Client approving', (s_pending, s_accepted), s_approving,
@@ -130,5 +138,5 @@ hold = ManualTransition(
 
 defaultWorkflow = Workflow('default', 'Default Task Workflow',
                            [init, accept, reject, start, restart,
-                            reaccept, waitdata, approving, approve,
+                            reaccept, waitdata, waitdataadd, approving, approve,
                             release, test, deferred, rework, hold])

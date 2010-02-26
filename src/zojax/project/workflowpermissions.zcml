@@ -35,7 +35,11 @@
 
   <permission
      id="zojax.project.workflow.WaitData"
-     title="Permission that allow change task workflow state to Waitint-Data" />
+     title="Permission that allow change task workflow state to Waiting-Data" />
+     
+  <permission
+     id="zojax.project.workflow.WaitDataAdd"
+     title="Permission that allow change task workflow state to Waiting-Data-Added" />
 
   <permission
      id="zojax.project.workflow.Test"

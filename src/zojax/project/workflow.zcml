@@ -96,10 +96,12 @@
 
   <permissions name="zojax.project.task.waiting-data"
 	       title="Project task 'waiting-data' state permissions">
-    <grant permission="zojax.project.workflow.Restart"
-	   role="zope.Manager
-		 content.Assignee
-		 group.Manager" />
+    
+    <grant permission="zojax.project.workflow.WaitDataAdd"
+	   role="content.Owner
+           group.Member
+           zope.Manager
+  	       group.Manager" />
     
     <grant permission="zope.View
 		       zojax.AddComment
@@ -115,6 +117,30 @@
 	   role="zope.Manager
 		 content.Assignee
 		 group.Manager" />
+  </permissions>
+  
+  <permissions name="zojax.project.task.waiting-data-added"
+         title="Project task 'waiting-data-added' state permissions">
+    <grant permission="zojax.project.workflow.Restart
+                       zojax.project.workflow.WaitData"
+     role="zope.Manager
+     content.Assignee
+     group.Manager" />
+    
+    <grant permission="zope.View
+           zojax.AddComment
+           zojax.AddContentAttachment"
+     role="content.Owner
+     content.Assignee
+     group.Manager
+     group.Member
+     zope.Manager" />
+    
+    <denyAll permission="zojax.ModifyContent" />
+    <grant permission="zojax.ModifyContent"
+     role="zope.Manager
+     content.Assignee
+     group.Manager" />
   </permissions>
   
   <permissions name="zojax.project.task.approving"
