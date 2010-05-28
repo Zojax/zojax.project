@@ -115,7 +115,7 @@ class BrowseProjects(object):
             'type': types.getTerm(project.ptype),
             'managers': [],
             'project': project,
-            'tasks': None}
+            'tasks': (0, 0, '0')}
 
         membersaware = IMembersAware(project, None)
         if membersaware is not None:
