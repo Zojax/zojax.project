@@ -11,6 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+from zojax.richtext.field import RichText
 """
 
 $Id$
@@ -60,7 +61,7 @@ from zojax.project.vocabulary import priorityVocabulary
 class ITaskCommentAdapter(interface.Interface):
     """ comment form """
 
-    comment = schema.Text(
+    comment = RichText(
         title = _(u'Comment'),
         required = True)
 
@@ -286,7 +287,7 @@ class TaskCommentForm(PageletForm):
             if discussion.status != 1:
                 discussion.status = 1
 
-            comment = cgi.escape(data['comment']).replace('\n', '<br />')
+            comment = data['comment'].render()
 
             comment = TaskComment(
                 request.principal.id, comment, changes, attachs)
