@@ -1,5 +1,8 @@
 <div class="z-portlet portlet-group-overview-content" i18n:domain="zojax.project">
   <div class="z-portlet-body" tal:define="info context/getProjectInfo">
+  <table>
+    <tr>
+    <td>
     <div class="group-image" tal:condition="context/showLogo">
       <div class="group-image-wrapper">
 	<img tal:condition="info/default"
@@ -16,13 +19,16 @@
 	  <tal:block content="info/ptype/title" /></div>
       </div>
     </div>
-
+    </td>
+    
+    <td>
     <div class="z-content-description" tal:content="info/description"></div>
-
     <div tal:content="structure info/project/text/cooked" />
-
     <div tal:define="schema context/getContentSchema"
-	 tal:content="structure schema/@@pagelet" /> 
+	 tal:content="structure schema/@@pagelet" />
+    </td>
+    </tr>
+  </table>
   </div>
 </div>
 <div class="visualClear"></div>
