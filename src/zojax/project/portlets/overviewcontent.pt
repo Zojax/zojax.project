@@ -22,7 +22,7 @@
     </td>
     
     <td>
-    <div class="z-content-description" tal:content="info/description"></div>
+    <div class="z-content-description" tal:content="info/description" tal:condition="info/description"></div>
     <div tal:content="structure info/project/text/cooked" />
     <div tal:define="schema context/getContentSchema"
 	 tal:content="structure schema/@@pagelet" />
