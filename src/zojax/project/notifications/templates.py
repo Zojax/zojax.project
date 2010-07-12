@@ -56,7 +56,7 @@ class TaskNotification(object):
 
         self.name = context.__name__
 
-        mailer = getUtility(IMailer).email_from_address
+        mailer = getUtility(IMailer)
 
         self.addHeader(u'From', formataddr((mailer.email_from_name, email_from_address.email_from_address),))
 
