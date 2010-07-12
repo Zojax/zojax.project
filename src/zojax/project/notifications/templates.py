@@ -11,6 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+from zojax.mail.interfaces import IMailer
 """
 
 $Id$
@@ -55,12 +56,13 @@ class TaskNotification(object):
 
         self.name = context.__name__
 
+        self.addHeader(u'From', formataddr((mailer.email_from_name, email_from_address.email_from_address),))
+
         profile = IPersonalProfile(principal, None)
         if profile is not None and profile.email:
             author = profile.title
             self.author = author
             self.addHeader(u'To', formataddr((author, profile.email),))
-            self.addHeader(u'From', formataddr((author, profile.email),))
         else:
             self.author = principal.title or principal.id
 
