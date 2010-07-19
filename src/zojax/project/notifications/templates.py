@@ -58,7 +58,7 @@ class TaskNotification(object):
 
         mailer = getUtility(IMailer)
 
-        self.addHeader(u'From', formataddr((mailer.email_from_name, mailer.email_from_address),))
+        from_name = mailer.email_from_name
 
         profile = IPersonalProfile(principal, None)
         if profile is not None and profile.email:
@@ -67,6 +67,8 @@ class TaskNotification(object):
             self.addHeader(u'To', formataddr((author, profile.email),))
         else:
             self.author = principal.title or principal.id
+
+        self.addHeader(u'From', formataddr((self.author, mailer.email_from_address),))
 
         self.addHeader(u'In-Reply-To', u'<%s@zojax.net>'%ids.getId(context))
 
