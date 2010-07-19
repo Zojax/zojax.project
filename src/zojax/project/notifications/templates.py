@@ -58,8 +58,6 @@ class TaskNotification(object):
 
         mailer = getUtility(IMailer)
 
-        from_name = mailer.email_from_name
-
         profile = IPersonalProfile(principal, None)
         if profile is not None and profile.email:
             author = profile.title
