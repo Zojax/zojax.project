@@ -170,14 +170,17 @@ class TaskDeletedNotification(object):
 
         self.name = context.__name__
 
+        mailer = getUtility(IMailer)
+
         profile = IPersonalProfile(principal, None)
         if profile is not None and profile.email:
             author = profile.title
             self.author = author
             self.addHeader(u'To', formataddr((author, profile.email),))
-            self.addHeader(u'From', formataddr((author, profile.email),))
         else:
             self.author = principal.title or principal.id
+
+        self.addHeader(u'From', formataddr((self.author, mailer.email_from_address),))
 
         self.url = '%s/'%absoluteURL(context, request)
         self.project = context.__parent__.__parent__
