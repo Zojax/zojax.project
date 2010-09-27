@@ -93,11 +93,12 @@ class TaskNotification(object):
         voc = getUtility(IVocabularyFactory, 'project.task.categories')(context)
         if voc:
             categories = []
-            for cat in context.category:
-                try:
-                    categories.append(voc.getTerm(cat).title)
-                except LookupError:
-                    pass
+            if context.category:
+                for cat in context.category:
+                    try:
+                        categories.append(voc.getTerm(cat).title)
+                    except LookupError:
+                        pass
             if not categories:
                 categories.append(u'---')
 
