@@ -36,7 +36,8 @@
     <grant permission="zojax.AssignTo
            zojax.ModifyContent
            zojax.ModifyMembersSettings
-           zojax.InviteGroupMember"
+           zojax.InviteGroupMember
+           zojax.AddGroupUser"
      role="group.Manager
      zope.Manager" />
 
