@@ -37,7 +37,8 @@
            zojax.ModifyContent
            zojax.ModifyMembersSettings
            zojax.InviteGroupMember
-           zojax.AddGroupUser"
+           zojax.AddGroupUser
+           zojax.DeleteContent"
      role="group.Manager
      zope.Manager" />
 
