@@ -44,6 +44,7 @@ class BrowseMilestones(object):
         dateFormatter = getFormatter(request, 'date', 'full')
 
         milestones = []
+        active_milestones = []
 
         for ms in context.values():
             dc = IDCTimes(ms)
@@ -101,8 +102,11 @@ class BrowseMilestones(object):
             info['completed'] = completed
             if total > 0:
                 info['percent'] = int(completed/(total/100.0))
-
-            milestones.append((ms.date, ms.title, info))
-
+            
+            if info['percent'] < 100:    
+                active_milestones.append((ms.date, ms.title, info))
+            else:
+                milestones.append((ms.date, ms.title, info))
         milestones.sort()
-        return [info for _d, _t, info in milestones]
+        active_milestones.sort()
+        return [info for _d, _t, info in active_milestones], [info for _d, _t, info in milestones]
