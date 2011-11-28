@@ -14,6 +14,11 @@
      for="..interfaces.IMilestone *"
      factory=".state.CompleteTask" />
 
+  <adapter
+     name="project.complete"
+     for="..interfaces.IProject *"
+     factory=".state.CompleteTask" />
+
   <browser:icon
      name="zmi_icon"
      for=".interfaces.ICompleteTaskAction"
@@ -27,6 +32,11 @@
   <adapter
      name="project.milestone.reopen"
      for="..interfaces.IMilestone *"
+     factory=".state.ReopenTask" />
+
+  <adapter
+     name="project.reopen"
+     for="..interfaces.IProject *"
      factory=".state.ReopenTask" />
 
   <browser:icon

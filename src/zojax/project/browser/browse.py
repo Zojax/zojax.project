@@ -15,10 +15,12 @@
 
 $Id$
 """
+from zope import event
 from zope.component import getUtility
 from zope.traversing.browser import absoluteURL
 from zope.dublincore.interfaces import IDCTimes
 from zope.index.text.parsetree import ParseError
+from zope.lifecycleevent import ObjectModifiedEvent
 
 from zojax.batching.batch import Batch
 from zojax.catalog.interfaces import ICatalog
@@ -67,6 +69,7 @@ class BrowseProjects(object):
                     'type': {'any_of': (
                             'content.project','content.standaloneproject')},
                     'isDraft': {'any_of': (False,)},
+                    'projectTaskState': {'any_of': (1,)},
                     'traversablePath': {'any_of': (searchContext,)},
                     'searchableText': s}
 
@@ -87,6 +90,7 @@ class BrowseProjects(object):
         results = catalog.searchResults(
             type = {'any_of': ('content.project','content.standaloneproject')},
             isDraft = {'any_of': (False,)},
+            projectTaskState = {'any_of': (1,)},
             traversablePath = {'any_of': (searchContext,)}, sort_on='title')
 
         if not results:
@@ -160,3 +164,27 @@ class BrowseProjects(object):
                 info['tasks'] = (0, 0, '0')
 
         return info
+
+
+class CompleteProject(object):
+
+    def update(self):
+
+        if self.context.state == 1:
+            self.context.completeTask()
+            event.notify(ObjectModifiedEvent(self.context))
+
+            IStatusMessage(self.request).add(_('Project has been completed.'))
+
+        self.redirect('./')
+
+class ReopenProject(object):
+
+    def update(self):
+        if self.context.state != 1:
+            self.context.reopenTask()
+            event.notify(ObjectModifiedEvent(self.context))
+
+            IStatusMessage(self.request).add(_('Project has been reopened.'))
+
+        self.redirect('./')

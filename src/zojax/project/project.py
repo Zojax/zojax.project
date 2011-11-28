@@ -33,11 +33,14 @@ from zojax.content.permissions.utils import updatePermissions
 from zojax.content.space.interfaces import IWorkspacesManagement
 from zojax.permissionsmap.interfaces import IObjectPermissionsMapsManager
 
-from interfaces import IProject, IStandaloneProject
+from interfaces import IProject, IStandaloneProject, IState
+from interfaces import StateChangedEvent
 
 
 class Project(ContentContainer):
-    interface.implements(IProject, IWorkspacesManagement)
+    interface.implements(IProject, IWorkspacesManagement, IState)
+
+    state = FieldProperty(IState['state'])
 
     showTabs = True
     showHeader = True
@@ -59,6 +62,17 @@ class Project(ContentContainer):
         return workspaceFactory.isAvailable() and \
             workspaceFactory.name in self.workspaces
 
+    def reopenTask(self):
+        """ reopen Project
+        """
+        self.state = 1
+        event.notify(StateChangedEvent(self, 1))
+
+    def completeTask(self):
+        """ complete Project
+        """
+        self.state = 2
+        event.notify(StateChangedEvent(self, 2))
 
 class StandaloneProject(Project):
     interface.implements(IStandaloneProject, IMembersAware)
