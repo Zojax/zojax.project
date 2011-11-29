@@ -66,6 +66,18 @@ class IProject(IItem, ISpace):
         description = _(u'Project long description.'),
         required = False)
 
+    state = schema.Choice(
+        title = _('Open/Completed state'),
+        vocabulary = vocabulary.stateVocabulary,
+        default = 1,
+        required = True)
+
+    def reopenProject():
+        """ reopen project """
+
+    def completeProject():
+        """ complete project """
+
 
 class IStandaloneProject(IProject):
     """ Standalone project """
