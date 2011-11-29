@@ -87,12 +87,12 @@
      name="complete.html"
      for="..interfaces.IProject"
      class=".browse.CompleteProject"
-     permission="zojax.CompleteTask" />
+     permission="zojax.CompleteProject" />
 
   <zojax:pagelet
      name="reopen.html"
      for="..interfaces.IProject"
      class=".browse.ReopenProject"
-     permission="zojax.ReopenTask" />
+     permission="zojax.ReopenProject" />
 
 </configure>

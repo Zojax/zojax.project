@@ -26,4 +26,10 @@
      component=".indexes.taskMilestoneIndex"
      provides="zojax.catalog.interfaces.ICatalogIndexFactory" />
 
+  <!-- project state index -->
+  <utility
+     name="projectState"
+     component=".indexes.projectStateIndex"
+     provides="zojax.catalog.interfaces.ICatalogIndexFactory" />
+
 </configure>

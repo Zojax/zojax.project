@@ -33,7 +33,6 @@
 
     <require
        permission="zope.View"
-       attributes="state"
        interface=".interfaces.IProject
                   zojax.content.space.interfaces.IContentSpaceLayout
 		  zojax.content.space.interfaces.IWorkspacesManagement" />
@@ -41,7 +40,7 @@
     <require
        permission="zojax.AccessGroup"
        interface="zope.app.container.interfaces.IReadContainer" />
-    
+
     <require
        permission="zojax.ModifyContent"
        set_schema=".interfaces.IProject
@@ -49,17 +48,10 @@
 		   zojax.content.space.interfaces.IWorkspacesManagement"
        interface="zope.app.container.interfaces.IWriteContainer" />
 
-    <require
-       permission="zojax.CompleteTask"
-       attributes="completeTask" />
-
-    <require
-       permission="zojax.ReopenTask"
-       attributes="reopenTask" />
   </class>
 
   <adapter factory=".project.projectMembers" />
-  
+
   <!-- standalone project -->
   <zojax:content
      title="Standalone Project"
@@ -73,19 +65,18 @@
            zojax.content.schema.interfaces.ISchemaAware
            zojax.content.space.interfaces.IContentSpaceType"
      permission="zojax.AddProject" />
-  
+
   <class class=".project.StandaloneProject">
     <require
        permission="zope.View"
-       attributes="state"
        interface=".interfaces.IStandaloneProject
                   zojax.content.space.interfaces.IContentSpaceLayout
 		  zojax.content.space.interfaces.IWorkspacesManagement" />
-    
+
     <require
        permission="zojax.AccessGroup"
        interface="zope.app.container.interfaces.IReadContainer" />
-    
+
     <require
        permission="zojax.ModifyContent"
        set_schema=".interfaces.IStandaloneProject
@@ -93,21 +84,14 @@
 		   zojax.content.space.interfaces.IWorkspacesManagement"
        interface="zope.app.container.interfaces.IWriteContainer" />
 
-    <require
-       permission="zojax.CompleteTask"
-       attributes="completeTask" />
-
-    <require
-       permission="zojax.ReopenTask"
-       attributes="reopenTask" />
   </class>
-  
+
   <!-- subscribers -->
   <subscriber handler=".project.projectModified" />
-  
+
   <!-- SearchableText adapter -->
   <adapter factory=".project.ProjectSearchableText" />
-  
+
   <!-- draft -->
   <zojax:draft
      content="content.project"
