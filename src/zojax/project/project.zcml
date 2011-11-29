@@ -33,6 +33,7 @@
 
     <require
        permission="zope.View"
+       attributes="state"
        interface=".interfaces.IProject
                   zojax.content.space.interfaces.IContentSpaceLayout
 		  zojax.content.space.interfaces.IWorkspacesManagement" />
@@ -44,9 +45,18 @@
     <require
        permission="zojax.ModifyContent"
        set_schema=".interfaces.IProject
+                   .interfaces.IProjectState
                    zojax.content.space.interfaces.IContentSpaceLayout
 		   zojax.content.space.interfaces.IWorkspacesManagement"
        interface="zope.app.container.interfaces.IWriteContainer" />
+
+    <require
+       permission="zojax.CompleteProject"
+       attributes="completeProject" />
+
+    <require
+       permission="zojax.ReopenProject"
+       attributes="reopenProject" />
 
   </class>
 
@@ -69,6 +79,7 @@
   <class class=".project.StandaloneProject">
     <require
        permission="zope.View"
+       attributes="state"
        interface=".interfaces.IStandaloneProject
                   zojax.content.space.interfaces.IContentSpaceLayout
 		  zojax.content.space.interfaces.IWorkspacesManagement" />
@@ -80,9 +91,18 @@
     <require
        permission="zojax.ModifyContent"
        set_schema=".interfaces.IStandaloneProject
+                   .interfaces.IProjectState
                    zojax.content.space.interfaces.IContentSpaceLayout
 		   zojax.content.space.interfaces.IWorkspacesManagement"
        interface="zope.app.container.interfaces.IWriteContainer" />
+
+    <require
+       permission="zojax.CompleteProject"
+       attributes="completeProject" />
+
+    <require
+       permission="zojax.ReopenProject"
+       attributes="reopenProject" />
 
   </class>
 

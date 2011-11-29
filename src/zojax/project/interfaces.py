@@ -66,18 +66,6 @@ class IProject(IItem, ISpace):
         description = _(u'Project long description.'),
         required = False)
 
-    state = schema.Choice(
-        title = _('Open/Completed state'),
-        vocabulary = vocabulary.stateVocabulary,
-        default = 1,
-        required = True)
-
-    def reopenProject():
-        """ reopen project """
-
-    def completeProject():
-        """ complete project """
-
 
 class IStandaloneProject(IProject):
     """ Standalone project """
@@ -119,6 +107,24 @@ class IProjectProduct(interface.Interface):
     tasks_completed_page_size = schema.Int(
         title = _('Number of completed tasks on page.'),
         default = 30)
+
+
+# project state
+
+class IProjectState(interface.Interface):
+    """ project state: open/completed """
+
+    state = schema.Choice(
+        title = _('Open/Completed state'),
+        vocabulary = vocabulary.stateVocabulary,
+        default = 1,
+        required = True)
+
+    def reopenProject():
+        """ reopen project """
+
+    def completeProject():
+        """ complete project """
 
 
 # task/milestone state

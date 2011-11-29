@@ -21,7 +21,7 @@ from zope.traversing.browser import absoluteURL
 from zojax.content.actions.action import Action
 from zojax.members.browser.join import JoinAction
 from zojax.content.draft.interfaces import IDraftedContent
-from zojax.project.interfaces import _, ITask, IMilestone, IProject, ITasks
+from zojax.project.interfaces import _, ITask, IMilestone, IProject, ITasks, IProjectState
 
 from interfaces import \
     IAddTaskAction, IAddMilestoneAction, IUploadAttachmentsAction, \
@@ -85,7 +85,7 @@ class JoinAction(JoinAction):
 
 
 class CompleteProject(Action):
-    component.adapts(IProject, interface.Interface)
+    component.adapts(IProjectState, interface.Interface)
     interface.implements(ICompleteProjectAction)
 
     weight = 5
@@ -101,7 +101,7 @@ class CompleteProject(Action):
 
 
 class ReopenProject(Action):
-    component.adapts(IProject, interface.Interface)
+    component.adapts(IProjectState, interface.Interface)
     interface.implements(IReopenProjectAction)
 
     weight = 5

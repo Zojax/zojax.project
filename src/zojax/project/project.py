@@ -33,12 +33,12 @@ from zojax.content.permissions.utils import updatePermissions
 from zojax.content.space.interfaces import IWorkspacesManagement
 from zojax.permissionsmap.interfaces import IObjectPermissionsMapsManager
 
-from interfaces import IProject, IStandaloneProject
+from interfaces import IProject, IStandaloneProject, IProjectState
 from interfaces import StateChangedEvent
 
 
 class Project(ContentContainer):
-    interface.implements(IProject, IWorkspacesManagement)
+    interface.implements(IProject, IWorkspacesManagement, IProjectState)
 
     showTabs = True
     showHeader = True
@@ -51,7 +51,7 @@ class Project(ContentContainer):
     text = RichTextProperty(IProject['text'])
     startDate = FieldProperty(IProject['startDate'])
     endDate = FieldProperty(IProject['endDate'])
-    state = FieldProperty(IProject['state'])
+    state = FieldProperty(IProjectState['state'])
 
     @property
     def id(self):

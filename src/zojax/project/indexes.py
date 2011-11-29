@@ -18,7 +18,7 @@ $Id$
 from zojax.catalog.utils import Indexable
 from zc.catalog.catalogindex import SetIndex, ValueIndex
 
-from interfaces import ITask, IState, IDueDate, ITaskAttributes, IProject
+from interfaces import ITask, IState, IDueDate, ITaskAttributes, IProjectState
 
 
 def dateIndex():
@@ -37,7 +37,6 @@ def taskMilestoneIndex():
     return ValueIndex('milestone', ITask)
 
 
-
 def projectStateIndex():
-    return ValueIndex('state', IProject)
+    return ValueIndex('state', IProjectState)
 
