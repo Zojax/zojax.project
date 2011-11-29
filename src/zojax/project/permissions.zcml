@@ -23,6 +23,16 @@
      title="Add milestone"
      description="Allow create new milestones." />
 
+  <permission
+     id="zojax.ReopenProject"
+     title="Reopen project"
+     description="Allow reopen project." />
+
+  <permission
+     id="zojax.CompleteProject"
+     title="Complete project"
+     description="Allow complete project." />
+
   <zojax:permission
      permission="zojax.AddProject"
      category="zojax.content.permissions.interfaces.IAddPermission" />
@@ -52,6 +62,14 @@
 
     <grant permission="zojax.AddMilestone"
      role="group.Manager" />
+
+    <grant permission="zojax.ReopenProject"
+     role="content.Assignee
+		 group.Manager" />
+
+    <grant permission="zojax.CompleteProject"
+     role="content.Assignee
+		 group.Manager" />
   </permissions>
 
   <!-- 'open' project -->

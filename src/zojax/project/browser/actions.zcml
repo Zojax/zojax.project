@@ -50,15 +50,26 @@
      for="..interfaces.IStandaloneProject *"
      factory=".actions.JoinAction" />
 
-  <!-- complete/reopen project action -->
+  <!-- complete project action -->
   <adapter
      name="project.complete"
      for="..interfaces.IProject *"
      factory=".actions.CompleteProject" />
 
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.ICompleteProjectAction"
+     file="icons/complete.png" />
+
+  <!-- reopen project action -->
   <adapter
      name="project.reopen"
      for="..interfaces.IProject *"
      factory=".actions.ReopenProject" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.IReopenProjectAction"
+     file="icons/reopen.png" />
 
 </configure>
