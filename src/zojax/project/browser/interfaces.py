@@ -51,6 +51,14 @@ class IReopenTaskAction(IAction, IManageContentCategory):
     """ reopen task action """
 
 
+class ICompleteProjectAction(IAction, IManageContentCategory):
+    """ complete project action """
+
+
+class IReopenProjectAction(IAction, IManageContentCategory):
+    """ reopen project action """
+
+
 class IUploadAttachmentsAction(IAction, IManageContentCategory):
     """ upload attachments """
 

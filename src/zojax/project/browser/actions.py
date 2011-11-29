@@ -24,7 +24,8 @@ from zojax.content.draft.interfaces import IDraftedContent
 from zojax.project.interfaces import _, ITask, IMilestone, IProject, ITasks
 
 from interfaces import \
-    IAddTaskAction, IAddMilestoneAction, IUploadAttachmentsAction
+    IAddTaskAction, IAddMilestoneAction, IUploadAttachmentsAction, \
+    ICompleteProjectAction, IReopenProjectAction
 
 
 class AddTask(Action):
@@ -81,3 +82,36 @@ class UploadAttachmentsAction(Action):
 class JoinAction(JoinAction):
 
     title = _('Join this project')
+
+
+class CompleteProject(Action):
+    component.adapts(IProject, interface.Interface)
+    interface.implements(ICompleteProjectAction)
+
+    weight = 5
+    title = _(u'Complete')
+
+    @property
+    def url(self):
+        return '%s/complete.html'%absoluteURL(self.context, self.request)
+
+    def isAvailable(self):
+        return self.context.state == 1 and \
+            checkPermission('zojax.CompleteProject', self.context)
+
+
+class ReopenProject(Action):
+    component.adapts(IProject, interface.Interface)
+    interface.implements(IReopenProjectAction)
+
+    weight = 5
+    title = _(u'Re-open')
+    permission = 'zojax.ReopenProject'
+
+    @property
+    def url(self):
+        return '%s/reopen.html'%absoluteURL(self.context, self.request)
+
+    def isAvailable(self):
+        return self.context.state == 2 and \
+            checkPermission('zojax.ReopenProject', self.context)

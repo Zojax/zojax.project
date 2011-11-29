@@ -50,4 +50,15 @@
      for="..interfaces.IStandaloneProject *"
      factory=".actions.JoinAction" />
 
+  <!-- complete/reopen project action -->
+  <adapter
+     name="project.complete"
+     for="..interfaces.IProject *"
+     factory=".actions.CompleteProject" />
+
+  <adapter
+     name="project.reopen"
+     for="..interfaces.IProject *"
+     factory=".actions.ReopenProject" />
+
 </configure>
