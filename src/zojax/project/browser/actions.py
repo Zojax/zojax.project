@@ -119,17 +119,17 @@ class ReopenProject(Action):
             checkPermission('zojax.ReopenProject', self.context)
 
 
-class CompletedProjects(Action):
+class CompletedProjects(ContentAction):
     component.adapts(IProjects, interface.Interface)
     interface.implements(ICompletedProjectsAction)
 
-    #weight = 5
+    weight = 5
     title = _(u'Completed Projects')
     permission = 'zope.Public'
 
-    #@property
-    #def url(self):
-    #    return '%s/completedprojects.html'%absoluteURL(self.context, self.request)
+    @property
+    def url(self):
+        return '%s/completed.html'%absoluteURL(self.context, self.request)
 
     def isAvailable(self):
         return True

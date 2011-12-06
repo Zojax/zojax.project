@@ -37,6 +37,7 @@ class BrowseProjects(object):
 
     hasGroups = True
     batch = Batch((), 15)
+    state = 1
 
     def update(self):
         context = self.context
@@ -69,7 +70,7 @@ class BrowseProjects(object):
                     'type': {'any_of': (
                             'content.project','content.standaloneproject')},
                     'isDraft': {'any_of': (False,)},
-                    'projectState': {'any_of': (1,)},
+                    'projectState': {'any_of': (self.state,)},
                     'traversablePath': {'any_of': (searchContext,)},
                     'searchableText': s}
 
@@ -165,6 +166,10 @@ class BrowseProjects(object):
 
         return info
 
+    
+class BrowseCompletedProjects(BrowseProjects):
+    state = 2
+
 
 class CompleteProject(object):
 
@@ -178,6 +183,7 @@ class CompleteProject(object):
 
         self.redirect('./')
 
+        
 class ReopenProject(object):
 
     def update(self):

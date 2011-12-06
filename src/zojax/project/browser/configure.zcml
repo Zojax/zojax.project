@@ -28,6 +28,13 @@
      class=".browse.BrowseProjects"
      permission="zope.View" />
 
+  <zojax:pagelet
+       name="completed.html"
+       for="..interfaces.IProjects"
+       template="browse.pt"
+       class=".browse.BrowseCompletedProjects"
+       permission="zope.View" />
+
   <!-- project view -->
   <browser:defaultView
      name="index.html"

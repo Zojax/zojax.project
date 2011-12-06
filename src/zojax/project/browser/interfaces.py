@@ -103,7 +103,7 @@ class IProjectsInformation(IPageElement):
     """ project information """
 
 
-class ICompletedProjectsAction(interface.Interface):
+class ICompletedProjectsAction(IAction, IManageContentCategory):
     """ completed projects view """
 
 
