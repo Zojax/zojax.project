@@ -72,4 +72,15 @@
      for=".interfaces.IReopenProjectAction"
      file="icons/reopen.png" />
 
+  <!-- completed projects action -->
+  <adapter
+     name="projects.completed"
+     for="..interfaces.IProjects *"
+     factory=".actions.CompletedProjects" />
+
+  <browser:icon
+     name="zmi_icon"
+     for=".interfaces.ICompletedProjectsAction"
+     file="icons/project.png" />
+
 </configure>
