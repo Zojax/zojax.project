@@ -91,7 +91,7 @@ class BrowseProjects(object):
         results = catalog.searchResults(
             type = {'any_of': ('content.project','content.standaloneproject')},
             isDraft = {'any_of': (False,)},
-            projectState = {'any_of': (1,)},
+            projectState = {'any_of': (self.state,)},
             traversablePath = {'any_of': (searchContext,)}, sort_on='title')
 
         if not results:
@@ -166,7 +166,7 @@ class BrowseProjects(object):
 
         return info
 
-    
+
 class BrowseCompletedProjects(BrowseProjects):
     state = 2
 
@@ -183,7 +183,7 @@ class CompleteProject(object):
 
         self.redirect('./')
 
-        
+
 class ReopenProject(object):
 
     def update(self):
