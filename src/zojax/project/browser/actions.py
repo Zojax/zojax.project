@@ -132,5 +132,5 @@ class CompletedProjects(ContentAction):
         return '%s/completed.html'%absoluteURL(self.context, self.request)
 
     def isAvailable(self):
-        return True
+        return not self.request.getURL().endswith('completed.html')
 
