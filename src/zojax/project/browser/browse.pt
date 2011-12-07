@@ -1,4 +1,4 @@
-<tal:block i18n:domain="zojax.company" tal:define="hasGroups view/hasGroups">
+<tal:block i18n:domain="zojax.project" tal:define="hasGroups view/hasGroups">
   <h1 tal:content="context/title">Projects</h1>
   <div class="z-page-description" tal:content="context/description"></div>
 
@@ -10,8 +10,10 @@
     <input type="text" name="form.searchText" 
 	   tal:attributes="value request/form.searchText|nothing" />
     <input type="submit" class="z-form-button"
+           i18n:attributes="value"
 	   name="form.search" value="Search for a project" />
     <input type="submit" class="z-form-cancelbutton"
+           i18n:attributes="value"
 	   name="form.search.clear" value="Clear"
 	   tal:condition="request/form.searchText|nothing" />
   </form>
@@ -25,10 +27,12 @@
 	  &nbsp;
 	</dt>
 	<dd>
-	  <div class="project-managers">
+	  <div class="project-managers" i18n:translate="">
 	    Managers
 	  </div>
+	  <tal:block i18n:translate="">
 	  Project
+	  </tal:block>
 	</dd>
       </dl>
     </div>
@@ -69,19 +73,21 @@
 	      <div class="z-content-byline">
 		<tal:block condition="python:info['members'] is not None">
 		  <a tal:attributes="href info/membersURL">
-		    <tal:block content="info/members"/> Member(s)</a>,
+		    <tal:block content="info/members" i18n:translate=""/> Member(s)</a>,
 		</tal:block>
+		<tal:block i18n:translate="">
 		Created on
+		</tal:block>
 		<tal:block content="structure formatter:date,medium:info/created" />
-		<tal:block condition="not:info/created">Unknown</tal:block>
+		<tal:block condition="not:info/created" i18n:translate="">Unknown</tal:block>
 		<br />
 	      </div>
-	      <div class="project-info">
+	      <div class="project-info" i18n:translate="">
 		<span>Total tasks: </span>
-		<tal:block content="python:info['tasks'][0]"/>,
+		<tal:block i18n:name="total_task" content="python:info['tasks'][0]"/>,
 		<span>Completed tasks: </span>
-		<tal:block content="python:info['tasks'][1]"/>
-		(<tal:block content="python:info['tasks'][2]"/>%),
+		<tal:block i18n:name="completed_task" content="python:info['tasks'][1]"/>
+		(<tal:block i18n:name="percent" content="python:info['tasks'][2]"/>%),
 	      </div>
 	    </div>
 	    <tal:block define="context info/project"

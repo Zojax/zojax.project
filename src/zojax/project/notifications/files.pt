@@ -1,20 +1,20 @@
 <div class="container">
-  <strong>
-    <tal:block content="view/author"/> uploaded files to
-    task "<a tal:attributes="href view/url" tal:content="view/title"></a>"
+  <strong i18n:translate="">
+    <tal:block content="view/author" i18n:name="author"/> uploaded files to
+    task "<a tal:attributes="href view/url" tal:content="view/title" i18n:name="title"></a>"
   </strong>
 
   <div class="changes">
     <div class="information" style="float: none">
       <table>
 	<tr tal:condition="view/milestone">
-	  <th>&bull; Milestone</th>
+	  <th i18n:translate="">&bull; Milestone</th>
 	  <td>
 	    <a tal:attributes="href view/milestoneURL" 
 	       tal:content="view/milestone"></a></td>
 	</tr>
 	<tr>
-	  <th>&bull; Project</th>
+	  <th i18n:translate="">&bull; Project</th>
 	  <td>
 	    <a tal:attributes="href view/projectUrl" 
 	       tal:content="view/projectTitle"></a></td>
@@ -25,7 +25,7 @@
   <br />
 
   <div>
-    <span class="discreet">Files:</span>
+    <span class="discreet" i18n:translate="">Files:</span>
     <div tal:repeat="file view/attachs">
       <a tal:content="file/__name__"
 	 tal:attributes="href file/@@absolute_url"></a>
@@ -34,7 +34,7 @@
 
   <br />
   <div tal:condition="view/comment">
-    <span class="discreet">Comment:</span>
+    <span class="discreet" i18n:translate="">Comment:</span>
     <div tal:content="structure view/comment"></div>
   </div>
 

@@ -1,7 +1,7 @@
 <tal:block i18n:domain="zojax.project"
 	   tal:define="all_milestones view/listMilestones">
 
-  <h1 class="z-content-title">Milestones</h1>
+  <h1 class="z-content-title" i18n:translate="">Milestones</h1>
   <div class="z-page-description" tal:content="context/description"></div>
 
   <div tal:condition="python: not all_milestones[0] and not all_milestones[1]" i18n:translate="">
@@ -61,7 +61,7 @@
   	  </div>
   	  <div tal:condition="info/completedtasks">
   	    <br />
-  	    <h3>Completed tasks</h3>
+  	    <h3 i18n:translate="">Completed tasks</h3>
   	    <tal:block tal:content="structure info/completedtasks/render" />
   	    <br />
   	  </div>

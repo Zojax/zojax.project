@@ -34,9 +34,9 @@
 </div>
 
 <div tal:condition="context/subscribers">
-  <span class="discreet">Email subscribers:</span>
+  <span class="discreet" i18n:translate="">Email subscribers:</span>
   <tal:block tal:content="python:u', '.join(context.subscribers)" />
   <tal:block condition="context/manageSubscribers">
-    <a target="_blank" tal:attributes="href string:${context/manageSubscribers}/context.html/notifications/">(Configure Email  Notifications for this Project)</a>
+    <a target="_blank" tal:attributes="href string:${context/manageSubscribers}/context.html/notifications/" i18n:translate="">(Configure Email  Notifications for this Project)</a>
   </tal:block>
 </div>

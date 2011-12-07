@@ -11,38 +11,38 @@
 <div class="project-task-information">
   <table>
     <tr>
-      <th>&bull; Completed</th>
-      <td class="project-task-stats">
-	<tal:block content="view/percent"/>%,
-	<tal:block content="view/tcompleted" /> tasks of
-	<tal:block content="view/total" />
+      <th i18n:translate="">&bull; Completed</th>
+      <td class="project-task-stats" i18n:translate="">
+	<tal:block content="view/percent" i18n:name="percent"/>%,
+	<tal:block content="view/tcompleted" i18n:name="task_completed"/> tasks of
+	<tal:block content="view/total" i18n:name="task_total"/>
       </td>
     </tr>
     <tr>
-      <th>&bull; State</th>
+      <th i18n:translate="">&bull; State</th>
       <td class="project-task-state"
 	  tal:attributes="class python:context.state == 1 and 
 			  'project-task-active' or 'project-task-completed'"
 	  tal:content="python:context.state == 1 and 'Active' or 'Completed'"></td>
     </tr>
     <tr>
-      <th>&bull; Due Date</th>
+      <th i18n:translate="">&bull; Due Date</th>
       <td class="project-task-duedate" tal:content="structure formatter:date,full:context/date"></td>
     </tr>
     <tr tal:condition="view/owner">
-      <th>&bull; Submitted by</th>
+      <th i18n:translate="">&bull; Submitted by</th>
       <td tal:content="view/owner/title"></td>
     </tr>
     <tr>
-      <th>&bull; Created</th>
+      <th i18n:translate="">&bull; Created</th>
       <td class="nowrap" tal:content="structure formatter:fancyDatetime,medium:view/created"></td>
     </tr>
     <tr>
-      <th>&bull; Last updates</th>
+      <th i18n:translate="">&bull; Last updates</th>
       <td class="nowrap" tal:content="structure formatter:fancyDatetime,medium:view/modified"></td>
     </tr>
     <tr>
-      <th>&bull; Assigned to</th>
+      <th i18n:translate="">&bull; Assigned to</th>
       <td>
 	<tal:block condition="view/assignments"
 		   content="python:', '.join(view.assignments)" />
@@ -62,13 +62,13 @@
 <div class="visualClear"></div>
 
 <div class="project-tasks">
-  <h3>Active tasks</h3>
+  <h3 i18n:translate="">Active tasks</h3>
 
   <tal:block content="structure view/tasks/render" />
 </div>
 
 <div class="project-tasks" tal:condition="view/completed">
-  <h3>Completed tasks</h3>
+  <h3 i18n:translate="">Completed tasks</h3>
     
   <tal:block content="structure view/completed/render" />
 </div>

@@ -1,10 +1,10 @@
 <div class="container">
-  <strong>
-    <tal:block content="view/author"/> has added new task 
+  <strong i18n:translate="">
+    <tal:block content="view/author" i18n:name="author"/> has added new task 
     "<a tal:attributes="href view/url" tal:content="view/title"></a>"
     to the
     "<a tal:attributes="href view/projectUrl" 
-	tal:content="view/projectTitle"></a>"
+	tal:content="view/projectTitle" i18n:name="project_title"></a>"
   </strong>
   <br /><br />
 

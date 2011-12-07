@@ -1,11 +1,13 @@
 <tal:block i18n:domain="zojax.project">
-  <h1>Are you sure you want remove this task?</h1>
+  <h1 i18n:translate="">Are you sure you want remove this task?</h1>
 
   <form action="delete.html" method="post">
     <div class="z-form-controls">
       <input type="submit"
+             i18n:attributes="value"
 	     name="form.delete.cancel" value="Cancel" />
       <input type="submit" class="z-form-removebutton"
+             i18n:attributes="value"
 	     name="form.delete.content" value="Delete" />
     </div>
   </form>

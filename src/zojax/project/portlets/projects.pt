@@ -17,8 +17,8 @@
         </div>
 
         <div class="z-portlet-item-description" tal:condition="python:info['members'] is not None">
-    <div class="portlet-projects-members">
-            <tal:block content="info/members"/> Member(s)
+    <div class="portlet-projects-members" i18n:translate="">
+            <tal:block content="info/members" i18n:name="members"/> Member(s)
     </div>
     <div class="portlet-projects-owner">
        <strong i18n:translate="">Owned by:</strong>

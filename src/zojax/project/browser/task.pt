@@ -17,54 +17,54 @@
 <div class="project-task-information">
   <table>
     <tr>
-      <th>&bull; State</th>
+      <th i18n:translate="">&bull; State</th>
       <td class="project-task-state"
 	  tal:attributes="class python:context.state == 1 and 
 			  'project-task-active' or 'project-task-completed'"
 	  tal:content="python:context.state == 1 and 'Active' or 'Completed'"></td>
     </tr>
     <tr>
-      <th>&bull; Due Date</th>
+      <th i18n:translate="">&bull; Due Date</th>
       <td class="project-task-duedate" tal:content="structure formatter:date,full:context/date"></td>
     </tr>
     <tr tal:condition="view/project">
-      <th>&bull; Project</th>
+      <th i18n:translate="">&bull; Project</th>
       <td><a tal:attributes="href view/projectURL" tal:content="view/project"></a></td>
     </tr>
     <tr tal:condition="view/milestone">
-      <th>&bull; Milestone</th>
+      <th i18n:translate="">&bull; Milestone</th>
       <td><a tal:attributes="href view/milestoneURL" tal:content="view/milestone"></a></td>
     </tr>
     <tr tal:condition="view/priority">
-      <th>&bull; Priority</th>
+      <th i18n:translate="">&bull; Priority</th>
       <td tal:content="view/priority"></td>
     </tr>
     <tr tal:condition="view/status">
-      <th>&bull; Status</th>
+      <th i18n:translate="">&bull; Status</th>
       <td tal:content="view/status"></td>
     </tr>
     <tr tal:condition="view/severity">
-      <th>&bull; Severity</th>
+      <th i18n:translate="">&bull; Severity</th>
       <td tal:content="view/severity"></td>
     </tr>
     <tr tal:condition="view/categories">
-      <th>&bull; Category</th>
+      <th i18n:translate="">&bull; Category</th>
       <td tal:content="python:u', '.join(view.categories)"></td>
     </tr>
     <tr tal:condition="view/owner">
-      <th>&bull; Submitted by</th>
+      <th i18n:translate="">&bull; Submitted by</th>
       <td tal:content="view/owner/title"></td>
     </tr>
     <tr>
-      <th>&bull; Created</th>
+      <th i18n:translate="">&bull; Created</th>
       <td class="nowrap" tal:content="structure formatter:fancyDatetime,medium:view/created"></td>
     </tr>
     <tr>
-      <th>&bull; Last updated</th>
+      <th i18n:translate="">&bull; Last updated</th>
       <td class="nowrap" tal:content="structure formatter:fancyDatetime,medium:view/modified"></td>
     </tr>
     <tr>
-      <th>&bull; Assigned to</th>
+      <th i18n:translate="">&bull; Assigned to</th>
       <td>
 	<tal:block condition="view/assignments"
 		   content="python:', '.join(view.assignments)" />
@@ -83,15 +83,15 @@
 
 <div class="project-task-attachments"
      tal:condition="view/attachments">
-  <h3>Attachments</h3>
+  <h3 i18n:translate="">Attachments</h3>
   <ul>
     <li tal:repeat="attach view/attachments">
       <a target="_blank" tal:content="attach/title" 
 	 tal:attributes="href attach/attach/@@absolute_url"></a>
-      <div class="byline">
-	<tal:block i18n:translate="" content="attach/size"/>, by
-	<tal:block content="attach/owner" />,
-	<tal:block content="structure formatter:fancyDatetime,medium:attach/created" />
+      <div class="byline" i18n:translate="">
+	<tal:block content="attach/size" i18n:name="size"/>, by
+	<tal:block content="attach/owner" 18n:name="owner"/>,
+	<tal:block i18n:name="date" content="structure formatter:fancyDatetime,medium:attach/created" />
       </div>
     </li>
   </ul>

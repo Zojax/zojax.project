@@ -1,9 +1,13 @@
 <div class="container">
-  <strong>
-    <tal:block content="view/author"/> has 
-    <tal:block condition="python:view.state==1">re-opened</tal:block>
-    <tal:block condition="python:view.state==2">completed</tal:block>
-    task "<a tal:attributes="href view/url" tal:content="view/title"></a>"
+  <strong i18n:translate="">
+    <tal:block content="view/author" i18n:name="author"/> has 
+    <tal:block i18n:name="">
+      <tal:block condition="python:view.state==1" i18n:translate="">re-opened</tal:block>
+    </tal:block>
+    <tal:block i18n:name="">
+      <tal:block condition="python:view.state==2" i18n:translate="">completed</tal:block>
+    </tal:block>
+    task "<a tal:attributes="href view/url" tal:content="view/title" i18n:name="title"></a>"
   </strong>
   <br />
 
@@ -11,13 +15,13 @@
     <div class="information" style="float: none">
       <table>
 	<tr tal:condition="view/milestone">
-	  <th>&bull; Milestone</th>
+	  <th i18n:translate="">&bull; Milestone</th>
 	  <td>
 	    <a tal:attributes="href view/milestoneURL" 
 	       tal:content="view/milestone"></a></td>
 	</tr>
 	<tr>
-	  <th>&bull; Project</th>
+	  <th i18n:translate="">&bull; Project</th>
 	  <td>
 	    <a tal:attributes="href view/projectUrl" 
 	       tal:content="view/projectTitle"></a></td>

@@ -8,13 +8,13 @@
 	</td>
 	<td class="z-comment-body">
 	  <div class="z-comment-info">
-	    <span>
+	    <span i18n:translate="">
 	      Posted by
 	      <a tal:attributes="href string:${view/url}/"
-		 tal:omit-tag="not:view/url"
+		 tal:omit-tag="not:view/url" i18n:name="author"
 		 tal:content="view/author|string:Anonymous"></a>
 	      at
-	      <tal:block content="structure
+	      <tal:block i18n:name="date" content="structur
 				  formatter:fancyDatetime,full:context/date" />
 	    </span>
 	  </div>
@@ -39,11 +39,11 @@
 		<tr>
 		  <th></th>
 		  <tal:block condition="view/data">
-		    <th>Old value</th>
-		    <th>New value</th>
+		    <th i18n:translate="">Old value</th>
+		    <th i18n:translate="">New value</th>
 		  </tal:block>
 		  <tal:block condition="not:view/data">
-		    <th colspan="2">List</th>
+		    <th colspan="2" i18n:translate="">List</th>
 		  </tal:block>
 		</tr>
 	      </thead>
@@ -53,7 +53,7 @@
 		<td tal:content="python:item['new'] or '---'"></td>
 	      </tr>
 	      <tr tal:condition="view/attachments">
-		<th>&bull; Attachments</th>
+		<th i18n:translate="">&bull; Attachments</th>
 		<td colspan="2">
 		  <div class="project-task-attachments">
 		    <ul>

@@ -1,5 +1,5 @@
 <div i18n:domain="zojax.project" class="project-task-attachments">
-  <h3>Attachments</h3>
+  <h3 i18n:translate="">Attachments</h3>
 
   <tal:block tal:repeat="info view/attachments">
     <div class="project-task-attachment" tal:define="url info/attach/@@absolute_url">
@@ -11,9 +11,9 @@
       <div class="project-task-heading">
 	<a tal:attributes="href string:$url/" tal:content="info/title"></a>
       </div>
-      <div class="project-task-byline">
-	by <tal:block content="info/owner" /> at 
-	<tal:block content="structure formatter:fancyDatetime,medium:info/created" />
+      <div class="project-task-byline" i18n:translate="">
+	by <tal:block i18n:name="owner" content="info/owner" /> at 
+	<tal:block i18n:name="date" content="structure formatter:fancyDatetime,medium:info/created" />
       </div>
       <div class="project-task-size" i18n:translate="">
 	size: <tal:block content="info/size" i18n:name="size" />
@@ -24,7 +24,7 @@
     </div>
   </tal:block>
 
-  <tal:block tal:condition="not:view/attachments">
+  <tal:block tal:condition="not:view/attachments" i18n:translate="">
     There are no uploaded files.
   </tal:block>
 </div>

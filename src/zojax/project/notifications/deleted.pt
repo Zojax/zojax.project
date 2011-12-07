@@ -1,11 +1,14 @@
 <div class="container">
-  <strong>
-    <tal:block content="view/author"/> has deleted task.
+  <strong i18n:translate="">
+    <tal:block content="view/author" i18n:name="author"/> has deleted task.
   </strong>
   <br /><br />
-
-  Task: <tal:block content="context/title" />
+  <tal:block i18n:translate="">
+  Task: <tal:block content="context/title" i18n:name="title" />
+  </tal:block>
   <br />
-  Project: <a tal:attributes="href view/projectUrl" 
+  <tal:block i18n:translate="">
+  Project: <a i18n:name="project_title" tal:attributes="href view/projectUrl" 
 	      tal:content="view/projectTitle"></a>
+  </tal:block>
 </div>

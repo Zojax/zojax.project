@@ -1,10 +1,10 @@
 <div class="container">
   <strong>
-    <tal:block tal:condition="not:view/context0/changes">
-      <tal:block content="view/author"/> has added a comment to task
+    <tal:block tal:condition="not:view/context0/changes" i18n:translate="">
+      <tal:block content="view/author" i18n:name="author"/> has added a comment to task
     </tal:block>
-    <tal:block tal:condition="view/context0/changes">
-      <tal:block content="view/author"/> has modified a task
+    <tal:block tal:condition="view/context0/changes" i18n:translate="">
+      <tal:block content="view/author" i18n:name="author"/> has modified a task
     </tal:block>
     "<a tal:attributes="href view/url" tal:content="view/title"></a>"
   </strong>
@@ -14,13 +14,13 @@
     <div class="information" style="float: none">
       <table>
 	<tr tal:condition="view/milestone">
-	  <th>&bull; Milestone</th>
+	  <th i18n:translate="">&bull; Milestone</th>
 	  <td>
 	    <a tal:attributes="href view/milestoneURL" 
 	       tal:content="view/milestone"></a></td>
 	</tr>
 	<tr>
-	  <th>&bull; Project</th>
+	  <th i18n:translate="">&bull; Project</th>
 	  <td>
 	    <a tal:attributes="href view/projectUrl" 
 	       tal:content="view/projectTitle"></a></td>
@@ -31,13 +31,13 @@
   <br />
 
   <div tal:condition="view/context0/comment">
-    <span class="discreet">Comment:</span>
+    <span class="discreet" i18n:translate="">Comment:</span>
     <div tal:content="structure view/context0/comment"></div>
   </div>
   <br />
 
   <div class="changes" tal:condition="python:view.changes or view.attachments">
-    <span class="discreet">Changes:</span>
+    <span class="discreet" i18n:translate="">Changes:</span>
     <br />
 
     <div class="information" style="float:none">
@@ -45,8 +45,8 @@
 	<tr>
 	  <th></th>
 	  <tal:block condition="view/changes">
-	    <th>Old value</th>
-	    <th>New value</th>
+	    <th i18n:translate="">Old value</th>
+	    <th i18n:translate="">New value</th>
 	  </tal:block>
 	  <tal:block condition="not:view/changes">
 	    <th colspan="2">&nbsp;</th>
@@ -58,7 +58,7 @@
 	  <td tal:content="python:item['new'] or '---'"></td>
 	</tr>
 	<tr tal:condition="view/attachments">
-	  <th>&bull; Attachments</th>
+	  <th i18n:translate="">&bull; Attachments</th>
 	  <td colspan="2">
 	    <div>
 	      <ul>
