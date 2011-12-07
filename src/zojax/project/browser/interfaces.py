@@ -101,3 +101,9 @@ class IProjectInformation(IPageElement):
 
 class IProjectsInformation(IPageElement):
     """ project information """
+
+
+class ICompletedProjectsAction(IAction, IManageContentCategory):
+    """ completed projects view """
+
+

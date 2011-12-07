@@ -7,7 +7,7 @@
   </div>
 
   <form action="index.html" method="post" tal:condition="hasGroups">
-    <input type="text" name="form.searchText" 
+    <input type="text" name="form.searchText"
 	   tal:attributes="value request/form.searchText|nothing" />
     <input type="submit" class="z-form-button"
            i18n:attributes="value"
@@ -19,6 +19,12 @@
   </form>
 
   <div class="groups-manager projects-browse" tal:condition="hasGroups">
+
+    <div tal:condition="python: view.state == 2">
+      <strong>FINISHED</strong> projects are listed below, also you can see <a tal:attributes="href string:${context/@@absolute_url}/">ACTIVE Projects</a>.
+    </div>
+    <br />
+
     <tal:block content="structure view/batch/@@pagelet/batch.view" />
 
     <div class="groups-group groups-header">
@@ -36,14 +42,14 @@
 	</dd>
       </dl>
     </div>
-    
+
     <tal:block tal:repeat="uid view/batch"
 	       tal:define="url context/@@absolute_url">
       <div class="groups-group"
 	   tal:define="info python:view.getGroupInfo(uid);
 		       userurl uid/@@absolute_url"
 	   tal:condition="info"
-	   tal:attributes="class python:repeat['uid'].odd() 
+	   tal:attributes="class python:repeat['uid'].odd()
 			   and 'groups-group even' or 'groups-group odd'">
 	<dl>
 	  <dt>

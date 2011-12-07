@@ -28,6 +28,13 @@
      class=".browse.BrowseProjects"
      permission="zope.View" />
 
+  <zojax:pagelet
+       name="completed.html"
+       for="..interfaces.IProjects"
+       template="browse.pt"
+       class=".browse.BrowseCompletedProjects"
+       permission="zope.View" />
+
   <!-- project view -->
   <browser:defaultView
      name="index.html"
@@ -87,12 +94,12 @@
      name="complete.html"
      for="..interfaces.IProject"
      class=".browse.CompleteProject"
-     permission="zojax.CompleteTask" />
+     permission="zojax.CompleteProject" />
 
   <zojax:pagelet
      name="reopen.html"
      for="..interfaces.IProject"
      class=".browse.ReopenProject"
-     permission="zojax.ReopenTask" />
+     permission="zojax.ReopenProject" />
 
 </configure>

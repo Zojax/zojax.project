@@ -19,13 +19,15 @@ from zope import interface, component
 from zope.security import checkPermission
 from zope.traversing.browser import absoluteURL
 from zojax.content.actions.action import Action
+from zojax.content.actions.contentactions import ContentAction
 from zojax.members.browser.join import JoinAction
 from zojax.content.draft.interfaces import IDraftedContent
-from zojax.project.interfaces import _, ITask, IMilestone, IProject, ITasks
+from zojax.project.interfaces import _, ITask, IMilestone, IProject, ITasks, \
+    IProjectState, IProjects
 
 from interfaces import \
     IAddTaskAction, IAddMilestoneAction, IUploadAttachmentsAction, \
-    ICompleteProjectAction, IReopenProjectAction
+    ICompleteProjectAction, IReopenProjectAction, ICompletedProjectsAction
 
 
 class AddTask(Action):
@@ -85,7 +87,7 @@ class JoinAction(JoinAction):
 
 
 class CompleteProject(Action):
-    component.adapts(IProject, interface.Interface)
+    component.adapts(IProjectState, interface.Interface)
     interface.implements(ICompleteProjectAction)
 
     weight = 5
@@ -101,7 +103,7 @@ class CompleteProject(Action):
 
 
 class ReopenProject(Action):
-    component.adapts(IProject, interface.Interface)
+    component.adapts(IProjectState, interface.Interface)
     interface.implements(IReopenProjectAction)
 
     weight = 5
@@ -115,3 +117,20 @@ class ReopenProject(Action):
     def isAvailable(self):
         return self.context.state == 2 and \
             checkPermission('zojax.ReopenProject', self.context)
+
+
+class CompletedProjects(ContentAction):
+    component.adapts(IProjects, interface.Interface)
+    interface.implements(ICompletedProjectsAction)
+
+    weight = 5
+    title = _(u'Completed Projects')
+    permission = 'zope.Public'
+
+    @property
+    def url(self):
+        return '%s/completed.html'%absoluteURL(self.context, self.request)
+
+    def isAvailable(self):
+        return not self.request.getURL().endswith('completed.html')
+

@@ -37,6 +37,7 @@ class BrowseProjects(object):
 
     hasGroups = True
     batch = Batch((), 15)
+    state = 1
 
     def update(self):
         context = self.context
@@ -69,7 +70,7 @@ class BrowseProjects(object):
                     'type': {'any_of': (
                             'content.project','content.standaloneproject')},
                     'isDraft': {'any_of': (False,)},
-                    'projectTaskState': {'any_of': (1,)},
+                    'projectState': {'any_of': (self.state,)},
                     'traversablePath': {'any_of': (searchContext,)},
                     'searchableText': s}
 
@@ -90,7 +91,7 @@ class BrowseProjects(object):
         results = catalog.searchResults(
             type = {'any_of': ('content.project','content.standaloneproject')},
             isDraft = {'any_of': (False,)},
-            projectTaskState = {'any_of': (1,)},
+            projectState = {'any_of': (self.state,)},
             traversablePath = {'any_of': (searchContext,)}, sort_on='title')
 
         if not results:
@@ -166,25 +167,31 @@ class BrowseProjects(object):
         return info
 
 
+class BrowseCompletedProjects(BrowseProjects):
+    state = 2
+
+
 class CompleteProject(object):
 
     def update(self):
 
         if self.context.state == 1:
-            self.context.completeTask()
+            self.context.completeProject()
             event.notify(ObjectModifiedEvent(self.context))
 
             IStatusMessage(self.request).add(_('Project has been completed.'))
 
         self.redirect('./')
 
+
 class ReopenProject(object):
 
     def update(self):
         if self.context.state != 1:
-            self.context.reopenTask()
+            self.context.reopenProject()
             event.notify(ObjectModifiedEvent(self.context))
 
             IStatusMessage(self.request).add(_('Project has been reopened.'))
 
         self.redirect('./')
+
