@@ -90,7 +90,7 @@
 	 tal:attributes="href attach/attach/@@absolute_url"></a>
       <div class="byline" i18n:translate="">
 	<tal:block content="attach/size" i18n:name="size"/>, by
-	<tal:block content="attach/owner" 18n:name="owner"/>,
+	<tal:block content="attach/owner" i18n:name="owner"/>,
 	<tal:block i18n:name="date" content="structure formatter:fancyDatetime,medium:attach/created" />
       </div>
     </li>
