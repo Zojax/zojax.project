@@ -61,7 +61,7 @@
 			<a target="_blank" tal:content="attach/title" 
 			   tal:attributes="href attach/attach/@@absolute_url"></a>
 			<span class="discreet">
-			  (<tal:block i18n:translate="" content="attach/size"/>)
+			  (<tal:block content="attach/size"/>)
 			</span>
 		      </li>
 		    </ul>

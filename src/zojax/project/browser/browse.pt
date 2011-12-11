@@ -79,7 +79,7 @@
 	      <div class="z-content-byline">
 		<tal:block condition="python:info['members'] is not None">
 		  <a tal:attributes="href info/membersURL">
-		    <tal:block content="info/members" i18n:translate=""/> Member(s)</a>,
+		    <tal:block content="info/members" /> Member(s)</a>,
 		</tal:block>
 		<tal:block i18n:translate="">
 		Created on
