@@ -1,0 +1,1018 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Sun Dec 11 11:24:41 2011\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/project/activity.py:37
+#: src/zojax/project/notifications/state.pt:5
+msgid "re-opened"
+msgstr ""
+
+#: src/zojax/project/activity.py:39
+#: src/zojax/project/notifications/state.pt:8
+msgid "completed"
+msgstr ""
+
+#: src/zojax/project/activity.py:45
+msgid "Task state"
+msgstr ""
+
+#: src/zojax/project/activity.py:46
+msgid "Task state has been changed."
+msgstr ""
+
+#: src/zojax/project/browser/actions.py:110
+#: src/zojax/project/browser/state.py:49
+msgid "Re-open"
+msgstr ""
+
+#: src/zojax/project/browser/actions.py:127
+msgid "Completed Projects"
+msgstr ""
+
+#: src/zojax/project/browser/actions.py:38
+msgid "Add Task"
+msgstr ""
+
+#: src/zojax/project/browser/actions.py:57
+msgid "Add Milestone"
+msgstr ""
+
+#: src/zojax/project/browser/actions.py:76
+msgid "Upload files"
+msgstr ""
+
+#: src/zojax/project/browser/actions.py:86
+msgid "Join this project"
+msgstr ""
+
+#: src/zojax/project/browser/actions.py:94
+#: src/zojax/project/browser/state.py:33
+msgid "Complete"
+msgstr ""
+
+#: src/zojax/project/browser/browse.pt:12
+msgid "Search for a project"
+msgstr ""
+
+#: src/zojax/project/browser/browse.pt:15
+msgid "Clear"
+msgstr ""
+
+#: src/zojax/project/browser/browse.pt:36
+msgid "Managers"
+msgstr ""
+
+#: src/zojax/project/browser/browse.pt:5
+msgid "No projects have been created."
+msgstr ""
+
+#: src/zojax/project/browser/browse.pt:84
+msgid "Created on"
+msgstr ""
+
+#: src/zojax/project/browser/browse.pt:96
+msgid "<span>Total tasks: </span> ${total_task}, <span>Completed tasks: </span> ${completed_task} (${percent}%),"
+msgstr ""
+
+#: src/zojax/project/browser/browse.py:182
+msgid "Project has been completed."
+msgstr ""
+
+#: src/zojax/project/browser/browse.py:194
+msgid "Project has been reopened."
+msgstr ""
+
+#: src/zojax/project/browser/browse.py:88
+msgid "Please enter one or more words for search."
+msgstr ""
+
+#: src/zojax/project/browser/milestone.pt:14
+msgid "&bull; Completed"
+msgstr ""
+
+#: src/zojax/project/browser/milestone.pt:18
+msgid "${percent}%, ${task_completed} tasks of ${task_total}"
+msgstr ""
+
+#: src/zojax/project/browser/milestone.pt:3
+msgid "Milestone over due, ${days} days late."
+msgstr ""
+
+#: src/zojax/project/browser/milestone.pt:41
+msgid "&bull; Last updates"
+msgstr ""
+
+#: src/zojax/project/browser/milestone.py:214
+#: src/zojax/project/browser/milestone.py:226
+msgid "Milestone has been completed."
+msgstr ""
+
+#: src/zojax/project/browser/milestone.py:237
+msgid "Milestone has been reopened."
+msgstr ""
+
+#: src/zojax/project/browser/milestone.py:50
+#: src/zojax/project/browser/tasks.py:54
+#: src/zojax/project/browser/milestones.pt:60
+msgid "There are no active tasks."
+msgstr ""
+
+#: src/zojax/project/browser/milestone.py:70
+#: src/zojax/project/browser/tasks.py:67
+msgid "There are no completed tasks."
+msgstr ""
+
+#: src/zojax/project/browser/milestonecomplete.pt:14
+msgid "Complete all tasks"
+msgstr ""
+
+#: src/zojax/project/browser/milestonecomplete.pt:2
+msgid "Complete milestone"
+msgstr ""
+
+#: src/zojax/project/browser/milestones.pt:24
+msgid "${days} days late"
+msgstr ""
+
+#: src/zojax/project/browser/milestones.pt:30
+msgid "complete"
+msgstr ""
+
+#: src/zojax/project/browser/milestones.pt:34
+msgid "${completed} tasks of ${total}"
+msgstr ""
+
+#: src/zojax/project/browser/milestones.pt:7
+msgid "No milestones have been created."
+msgstr ""
+
+#: src/zojax/project/browser/project.pt:10
+msgid "These is private project. You have to be member of this project to view content and participate. <br /><br /> <a href=\"../\">x</a>"
+msgstr ""
+
+#: src/zojax/project/browser/project.pt:10
+msgid "Back to projects listing"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:12
+msgid "assigned to ${milestone}"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:20
+#: src/zojax/project/browser/milestone.pt:22
+#: src/zojax/project/notifications/taskpreview.pt:6
+msgid "&bull; State"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:27
+#: src/zojax/project/browser/milestone.pt:29
+#: src/zojax/project/notifications/taskpreview.pt:13
+msgid "&bull; Due Date"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:3
+msgid "Task over due, ${days} days late."
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:31
+#: src/zojax/project/notifications/modified.pt:18
+#: src/zojax/project/notifications/files.pt:17
+#: src/zojax/project/notifications/comment.pt:23
+#: src/zojax/project/notifications/state.pt:24
+#: src/zojax/project/notifications/taskpreview.pt:17
+msgid "&bull; Project"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:35
+#: src/zojax/project/notifications/modified.pt:12
+#: src/zojax/project/notifications/files.pt:11
+#: src/zojax/project/notifications/comment.pt:17
+#: src/zojax/project/notifications/state.pt:18
+#: src/zojax/project/notifications/taskpreview.pt:22
+msgid "&bull; Milestone"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:39
+#: src/zojax/project/notifications/taskpreview.pt:27
+msgid "&bull; Priority"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:43
+#: src/zojax/project/notifications/taskpreview.pt:31
+msgid "&bull; Status"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:47
+#: src/zojax/project/notifications/taskpreview.pt:35
+msgid "&bull; Severity"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:51
+#: src/zojax/project/notifications/taskpreview.pt:39
+msgid "&bull; Category"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:55
+#: src/zojax/project/browser/milestone.pt:33
+#: src/zojax/project/notifications/taskpreview.pt:43
+msgid "&bull; Submitted by"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:59
+#: src/zojax/project/browser/milestone.pt:37
+#: src/zojax/project/notifications/taskpreview.pt:47
+msgid "&bull; Created"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:63
+#: src/zojax/project/notifications/taskpreview.pt:52
+msgid "&bull; Last updated"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:67
+#: src/zojax/project/browser/milestone.pt:45
+#: src/zojax/project/notifications/taskpreview.pt:57
+msgid "&bull; Assigned to"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:71
+#: src/zojax/project/browser/milestone.pt:49
+#: src/zojax/project/notifications/taskpreview.pt:61
+msgid "Not assigned"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:86
+msgid "Attachments"
+msgstr ""
+
+#: src/zojax/project/browser/task.pt:94
+msgid "${size}, by ${owner}, ${date}"
+msgstr ""
+
+#: src/zojax/project/browser/task.py:175
+#: src/zojax/project/browser/taskattachments.py:129
+#: src/zojax/project/browser/browse.pt:88
+msgid "Unknown"
+msgstr ""
+
+#: src/zojax/project/browser/task.py:196
+msgid "Content has been deleted."
+msgstr ""
+
+#: src/zojax/project/browser/task.py:214
+msgid "Task has been completed."
+msgstr ""
+
+#: src/zojax/project/browser/task.py:237
+msgid "Milestone and Task have been reopened."
+msgstr ""
+
+#: src/zojax/project/browser/task.py:241
+msgid "Task has been reopened."
+msgstr ""
+
+#: src/zojax/project/browser/taskattachments.pt:16
+msgid "by ${owner} at ${date}"
+msgstr ""
+
+#: src/zojax/project/browser/taskattachments.pt:19
+msgid "size: ${size}"
+msgstr ""
+
+#: src/zojax/project/browser/taskattachments.pt:27
+msgid "There are no uploaded files."
+msgstr ""
+
+#: src/zojax/project/browser/taskattachments.py:112
+msgid "Attachments have been uploaded."
+msgstr ""
+
+#: src/zojax/project/browser/taskattachments.py:69
+#: src/zojax/project/browser/taskdelete.pt:6
+#: src/zojax/project/browser/milestonecomplete.pt:16
+msgid "Cancel"
+msgstr ""
+
+#: src/zojax/project/browser/taskattachments.py:73
+msgid "Upload"
+msgstr ""
+
+#: src/zojax/project/browser/taskcategory.py:33
+msgid "Add Category"
+msgstr ""
+
+#: src/zojax/project/browser/taskcategory.py:47
+msgid "Manage categories"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.pt:17
+msgid "Posted by ${author} at ${date}"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.pt:42
+#: src/zojax/project/notifications/comment.pt:48
+msgid "Old value"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.pt:43
+#: src/zojax/project/notifications/modified.pt:36
+#: src/zojax/project/notifications/comment.pt:49
+msgid "New value"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.pt:46
+msgid "List"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.pt:56
+#: src/zojax/project/notifications/comment.pt:61
+msgid "&bull; Attachments"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.py:298
+msgid "Comment has been added."
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.py:333
+msgid "Workflow state"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.py:65
+msgid "Comment"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomment.py:95
+#: src/zojax/project/browser/taskcomment.py:189
+msgid "Add comment"
+msgstr ""
+
+#: src/zojax/project/browser/taskcommentform.pt:37
+msgid "Email subscribers:"
+msgstr ""
+
+#: src/zojax/project/browser/taskcommentform.pt:40
+msgid "(Configure Email Notifications for this Project)"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomments.pt:5
+msgid "Comments rss feed"
+msgstr ""
+
+#: src/zojax/project/browser/taskcomments.pt:5
+msgid "${rss_link} Comments"
+msgstr ""
+
+#: src/zojax/project/browser/taskdelete.pt:2
+msgid "Are you sure you want remove this task?"
+msgstr ""
+
+#: src/zojax/project/browser/taskdelete.pt:9
+msgid "Delete"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:109
+msgid "Submitted by"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:127
+msgid "Submitted"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:140
+msgid "Modified"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:154
+#: src/zojax/project/interfaces.py:246
+#: src/zojax/project/milestone.zcml:8
+msgid "Milestone"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:184
+#: src/zojax/project/interfaces.py:275
+#: src/zojax/project/interfaces.py:292
+msgid "Severity"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:216
+msgid "Status"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:233
+#: src/zojax/project/interfaces.py:179
+msgid "Due date"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:260
+#: src/zojax/project/interfaces.py:281
+#: src/zojax/project/taskcategory.zcml:7
+msgid "Category"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:293
+#: src/zojax/project/interfaces.py:190
+#: src/zojax/project/interfaces.py:206
+#: src/zojax/project/interfaces.py:261
+msgid "Assigned to"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:47
+#: src/zojax/project/feeds.py:38
+#: src/zojax/project/tasks.py:77
+#: src/zojax/project/tasks.zcml:7
+msgid "Tasks"
+msgstr ""
+
+#: src/zojax/project/browser/tasks.py:81
+msgid "Task id"
+msgstr ""
+
+#: src/zojax/project/configure.zcml:17
+msgid "Simple project management for zojax."
+msgstr ""
+
+#: src/zojax/project/configure.zcml:17
+msgid "Simple Project Management"
+msgstr ""
+
+#: src/zojax/project/feeds.py:39
+msgid "Recent project tasks."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:104
+msgid "Number of active tasks on page."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:108
+msgid "Number of completed tasks on page."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:118
+#: src/zojax/project/interfaces.py:136
+#: src/zojax/project/interfaces.py:152
+msgid "Open/Completed state"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:180
+msgid "Completion date."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:201
+#: src/zojax/project/interfaces.py:241
+msgid "Title"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:202
+msgid "Milestone title."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:210
+#: src/zojax/project/interfaces.py:252
+msgid "Information"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:211
+msgid "Milestone detailed information."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:219
+#: src/zojax/project/browser/tasks.pt:2
+#: src/zojax/project/browser/milestone.pt:65
+msgid "Active tasks"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:220
+msgid "Show active tasks in milestones browsing view."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:225
+#: src/zojax/project/browser/tasks.pt:8
+#: src/zojax/project/browser/milestone.pt:71
+msgid "Completed tasks"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:226
+msgid "Show completed tasks in milestones browsing view."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:242
+msgid "Task title."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:247
+msgid "Assign task to milestone."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:253
+msgid "Task detailed information."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:269
+msgid "Priority"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:276
+msgid "Select task severity."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:282
+msgid "Select task category."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:293
+msgid "Ticket severity."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:42
+msgid "Project type"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:43
+msgid "Select type for this project."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:49
+msgid "Logo"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:50
+msgid "Project logo"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:55
+msgid "Start date"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:56
+msgid "Project starting date."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:60
+msgid "End date"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:61
+msgid "Project ending date."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:65
+msgid "Text"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:66
+msgid "Project long description."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:80
+msgid "Page count"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:81
+msgid "Number of projects per page."
+msgstr ""
+
+#: src/zojax/project/interfaces.py:90
+msgid "Browse all"
+msgstr ""
+
+#: src/zojax/project/interfaces.py:91
+msgid "Browse projects in all sub spaces."
+msgstr ""
+
+#: src/zojax/project/milestone.py:81
+#: src/zojax/project/milestone.zcml:62
+#: src/zojax/project/browser/milestones.pt:4
+msgid "Milestones"
+msgstr ""
+
+#: src/zojax/project/milestone.py:82
+msgid "Project milestones."
+msgstr ""
+
+#: src/zojax/project/milestone.zcml:8
+msgid "Project milestone"
+msgstr ""
+
+#: src/zojax/project/notifications/added.pt:6
+msgid "${author} has added new task \"${title}\" to the \"${project_title}\""
+msgstr ""
+
+#: src/zojax/project/notifications/comment.pt:4
+msgid "${author} has added a comment to task"
+msgstr ""
+
+#: src/zojax/project/notifications/comment.pt:7
+msgid "${author} has modified a task"
+msgstr ""
+
+#: src/zojax/project/notifications/deleted.pt:11
+msgid "Project: ${project_title}"
+msgstr ""
+
+#: src/zojax/project/notifications/deleted.pt:3
+msgid "${author} has deleted task."
+msgstr ""
+
+#: src/zojax/project/notifications/deleted.pt:7
+msgid "Task: ${title}"
+msgstr ""
+
+#: src/zojax/project/notifications/files.pt:28
+msgid "Files:"
+msgstr ""
+
+#: src/zojax/project/notifications/files.pt:37
+#: src/zojax/project/notifications/comment.pt:34
+msgid "Comment:"
+msgstr ""
+
+#: src/zojax/project/notifications/files.pt:4
+msgid "${author} uploaded files to task \"${title}\""
+msgstr ""
+
+#: src/zojax/project/notifications/modified.pt:28
+#: src/zojax/project/notifications/comment.pt:40
+msgid "Changes:"
+msgstr ""
+
+#: src/zojax/project/notifications/modified.pt:4
+msgid "${author} has modified task \"${title}\""
+msgstr ""
+
+#: src/zojax/project/notifications/notifications.py:39
+#: src/zojax/project/notifications/notifications.py:47
+msgid "Task notifications"
+msgstr ""
+
+#: src/zojax/project/notifications/notifications.py:40
+#: src/zojax/project/notifications/notifications.py:48
+msgid "All task notifications (add/edit/delete, comments, files upload, completed/re-open actions)."
+msgstr ""
+
+#: src/zojax/project/notifications/notifications.py:56
+#: src/zojax/project/notifications/notifications.py:64
+msgid "Task notifications by assignee"
+msgstr ""
+
+#: src/zojax/project/notifications/notifications.py:57
+#: src/zojax/project/notifications/notifications.py:65
+msgid "Only assignee will receive notifications for add/edit/delete, comments, files upload, completed/re-open actions."
+msgstr ""
+
+#: src/zojax/project/notifications/notifications.py:73
+#: src/zojax/project/notifications/notifications.py:81
+msgid "Milestone notifications"
+msgstr ""
+
+#: src/zojax/project/notifications/notifications.py:74
+#: src/zojax/project/notifications/notifications.py:82
+msgid "add, edit due date, completed/re-open actions."
+msgstr ""
+
+#: src/zojax/project/notifications/state.pt:10
+msgid "${author} has x x task \"${title}\""
+msgstr ""
+
+#: src/zojax/project/notifications/taskpreview.pt:1
+msgid "Task information"
+msgstr ""
+
+#: src/zojax/project/overview.py:27
+msgid "Project overview."
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:11
+msgid "Allow create new projects."
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:11
+msgid "Add project"
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:16
+msgid "Submit project"
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:16
+msgid "Allow submit new projects."
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:21
+msgid "Add milestone"
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:21
+msgid "Allow create new milestones."
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:26
+msgid "Allow reopen project."
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:26
+msgid "Reopen project"
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:31
+msgid "Allow complete project."
+msgstr ""
+
+#: src/zojax/project/permissions.zcml:31
+msgid "Complete project"
+msgstr ""
+
+#: src/zojax/project/portlets/configure.zcml:15
+msgid "Projects workspace right column"
+msgstr ""
+
+#: src/zojax/project/portlets/configure.zcml:23
+msgid "Project left column"
+msgstr ""
+
+#: src/zojax/project/portlets/configure.zcml:30
+msgid "Project right column"
+msgstr ""
+
+#: src/zojax/project/portlets/configure.zcml:38
+msgid "Project content column"
+msgstr ""
+
+#: src/zojax/project/portlets/configure.zcml:47
+#: src/zojax/project/portlets/configure.zcml:61
+msgid "Basic project information (logo, members, project type, etc)."
+msgstr ""
+
+#: src/zojax/project/portlets/configure.zcml:47
+#: src/zojax/project/portlets/configure.zcml:61
+#: src/zojax/project/portlets/overview.pt:2
+msgid "Project overview"
+msgstr ""
+
+#: src/zojax/project/portlets/configure.zcml:76
+#: src/zojax/project/portlets/configure.zcml:89
+msgid "Projects listing."
+msgstr ""
+
+#: src/zojax/project/portlets/configure.zcml:8
+msgid "Projects workspace left column"
+msgstr ""
+
+#: src/zojax/project/portlets/interfaces.py:113
+#: src/zojax/project/portlets/interfaces.py:139
+msgid "Show project logo"
+msgstr ""
+
+#: src/zojax/project/portlets/interfaces.py:121
+msgid "Label"
+msgstr ""
+
+#: src/zojax/project/portlets/interfaces.py:125
+msgid "Number of items"
+msgstr ""
+
+#: src/zojax/project/portlets/interfaces.py:126
+msgid "Number of items to display"
+msgstr ""
+
+#: src/zojax/project/portlets/overviewcontent.pt:14
+#: src/zojax/project/portlets/projects.pt:24
+#: src/zojax/project/portlets/overview.pt:18
+#: src/zojax/project/portlets/projectscontent.pt:24
+msgid "Owned by:"
+msgstr ""
+
+#: src/zojax/project/portlets/overviewcontent.pt:16
+#: src/zojax/project/portlets/projects.pt:28
+#: src/zojax/project/portlets/overview.pt:20
+#: src/zojax/project/portlets/projectscontent.pt:26
+msgid "Created:"
+msgstr ""
+
+#: src/zojax/project/portlets/overviewcontent.pt:18
+#: src/zojax/project/portlets/projects.pt:32
+#: src/zojax/project/portlets/overview.pt:22
+#: src/zojax/project/portlets/projectscontent.pt:28
+msgid "Project Type:"
+msgstr ""
+
+#: src/zojax/project/portlets/projects.pt:21
+msgid "${members} Member(s)"
+msgstr ""
+
+#: src/zojax/project/portlets/projects.pt:44
+msgid "More projects..."
+msgstr ""
+
+#: src/zojax/project/project.zcml:66
+msgid "Project with membership."
+msgstr ""
+
+#: src/zojax/project/project.zcml:66
+msgid "Standalone Project"
+msgstr ""
+
+#: src/zojax/project/project.zcml:7
+#: src/zojax/project/project.zcml:7
+#: src/zojax/project/browser/browse.pt:39
+msgid "Project"
+msgstr ""
+
+#: src/zojax/project/task.zcml:7
+msgid "Task"
+msgstr ""
+
+#: src/zojax/project/task.zcml:7
+msgid "Project task"
+msgstr ""
+
+#: src/zojax/project/taskcategory.zcml:28
+msgid "Category container"
+msgstr ""
+
+#: src/zojax/project/taskcategory.zcml:7
+msgid "Task category."
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:11
+msgid "Allow submit new project tasks."
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:11
+msgid "Submit task"
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:16
+msgid "Reopne task"
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:16
+msgid "Allow reopen task."
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:21
+msgid "Complete task"
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:21
+msgid "Allow complete task."
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:26
+msgid "Modify task attributes"
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:6
+msgid "Add task"
+msgstr ""
+
+#: src/zojax/project/taskpermissions.zcml:6
+msgid "Allow create new project tasks."
+msgstr ""
+
+#: src/zojax/project/tasks.py:78
+msgid "Project tasks."
+msgstr ""
+
+#: src/zojax/project/types.py:26
+msgid "Open Project"
+msgstr ""
+
+#: src/zojax/project/types.py:27
+msgid "Membership is open and non-members can view content and participate."
+msgstr ""
+
+#: src/zojax/project/types.py:29
+msgid "Members Only Project"
+msgstr ""
+
+#: src/zojax/project/types.py:30
+msgid "Membership is open and non-members can view content, but must join to participate."
+msgstr ""
+
+#: src/zojax/project/types.py:33
+msgid "Private Project"
+msgstr ""
+
+#: src/zojax/project/types.py:34
+msgid "Membership is by approval/invitation only and only members can view content and participate."
+msgstr ""
+
+#: src/zojax/project/types.py:37
+msgid "Secret Project"
+msgstr ""
+
+#: src/zojax/project/types.py:38
+msgid "Membership is by invitation only, only members may participate, and the group is not listed in the group directory."
+msgstr ""
+
+#: src/zojax/project/vocabulary.py:35
+msgid "Open"
+msgstr ""
+
+#: src/zojax/project/vocabulary.py:36
+msgid "Completed"
+msgstr ""
+
+#: src/zojax/project/vocabulary.py:40
+msgid "Highest"
+msgstr ""
+
+#: src/zojax/project/vocabulary.py:41
+msgid "High"
+msgstr ""
+
+#: src/zojax/project/vocabulary.py:42
+msgid "Medium"
+msgstr ""
+
+#: src/zojax/project/vocabulary.py:43
+msgid "Low"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:12
+msgid "Permission that allow change task workflow state to Approved"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:16
+msgid "Permission that allow change task workflow state to Approving"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:20
+msgid "Permission that allow change task workflow state to Rejected"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:24
+msgid "Permission that allow change task workflow state to In-process"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:28
+msgid "Permission that allow change task workflow state to On-Hold"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:32
+msgid "Permission that allow change task workflow state to Rework"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:36
+msgid "Permission that allow change task workflow state to Waiting-Data"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:40
+msgid "Permission that allow change task workflow state to Waiting-Data-Added"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:44
+msgid "Permission that allow change task workflow state to Testing"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:48
+msgid "Permission that allow change task workflow state to Deferred"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:52
+msgid "Permission that allow change task workflow state to Restart"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:56
+msgid "Permission that allow change task workflow state to Released"
+msgstr ""
+
+#: src/zojax/project/workflowpermissions.zcml:8
+msgid "Permission that allow change task workflow state to Accepted"
+msgstr ""
+
+#: src/zojax/project/workspace.py:50
+#: src/zojax/project/workspace.py:68
+msgid "Projects container."
+msgstr ""
+
+#: src/zojax/project/workspace.py:59
+#: src/zojax/project/workspace.py:77
+#: src/zojax/project/workspace.zcml:11
+#: src/zojax/project/workspace.zcml:47
+#: src/zojax/project/portlets/configure.zcml:76
+#: src/zojax/project/portlets/configure.zcml:89
+msgid "Projects"
+msgstr ""
+
