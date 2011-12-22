@@ -93,7 +93,7 @@
 		<tal:block i18n:name="total_task" content="python:info['tasks'][0]"/>,
 		<span>Completed tasks: </span>
 		<tal:block i18n:name="completed_task" content="python:info['tasks'][1]"/>
-		(<tal:block i18n:name="percent" content="python:info['tasks'][2]"/>%),
+		(<tal:block i18n:name="percent" content="python:info['tasks'][2]"/>)&#37;,
 	      </div>
 	    </div>
 	    <tal:block define="context info/project"
