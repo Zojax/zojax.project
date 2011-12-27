@@ -14,8 +14,7 @@
 		 tal:omit-tag="not:view/url" i18n:name="author"
 		 tal:content="view/author|string:Anonymous"></a>
 	      at
-	      <tal:block i18n:name="date" content="structur
-				  formatter:fancyDatetime,full:context/date" />
+	      <tal:block i18n:name="date" content="structure formatter:fancyDatetime,full:context/date" />
 	    </span>
 	  </div>
 
