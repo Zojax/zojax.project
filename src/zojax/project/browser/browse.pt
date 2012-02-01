@@ -21,7 +21,7 @@
   <div class="groups-manager projects-browse" tal:condition="hasGroups">
 
     <div tal:condition="python: view.state == 2">
-      <strong>FINISHED</strong> projects are listed below, also you can see <a tal:attributes="href string:${context/@@absolute_url}/">ACTIVE Projects</a>.
+      <strong i18n:translate="">COMPLETED</strong> <tal:block i18n:translate="">projects are listed below, also you can see </tal:block><a tal:attributes="href string:${context/@@absolute_url}/" i18n:translate="">OPENED Projects</a>.
     </div>
     <br />
 
