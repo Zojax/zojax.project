@@ -87,4 +87,14 @@
      provides="zope.app.generations.interfaces.ISchemaManager"
      component=".generations.schemaManager" />
 
+ <!-- roles -->
+  <adapter
+     name="zojax.project"
+     factory=".roles.ProjectsMembersRoles" />
+
+<!-- principal pemrission map for roles of blogs -->
+  <adapter
+     name="zojax.project_permissions"
+     factory=".project_permissions.getContentPermissions"
+     provides="zope.securitypolicy.interfaces.IRolePermissionMap" />
 </configure>
