@@ -20,7 +20,8 @@
 
   <!-- 'open' project -->
   <permissions name="project.open">
-    <grant role="group.Manager"
+    <grant role="group.Manager
+                 zope.Manager"
 	   permission="zojax.AddBlogPost" />
     <grant role="group.Member"
 	   permission="zojax.SubmitBlogPost" />
@@ -30,7 +31,8 @@
   <permissions name="project.members">
     <grant 
        role="group.Member
-	     group.Manager"
+	     group.Manager
+	     zope.Manager"
        permission="zojax.AddBlogPost" />
   </permissions>
   
@@ -38,7 +40,8 @@
   <permissions name="project.private">
     <grant 
        role="group.Member
-	       group.Manager"
+	       group.Manager
+	       zope.Manager"
        permission="zojax.AddBlogPost" />
   </permissions>
   
@@ -46,7 +49,8 @@
   <permissions name="project.secret">
     <grant
        role="group.Member
-	     group.Manager"
+	     group.Manager
+	     zope.Manager"
        permission="zojax.AddBlogPost" />
   </permissions>
   
