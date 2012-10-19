@@ -16,7 +16,8 @@ class ProjectsMembersRoles(object):
 
     def __init__(self, context):
         self.context = context
-        self.members = context.__parent__.members
+        if context.__parent__.members:
+           self.members = context.__parent__.members
 
     def getPrincipalsForRole(self, role_id):
         return ()
