@@ -16,12 +16,13 @@ class ProjectsMembersRoles(object):
 
     def __init__(self, context):
         self.context = context
-        if context.__parent__.members:
-           self.members = context.__parent__.members
+        try:
+            self.members = context.__parent__.members
+        except AttributeError:
+            self.members = None
 
     def getPrincipalsForRole(self, role_id):
         return ()
-
 
 
     def getRolesForPrincipal(self, member):
