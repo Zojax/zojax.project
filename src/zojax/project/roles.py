@@ -15,10 +15,14 @@ class ProjectsMembersRoles(object):
 
     def __init__(self, context):
         self.context = context
-        self.members = context.__parent__.members
+        try:
+            self.members = context.__parent__.members
+        except AttributeError:
+            self.members = None
 
     def getPrincipalsForRole(self, role_id):
         return ()
+
 
     def getRolesForPrincipal(self, member):
         roles = {'group.Member': 0, 'group.Manager': 0}
@@ -36,4 +40,3 @@ class ProjectsMembersRoles(object):
 
     def getPrincipalsAndRoles(self):
         pass
-
