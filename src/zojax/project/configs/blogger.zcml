@@ -21,9 +21,10 @@
   <!-- 'open' project -->
   <permissions name="project.open">
     <grant role="group.Manager
-                 zope.Manager"
+                 zope.Manager
+                 group.Member"
 	   permission="zojax.AddBlogPost" />
-    <grant role="group.Member"
+    <grant role="zope.Authenticated"
 	   permission="zojax.SubmitBlogPost" />
   </permissions>
 

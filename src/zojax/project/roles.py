@@ -17,6 +17,10 @@ class ProjectsMembersRoles(object):
     def __init__(self, context):
         self.context = context
         try:
+            self.ptype = context.__parent__.ptype
+        except AttributeError:
+            self.ptype = None
+        try:
             self.members = context.__parent__.members
         except AttributeError:
             self.members = None
@@ -27,6 +31,8 @@ class ProjectsMembersRoles(object):
 
     def getRolesForPrincipal(self, member):
         roles = {'group.Member': 0, 'group.Manager': 0}
+        if self.ptype == 'open' and member == 'zope.Authenticated':
+            roles['zope.Authenticated'] = 1
         if self.members:
             if member in self.members:
                 roles['group.Member'] = 1
