@@ -4,9 +4,7 @@ $Id$
 """
 from zope import interface, component
 from zope.app.security.settings import Allow, Unset, Deny
-from zope.security.proxy import removeSecurityProxy
 from zope.securitypolicy.interfaces import IPrincipalRoleMap
-from zojax.quick.contenttypes.browser.members import TopRole
 from zojax.blogger.interfaces import *
 
 class ProjectsMembersRoles(object):
