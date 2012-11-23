@@ -71,6 +71,10 @@ class IAddMilestoneAction(IAction, IAddContentCategory):
     """ add milestone action """
 
 
+class IAddTasksCustomAction(IAction, IAddContentCategory):
+    """ add Tasks_Custom action """
+
+
 class ICommentsView(interface.Interface):
     """ comments view """
 

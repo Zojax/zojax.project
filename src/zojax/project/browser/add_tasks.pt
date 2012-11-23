@@ -1,0 +1,154 @@
+<script type="text/javascript" xmlns:tal="http://www.w3.org/1999/html">
+    $(document).ready(function() {
+        $('.remove').hide()
+        $('.remove_assignment').hide()
+        $(".remove_assignment").css('color','#FF0000');
+        //added users name
+        color_err = '#f9ddd9'
+        color_hold = '#cccccc'
+        all_names = $('.user_names').val()
+        user_names = all_names.split('|@|');
+        all_names = '|@|' + all_names;
+
+        //added users milestones
+        milestones_val = []
+        milestones_id = []
+        milestones = $('.milestones').val().split('|@|');
+        $.each( milestones, function(i, n){
+            milestone = n.split('|-|');
+            $('.t_milestone').append(new Option(milestone[0], milestone[1]));
+        });
+        //check fields
+        $('form[name="form"]').submit(function(){
+            error = false;
+            $.each( $('.t_milestone'), function(i, n){
+                subString = '|@|'+$($('.responsible')[i]).val()+'|@|';
+                if ($($('.assignment')[i]).text().length == 0) {
+                    $($('.responsible')[i]).css("background","");
+                    if ((all_names.indexOf(subString) == -1)||($($('.assignment')[i]).text().length == 0)){
+                        $($('.responsible')[i]).css("background",color_err);
+                        error = true;
+                    }
+                }
+                $($('.title')[i]).css("background","");
+                if ($($('.title')[i]).val().length == 0){
+                    $($('.title')[i]).css("background",color_err);
+                    error = true;
+                }
+            });
+            if (error == true){
+                return false;
+            }
+        });
+
+        $('.remove_assignment').live('click', function(){
+            $(this).parent('div:first').find('a.remove_assignment').hide()
+            $(this).parent('div:first').find('span.assignment').text('');
+            $(this).parent('div:first').find('input.responsible').val('');
+            $(this).parent('div:first').find('input.responsible').attr('readOnly', false);
+            $(this).parent('div:first').find('input.responsible').css("background",'');
+        });
+
+        $('input.remove').live('click', function(){
+            if ($(this).parent('div:first').attr('class') == 'task template')
+            {
+                $('.title:first').val($($('.title')[1]).val());
+                $('.responsible:first').val($($('.responsible')[1]).val());
+                $('.t_milestone:first').val($($('.t_milestone')[1]).val());
+                if ($($('.assignment')[1]).text().length != 0) {
+                    $('.assignment:first').text($($('.assignment')[1]).text());
+                    $('.remove_assignment:first').show();
+                    $('.responsible:first').attr('readOnly', true);
+                    $('.responsible:first').css("background",color_hold);
+                }
+                else{
+                    $('.assignment:first').text('');
+                    $('.remove_assignment:first').hide();
+                    $('.responsible:first').attr('readOnly', false);
+                    $('.responsible:first').css("background",'');
+                }
+                $($('.task')[1]).remove()
+            }
+            else
+            {
+                 $(this).parent('div:first').remove();
+            }
+            if ($('.title').length >= 2)
+            {
+                $('.remove').show();
+            }
+            else
+            {
+                $('.remove').hide();//$('.clone').show();
+            }
+//            if ($('.clone:last').show() == false){$('.clone:last').show()}
+        });
+
+        $('input.clone').live('click', function(){
+            if ($('.title:last').val().length != 0){
+                $('.title:last').css("background",'');
+                mil_val = $('.t_milestone:last').val()
+    //            $(this).hide()
+                $('.template').clone().appendTo('.new_task');
+                $('.template:last').removeClass('template');
+                $('.title:last').val('');
+                $('.title:last').css("background","");
+                $('.responsible:last').val('');
+                $('.responsible:last').attr('readOnly', false);
+                $('.responsible:last').css("background","");
+                $('.t_milestone:last').val(mil_val);
+                $('.remove_assignment:last').hide();
+                $('.assignment:last').text('');
+    //            $('.clone:last').show()
+                $('.remove:last').show()
+                if ($('.title').length >= 2)
+                {
+                    $('.remove').show();
+                }
+            }
+            else
+            {
+                $('.title:last').css("background",color_err);
+            }
+        });
+
+        $('.responsible').live('focus', function()
+        {
+            $('.responsible').autocomplete({
+                source: user_names,
+                change: function(data, value){
+                                                subString = '|@|'+$(this).val()+'|@|';
+                                                if (all_names.indexOf(subString) != -1){
+                                                    $(this).parent('div:first').find('span.assignment').text($(this).val());
+                                                    $(this).parent('div:first').find('a.remove_assignment').show();
+                                                    $(this).css("background","");
+                                                    $(this).attr('readOnly', true);
+                                                    $(this).css("background",color_hold);
+                                                }
+                                            }
+                                           });
+        });
+
+    });
+
+</script>
+
+<form method="post" name='form'>
+    <input tal:attributes='value string:${view/users_list}' type='hidden' class='user_names' />
+    <input tal:attributes='value string:${view/milestones}' type='hidden' class='milestones' />
+        <span style="margin-right: 140px;">Title</span>
+        <span style="margin-right: 50px;">Milestone</span>
+        <span>Assigned to</span>
+        <div class='task template'>
+            <input type='text' name='t_title' class='title'/>
+            <select class='t_milestone' name='t_milestone' style='width:100px'></select>
+            <input type='text' name='t_responsible' class='responsible'/>
+            <span class="assignment" style="display: none;"></span>
+            <a class="remove_assignment" style="display: none;" onmouseover ="this.style.cursor='pointer'" >x </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="Delete" class='remove z-form-button' />
+            <hr />
+        </div>
+    <div class='new_task'></div>
+    <span style="margin-right: 271px;"><input type="button" value="Add Row" class="clone z-form-button" /></span>
+    <span><input type='submit' value="Submit Tasks" class="z-form-button" /></span>
+</form>

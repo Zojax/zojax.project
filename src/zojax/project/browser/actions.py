@@ -23,11 +23,11 @@ from zojax.content.actions.contentactions import ContentAction
 from zojax.members.browser.join import JoinAction
 from zojax.content.draft.interfaces import IDraftedContent
 from zojax.project.interfaces import _, ITask, IMilestone, IProject, ITasks, \
-    IProjectState, IProjects
+    IProjectState, IProjects, IAddTasksCustom
 
 from interfaces import \
     IAddTaskAction, IAddMilestoneAction, IUploadAttachmentsAction, \
-    ICompleteProjectAction, IReopenProjectAction, ICompletedProjectsAction
+    ICompleteProjectAction, IReopenProjectAction, ICompletedProjectsAction, IAddTasksCustomAction
 
 
 class AddTask(Action):
@@ -66,6 +66,25 @@ class AddMilestone(Action):
         return (not IDraftedContent.providedBy(self.context)) and \
                checkPermission('zojax.AddMilestone', self.context) and \
             'milestones' in self.context
+
+
+class PerAddTasksCustom(Action):
+    interface.implements(IAddTasksCustomAction)
+    component.adapts(IAddTasksCustom, interface.Interface)
+
+    weight = 6
+    title = _(u'Add Tasks')
+    contextInterface = IProject
+
+    @property
+    def url(self):
+        return '%s/add_tasks/' % absoluteURL(self.context,self.request)
+
+    def isAvailable(self):
+        return (not IDraftedContent.providedBy(self.context)) and\
+               ((checkPermission('zojax.AddTask', self.context) or
+                 checkPermission('zojax.SubmitTask', self.context)) and\
+                'tasks' in self.context)
 
 
 class UploadAttachmentsAction(Action):

@@ -16,6 +16,7 @@
 $Id$
 """
 import cgi
+import datetime
 from datetime import date
 from zope import interface, component
 from zope.proxy import removeAllProxies
@@ -38,6 +39,17 @@ from zojax.statusmessage.interfaces import IStatusMessage
 
 from zojax.project.interfaces import _, ITasks
 from zojax.project.browser.interfaces import ITasksTable, IComplatedTasksTable
+from zojax.project.task import Task
+
+from zope.app.component.hooks import getSite, setSite
+import zope, transaction
+from zojax.principal.users.interfaces import IUsersPlugin
+from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
+
+from zope import event
+from zojax.content.type.interfaces import IContentType
+from zope.lifecycleevent import ObjectModifiedEvent, ObjectCreatedEvent
+from zojax.richtext.field import RichTextData
 
 
 class Tasks(Table):
@@ -301,3 +313,89 @@ class AssignedColumn(Column):
 
     def render(self):
         return ', '.join([cgi.escape(a) for a in self.query()])
+
+
+class AddTasks(object):
+    def update(self):
+        context = self.context
+        #gel all users
+        users_list = ''
+        users_map = {}
+        msg = ''
+        users = zope.component.getUtility(IUsersPlugin)
+        for user in users.values():
+            users_map[str(user.title)]=str(user.id)
+            users_list= users_list+str(user.title)+'|@|'
+        self.users_list = users_list
+
+        #get milestone
+        mst = context.get('milestones')
+        ids = getUtility(IIntIds)
+
+        milestones = []
+        milestone_str = 'no value|-|--NOVALUE--|@|'
+        for milestone in mst.values():
+            id = ids.getId(removeAllProxies(milestone))
+            milestones.append(milestone.title+'|-|'+str(id))
+        milestones.sort()
+        for milestone in milestones:
+            milestone_str = milestone_str + milestone + '|@|'
+        self.milestones = milestone_str[:-3]
+
+        #get fields
+        post_title = []
+        post_milestone = []
+        post_responsible = []
+
+        if self.request.form:
+            for field in self.request.form:
+                if field == 't_title':
+                    if type(self.request.form[field]) == list:
+                        post_title = self.request.form[field]
+                    else:
+                        post_title.append(self.request.form[field])
+                if field == 't_milestone':
+                    if type(self.request.form[field]) == list:
+                        post_milestone = self.request.form[field]
+                    else:
+                        post_milestone.append(self.request.form[field])
+                if field == 't_responsible':
+                    if type(self.request.form[field]) == list:
+                        post_responsible = self.request.form[field]
+                    else:
+                        post_responsible.append(self.request.form[field])
+
+        if self.request.method == 'POST':
+            error = False
+            for index, name in enumerate(post_title):
+                taskCt = component.getUtility(IContentType, name='project.task')
+                task = taskCt.create(state=1)
+                if name.strip() == '':
+                    error = True
+                    msg += 'Error: Responsible is wrong! \n'
+                else:
+                    task.title = name.strip()
+                task.priority = 4
+                if post_milestone[index] != '--NOVALUE--':
+                    try:
+                        task.milestone = int(post_milestone[index])
+                    except ValueError:
+                        error = True
+                        msg += 'Error: Milestone is wrong! \n'
+                task.date = datetime.date.today()
+                task.text = RichTextData()
+                try:
+                    uid = users_map[post_responsible[index]]
+                except KeyError, IndexError:
+                    error = True
+                    msg += 'Error: Responsible is wrong!'
+
+                if error == False:
+                    taskCt.__bind__(self.context['tasks']).add(task)
+                    event.notify(ObjectCreatedEvent(task))
+                    assignments_new = IAssignments(task)
+                    assignments_new.assign((uid,))
+            if error == True:
+                self.redirect('./add_tasks/')
+            else:
+                self.redirect('./tasks/')

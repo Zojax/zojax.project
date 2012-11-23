@@ -212,6 +212,23 @@ class IMilestone(IDueDate, IAssignmentsAware):
         required = False)
 
 
+class IAddTasksCustom(IDueDate, IAssignmentsAware):
+    """ project milestone """
+    title = schema.TextLine(
+        title = _('Title'),
+        description = _('Tasks Custom title.'),
+        required = True)
+
+    assigned = AssigneesField(
+        title = _(u'Assigned to'),
+        required = False)
+
+    text = RichText(
+        title = _(u'Information'),
+        description = _(u'Tasks Custom detailed information.'),
+        required = False)
+
+
 class IMilestones(IItem, IWorkspace):
     """ milestones workspace """
 

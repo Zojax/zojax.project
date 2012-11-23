@@ -29,6 +29,23 @@
      for="..interfaces.ITasks *"
      factory=".actions.AddMilestone" />
 
+  <adapter
+     name="project.milestone.add"
+     for="..interfaces.IMilestones *"
+     factory=".actions.PerAddTasksCustom" />
+
+  <!-- create addtaskscustom action -->
+  <adapter
+       name="project.addtaskscustom.add"
+       for="..interfaces.ITasks *"
+       factory=".actions.PerAddTasksCustom" />
+
+  <browser:icon
+       name="zmi_icon"
+       for=".interfaces.IAddTasksCustomAction"
+       file="icons/task.png" />
+  <!-- addtaskscustom  -->
+
   <browser:icon
      name="zmi_icon"
      for=".interfaces.IAddMilestoneAction"

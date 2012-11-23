@@ -61,6 +61,14 @@
      provides="zojax.content.space.interfaces.IOverviewWorkspace"
      permission="zojax.AccessGroup" />
 
+  <!-- mass add tasks (custom) -->
+  <zojax:pagelet
+     name="add_tasks"
+     for="..interfaces.IProject"
+     template="add_tasks.pt"
+     class=".tasks.AddTasks"
+     permission="zojax.AccessGroup" />
+
   <!-- security tab -->
   <zojax:pagelet
      name="permissions"

@@ -24,6 +24,11 @@
      description="Allow create new milestones." />
 
   <permission
+     id="zojax.PerAddTasksCustom"
+     title="Add AddTasksCustom"
+     description="Allow create new AddTasksCustoms." />
+
+  <permission
      id="zojax.ReopenProject"
      title="Reopen project"
      description="Allow reopen project." />
