@@ -15,14 +15,15 @@
 
 $Id$
 """
-from zope import interface, component
+from zope import interface, component, event
 from zope.component import getUtility
 
 from zojax.activity.record import ActivityRecord
 from zojax.activity.interfaces import IActivity, IActivityRecordDescription
 from zojax.content.activity.interfaces import IContentActivityRecord
 
-from interfaces import _, IState, IStateActivityRecord, IStateChangedEvent
+from interfaces import _, IState, IStateActivityRecord, IStateChangedEvent, IProject
+from zojax.members.interfaces import IMemberApprovedEvent
 
 
 class StateActivityRecord(ActivityRecord):
@@ -50,3 +51,8 @@ class StateActivityRecordDescription(object):
 def stateChangedHandler(object, event):
     getUtility(IActivity).add(
         object, StateActivityRecord(state=object.state))
+
+@component.adapter(IMemberApprovedEvent)
+def memberAddedEvent(ev):
+    if IProject.providedBy(ev.member.__parent__.__parent__):
+        ev.member.__parent__.toManager(ev.member.__name__)

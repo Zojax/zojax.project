@@ -15,4 +15,5 @@
 
   <subscriber handler=".activity.stateChangedHandler" />
 
+   <subscriber handler=".activity.memberAddedEvent" />
 </configure>
