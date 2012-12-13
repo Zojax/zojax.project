@@ -54,5 +54,6 @@ def stateChangedHandler(object, event):
 
 @component.adapter(IMemberApprovedEvent)
 def memberAddedEvent(ev):
-    if IProject.providedBy(ev.member.__parent__.__parent__):
+    if IProject.providedBy(ev.member.__parent__.__parent__) and \
+       ev.member.__parent__.__parent__.ptype=='secret':
         ev.member.__parent__.toManager(ev.member.__name__)
