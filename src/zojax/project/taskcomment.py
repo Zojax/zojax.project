@@ -19,6 +19,7 @@ from zope import interface
 from persistent import Persistent
 from zope.location import Location
 from zope.component import getUtility
+from zope.schema.fieldproperty import FieldProperty
 from zope.app.intid.interfaces import IIntIds
 
 from interfaces import ITaskComment
@@ -30,6 +31,9 @@ class TaskComment(Persistent, Location):
     date = None
     anonymous = False
     attachments = ()
+
+    authorName = FieldProperty(ITaskComment['authorName'])
+    approved = FieldProperty(ITaskComment['approved'])
 
     def __init__(self, author, comment, changes, attachments):
         self.comment = comment
@@ -52,3 +56,8 @@ class TaskComment(Persistent, Location):
 
             return attachs
         return []
+
+    def isAvailable(self):
+        """ always visible
+        """
+        return True
