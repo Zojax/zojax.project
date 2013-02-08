@@ -1,0 +1,24 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   zcml:condition="installed zojax.calendar">
+
+  <!-- calendar workspace -->
+  <registerIn registry="zojax.product.zojax-calendar">
+    <adapter
+       name="calendar"
+       for="..interfaces.IProject"
+       factory="zojax.calendar.workspace.CalendarWorkspaceFactory" />
+  </registerIn>
+
+  <!-- default project permissions -->
+  <permissions for="zojax.project.interfaces.IProject" name="project.permissions">
+    <grant permission="zojax.contenttype.AddCalendarEvent"
+	   role="group.Manager
+		 group.Member
+		 zope.Manager" />
+    <grant role="zope.Authenticated"
+	   permission="zojax.contenttype.SubmitCalendarEvent" />
+  </permissions>
+
+</configure>

@@ -6,5 +6,6 @@
   <include file="photos.zcml" />
   <include file="wiki.zcml" />
   <include file="news.zcml" />
+  <include file="calendar.zcml" />
 
 </configure>
