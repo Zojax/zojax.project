@@ -117,12 +117,14 @@
      content="content.project"
      publish="zojax.AddProject"
      submit="zojax.SubmitProject"
+     saveable="zojax.SubmitProject"
      destination="workspace.projects" />
 
   <zojax:draft
      content="content.standaloneproject"
      publish="zojax.AddProject"
      submit="zojax.SubmitProject"
+     saveable="zojax.SubmitProject"
      destination="workspace.standaloneprojects" />
 
   <!-- IObjectCopier -->

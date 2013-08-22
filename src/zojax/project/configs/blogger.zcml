@@ -20,20 +20,12 @@
 
   <!-- 'open' project -->
   <permissions name="project.open">
-    <!--<grant role="group.Manager-->
-                 <!--zope.Manager-->
-                 <!--group.Member"-->
-	   <!--permission="zojax.AddBlogPost" />-->
-    <!--<grant role="zope.Authenticated"-->
-	   <!--permission="zojax.SubmitBlogPost" />-->
-
-    <!--<denyAll permission="zojax.AddBlogPost" />-->
-      <grantAll permission="zojax.AddBlogPost" />
-      <denyAll permission="zojax.SubmitBlogPost" />
-    <!--<deny permission="zojax.SubmitBlogPost"-->
-          <!--role="group.Manager-->
-                <!--zope.Manager" />-->
-
+    <grant role="group.Manager
+                 zope.Manager
+                 group.Member"
+	   permission="zojax.AddBlogPost" />
+    <grant role="zope.Authenticated"
+	   permission="zojax.SubmitBlogPost" />
   </permissions>
 
   <!-- 'members' project -->
