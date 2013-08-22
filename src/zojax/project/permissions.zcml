@@ -81,20 +81,42 @@
   <permissions name="project.open" title="Open project">
     <grantAll permission="zojax.AddComment" />
     <grantAll permission="zojax.AccessGroup" />
+
+
+    <deny permission="zojax.SubmitProject"
+          role="group.Manager
+                zope.Manager" />
+
+    <!--<grant permission="zojax.AddProject"-->
+     <!--role="zope.Member" />-->
+    <!--<grant permission="zojax.AddProject"-->
+     <!--role="zope.Member" />-->
+
+
   </permissions>
 
   <!-- 'members' project -->
   <permissions name="project.members" title="Members project">
     <grantAll permission="zojax.AccessGroup" />
+    <denyAll permission="zojax.SubmitProject"/>
+    <!--<deny permission="zojax.SubmitProject"-->
+          <!--role="group.Manager-->
+                <!--zope.Manager" />-->
+
   </permissions>
 
   <!-- 'private' project -->
   <permissions name="project.private" title="Private project">
     <denyAll permission="zojax.AccessGroup" />
+  <denyAll permission="zojax.SubmitProject"/>
     <grant permission="zojax.AccessGroup"
      role="zope.Manager
      group.Member
      group.Manager" />
+    <!--<deny permission="zojax.SubmitProject"-->
+          <!--role="group.Manager-->
+                <!--zope.Manager" />-->
+
   </permissions>
 
   <!-- 'secret' project -->
@@ -116,6 +138,11 @@
      role="zope.Manager
      group.Member
      group.Manager" />
+    <denyAll permission="zojax.SubmitProject"/>
+    <!--<deny permission="zojax.SubmitProject"-->
+          <!--role="group.Manager-->
+                <!--zope.Manager" />-->
+
   </permissions>
 
 </configure>
