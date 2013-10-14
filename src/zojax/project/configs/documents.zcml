@@ -38,7 +38,8 @@
                    zojax.RetractDocuments" />
 
     <grant role="zope.Manager
-                 group.Manager"
+                 group.Manager
+                 content.Owner"
        permission="zojax.ViewContentRevisions" />
 
     <grant role="zope.Manager
