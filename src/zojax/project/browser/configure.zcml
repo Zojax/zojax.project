@@ -67,7 +67,7 @@
      for="..interfaces.IProject"
      template="add_tasks.pt"
      class=".tasks.AddTasks"
-     permission="zojax.CompleteProject" />
+     permission="zojax.AddTask" />
 
   <!-- security tab -->
   <zojax:pagelet

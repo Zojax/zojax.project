@@ -16,106 +16,53 @@
 
   <!-- default group permissions -->
   <permissions for="zojax.project.interfaces.IProject" name="project.permissions">
-
-    <denyAll permission="zojax.SubmitDocuments
-                         zojax.RetractDocuments" />
-    <denyAll permission="zojax.ModifyContent" />
-    <denyAll permission="zojax.DeleteContent" />
-    <denyAll permission="zojax.ViewContentRevisions" />
-    <denyAll permission="zojax.ModifyMembersSettings
-                         zojax.InviteGroupMember" />
+    <denyAll permission="zojax.AddDocuments" />
+    <denyAll permission="zojax.isodocument.AddISODocument" />
+    <grantAll permission="zope.View" />
 
     <grant role="zope.Manager
                  group.Manager
                  group.Member
                  content.Owner"
-       permission="zojax.ModifyContent" />
-
-    <grant role="zope.Manager
-                 group.Manager
-                 group.Member"
-       permission="zojax.DeleteContent
-                   zojax.RetractDocuments" />
-
-    <grant role="zope.Manager
-                 group.Manager
-                 content.Owner"
-       permission="zojax.ViewContentRevisions" />
-
-    <grant role="zope.Manager
-                 group.Manager
-                 content.Owner"
-       permission="zojax.ModifyMembersSettings
-                   zojax.InviteGroupMember" />
+       permission="zope.View
+                   zojax.AddDocuments
+                   zojax.isodocument.AddISODocument" />
   </permissions>
 
   <!-- 'open' project -->
   <permissions name="project.open">
-    <grantAll permission="zojax.AddDocuments" />
-    <grantAll permission="zojax.isodocument.AddISODocument" />
-
-    <grant role="zope.Manager
-                 group.Manager
-                 group.Member
-                 content.Owner"
-       permission="zojax.ModifyContent" />
-
-    <grant role="zope.Manager
-                 group.Manager
-                 group.Member"
-       permission="zojax.DeleteContent" />
-
+    <grantAll permission="zope.View" />
+    <grantAll permission="zojax.SubmitDocuments" />
   </permissions>
 
   <!-- 'members' project -->
   <permissions name="project.members">
-    <denyAll permission="zojax.AddDocuments" />
+    <grantAll permission="zope.View" />
     <denyAll permission="zojax.SubmitDocuments" />
-
-    <grant role="zope.Manager
-                 group.Manager
-                 group.Member
-                 content.Owner"
-       permission="zojax.AddDocuments" />
-    <grant role="zope.Manager
-                 group.Manager
-                 group.Member
-                 content.Owner"
-       permission="zojax.isodocument.AddISODocument" />
   </permissions>
 
   <!-- 'private' project -->
   <permissions name="project.private">
-    <denyAll permission="zojax.AddDocuments" />
+    <denyAll permission="zope.View" />
     <denyAll permission="zojax.SubmitDocuments" />
 
     <grant role="zope.Manager
                  group.Manager
                  group.Member
                  content.Owner"
-       permission="zojax.AddDocuments" />
-    <grant role="zope.Manager
-                 group.Manager
-                 group.Member
-                 content.Owner"
-       permission="zojax.isodocument.AddISODocument" />
+       permission="zope.View" />
   </permissions>
 
   <!-- 'secret' project -->
   <permissions name="project.secret">
-    <denyAll permission="zojax.AddDocuments" />
+    <denyAll permission="zope.View" />
     <denyAll permission="zojax.SubmitDocuments" />
 
     <grant role="zope.Manager
                  group.Manager
                  group.Member
                  content.Owner"
-       permission="zojax.AddDocuments" />
-    <grant role="zope.Manager
-                 group.Manager
-                 group.Member
-                 content.Owner"
-       permission="zojax.isodocument.AddISODocument" />
+       permission="zope.View" />
   </permissions>
 
 </configure>
