@@ -17,7 +17,6 @@
   <!-- default group permissions -->
   <permissions for="zojax.project.interfaces.IProject" name="project.permissions">
     <denyAll permission="zojax.AddDocuments" />
-    <denyAll permission="zojax.isodocument.AddISODocument" />
     <grantAll permission="zope.View" />
 
     <grant role="zope.Manager
@@ -25,8 +24,7 @@
                  group.Member
                  content.Owner"
        permission="zope.View
-                   zojax.AddDocuments
-                   zojax.isodocument.AddISODocument" />
+                   zojax.AddDocuments" />
   </permissions>
 
   <!-- 'open' project -->
