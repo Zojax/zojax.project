@@ -4,59 +4,63 @@
    xmlns:zojax="http://namespaces.zope.org/zojax"
    zcml:condition="installed zojax.content.documents">
 
+  <include package="zojax.content.documents" file="permissions.zcml" />
+
   <!-- documents workspace factory for groups -->
-  <adapter
-     name="documents"
-     for="..interfaces.IProject"
-     factory="zojax.content.documents.workspace.DocumentsFactory" />
+  <registerIn registry="zojax.product.zojax-contenttypes">
+      <adapter
+         name="documents"
+         for="..interfaces.IProject"
+         factory="zojax.content.documents.workspace.DocumentsFactory" />
+  </registerIn>
 
   <!-- default group permissions -->
-  <permissions for="zojax.project.interfaces.IProject"
-	       name="project.permissions">
+  <permissions for="zojax.project.interfaces.IProject" name="project.permissions">
     <denyAll permission="zojax.AddDocuments" />
-    <denyAll permission="zojax.SubmitDocuments" />
+    <grantAll permission="zope.View" />
 
-    <grant
-       role="zope.Manager"
-       permission="zojax.AddDocuments" />
+    <grant role="zope.Manager
+                 group.Manager
+                 group.Member
+                 content.Owner"
+       permission="zope.View
+                   zojax.AddDocuments" />
   </permissions>
 
   <!-- 'open' project -->
   <permissions name="project.open">
-    <grant
-       role="group.Manager"
-       permission="zojax.AddDocuments" />
-
-    <grant
-       role="group.Member"
-       permission="zojax.SubmitDocuments" />
+    <grantAll permission="zope.View" />
+    <grantAll permission="zojax.SubmitDocuments" />
   </permissions>
 
   <!-- 'members' project -->
   <permissions name="project.members">
-    <grant
-       role="group.Manager"
-       permission="zojax.AddDocuments" />
-
-    <grant
-       role="group.Member"
-       permission="zojax.SubmitDocuments" />
+    <grantAll permission="zope.View" />
+    <denyAll permission="zojax.SubmitDocuments" />
   </permissions>
 
   <!-- 'private' project -->
   <permissions name="project.private">
-    <grant
-       role="group.Manager
-	     group.Member"
-       permission="zojax.AddDocuments" />
+    <denyAll permission="zope.View" />
+    <denyAll permission="zojax.SubmitDocuments" />
+
+    <grant role="zope.Manager
+                 group.Manager
+                 group.Member
+                 content.Owner"
+       permission="zope.View" />
   </permissions>
 
   <!-- 'secret' project -->
   <permissions name="project.secret">
-    <grant
-       role="group.Manager
-	     group.Member"
-       permission="zojax.AddDocuments" />
+    <denyAll permission="zope.View" />
+    <denyAll permission="zojax.SubmitDocuments" />
+
+    <grant role="zope.Manager
+                 group.Manager
+                 group.Member
+                 content.Owner"
+       permission="zope.View" />
   </permissions>
 
 </configure>

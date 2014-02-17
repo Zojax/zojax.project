@@ -13,16 +13,12 @@
        factory="zojax.photoalbum.workspace.PhotosWorkspaceFactory" />
   </registerIn>
 
-  <!-- default group permissions -->
-  <permissions for="..interfaces.IProject" name="project.permissions">
+  <!-- 'open' project -->
+  <permissions name="project.open">
     <denyAll permission="zojax.AddPhoto" />
     <denyAll permission="zojax.AddPhotoAlbum" />
     <denyAll permission="zojax.SubmitPhoto" />
     <denyAll permission="zojax.SubmitPhotoAlbum" />
-  </permissions>
-
-  <!-- 'open' project -->
-  <permissions name="project.open">
     <grant
        role="group.Manager"
        permission="zojax.AddPhoto
@@ -35,6 +31,10 @@
 
   <!-- 'members' project -->
   <permissions name="project.members">
+    <denyAll permission="zojax.AddPhoto" />
+    <denyAll permission="zojax.AddPhotoAlbum" />
+    <denyAll permission="zojax.SubmitPhoto" />
+    <denyAll permission="zojax.SubmitPhotoAlbum" />
     <grant
        role="group.Member
 	     group.Manager"
@@ -44,6 +44,10 @@
 
   <!-- 'private' project -->
   <permissions name="project.private">
+    <denyAll permission="zojax.AddPhoto" />
+    <denyAll permission="zojax.AddPhotoAlbum" />
+    <denyAll permission="zojax.SubmitPhoto" />
+    <denyAll permission="zojax.SubmitPhotoAlbum" />
     <grant
        role="group.Manager
 	     group.Member"
@@ -53,6 +57,10 @@
 
   <!-- 'secret' project -->
   <permissions name="project.secret">
+    <denyAll permission="zojax.AddPhoto" />
+    <denyAll permission="zojax.AddPhotoAlbum" />
+    <denyAll permission="zojax.SubmitPhoto" />
+    <denyAll permission="zojax.SubmitPhotoAlbum" />
     <grant
        role="group.Manager
 	     group.Member"
