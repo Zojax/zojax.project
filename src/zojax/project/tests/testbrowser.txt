@@ -1,0 +1,148 @@
+==============
+Blog workspace
+==============
+
+    >>> from zope import interface, component, event
+    >>> from zope.interface.verify import verifyClass
+    >>> from zope.app.component.hooks import setSite
+    >>> from zope.app.intid.interfaces import IIntIds
+    >>> from zope.app.security.interfaces import IAuthentication
+    >>> from zope.app.component.hooks import setSite
+    >>> from zojax.project import workspace, interfaces
+
+    >>> root = getRootFolder()
+    >>> setSite(root)
+
+    >>> verifyClass(interfaces.IProjects, workspace.ProjectsWorkspace)
+    True
+
+    >>> verifyClass(interfaces.IProjectsFactory,
+    ...             workspace.StandaloneProjectsWorkspaceFactory)
+    True
+
+
+Browser tests
+
+    >>> from zope.testbrowser.testing import Browser
+
+    >>> admin = Browser()
+    >>> admin.addHeader("Authorization", "Basic mgr:mgrpw")
+    >>> admin.handleErrors = False
+    >>> admin.open('http://localhost/space/')
+    >>> 'projects' in admin.contents
+    False
+
+    >>> user = Browser()
+    >>> user.addHeader("Authorization", "Basic user:userpw")
+    >>> user.handleErrors = False
+
+
+Install project product
+
+    >>> admin.open('http://localhost/settings/')
+    >>> admin.getLink('Products management').click()
+    >>> admin.getControl(name="availproducts:list").value = ['zojax-project']
+    >>> admin.getControl('Install').click()
+
+
+Let's enable blog workspace
+
+    >>> admin.open('http://localhost/space/context.html/content/')
+    >>> admin.getLink('Workspaces').click()
+    >>> admin.getControl(name="workspaces.widgets.workspaces:list").value = ['projects']
+    >>> admin.getControl(name="content.edit.buttons.save").click()
+    >>> admin.open('http://localhost/space/projects')
+    >>> print admin.contents
+    <!DOCTYPE ...
+    ...
+    	<li class="selected">
+    	  <a href="http://localhost/space/projects/">
+    	    <img.../>
+    	    Projects</a>
+    ...
+      <h1>Projects</h1>
+    ...
+    </html>
+
+
+Ccreate Standalone Project
+
+    >>> admin.open('http://localhost/space/projects/+/content.standaloneproject/')
+    >>> admin.getControl('Title').value = 'Some Project'
+    >>> admin.getControl('Description').value = 'Description'
+    >>> admin.getControl('Text', index=0).value = 'Project Text'
+    >>> admin.getControl('Start date').value = '01/01/01'
+    >>> admin.getControl('End date').value = '01/01/16'
+    >>> admin.getControl('Publish').click()
+
+    >>> print admin.contents
+    <!DOCTYPE ...
+    ...
+      <div class="statusMessage">Data successfully updated.</div>
+    <div class="statusMessage">Your Standalone Project has been published.</div>
+    ...
+      <div class="z-space-header">
+        <h1>Some Project</h1>
+      </div>
+    ...
+    	<div>
+    	  1 Member(s) </div>
+    	<div><strong>Owned by:</strong>
+    	  Manager</div>
+            <div><strong>Created:</strong>
+    ...
+    	<div><strong>Project Type:</strong>
+    	  Open Project</div>
+    ...
+        <div>Project Text</div>
+    ...
+    </html>
+
+
+Edit project
+
+    >>> admin.open('http://localhost/space/projects/some-project/context.html')
+    >>> admin.getControl('Text', index=0).value = 'Project New text'
+    >>> admin.getControl('Save', index=1).click()
+    >>> admin.open('http://localhost/space/projects/some-project')
+    >>> print admin.contents
+    <!DOCTYPE ...
+    ...
+        <div>Project New text</div>
+    ...
+    </html>
+
+Delete post
+
+    >>> admin.open('http://localhost/space/projects/some-project/delete.html')
+    >>> admin.getControl("Delete").click()
+
+    >>> admin.open('http://localhost/space/projects/')
+    >>> print admin.contents
+    <!DOCTYPE html...
+    ...
+      <div>
+        No projects have been created.
+      </div>
+    ...
+    </html>
+
+
+
+Disable projects workspace and uninstall product
+
+    >>> admin.open('http://localhost/space/context.html/content/')
+    >>> admin.getLink('Workspaces').click()
+    >>> admin.getControl(name="workspaces.widgets.workspaces:list").value = []
+    >>> admin.getControl(name="content.edit.buttons.save").click()
+    >>> admin.getLink('View').click()
+    >>> 'Projects' in admin.contents
+    False
+
+    >>> admin.open('http://localhost/settings/')
+    >>> admin.getLink('Products management').click()
+    >>> admin.getControl(name="products:list").value = ['zojax-project']
+    >>> admin.getControl('Uninstall').click()
+
+    >>> setSite(None)
+
