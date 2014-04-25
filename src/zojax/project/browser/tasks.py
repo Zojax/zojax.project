@@ -40,6 +40,7 @@ from zojax.statusmessage.interfaces import IStatusMessage
 from zojax.project.interfaces import _, ITasks
 from zojax.project.browser.interfaces import ITasksTable, IComplatedTasksTable
 from zojax.project.task import Task
+from zojax.project.vocabulary import priorityVocabulary
 
 from zope.app.component.hooks import getSite, setSite
 import zope, transaction
@@ -221,6 +222,23 @@ class SeverityColumn(Column):
         return bool(self.voc)
 
 
+class PriorityColumn(Column):
+    component.adapts(interface.Interface, interface.Interface, ITasksTable)
+
+    name = u'priority'
+    title = _(u'Priority')
+    cssClass = u't-task-priority'
+
+    def query(self, default=None):
+        return self.content.priority
+
+    def render(self):
+        try:
+            return priorityVocabulary.getTerm(self.content.priority).title
+        except LookupError:
+            return u'---'
+
+
 class StatusColumn(Column):
     component.adapts(interface.Interface, interface.Interface, ITasksTable)
 
@@ -342,10 +360,14 @@ class AddTasks(object):
             milestone_str = milestone_str + milestone + '|@|'
         self.milestones = milestone_str[:-3]
 
+        #get priorities
+        self.priorities = priorityVocabulary
+
         #get fields
         post_title = []
         post_milestone = []
         post_responsible = []
+        post_priority = []
 
         if self.request.form:
             for field in self.request.form:
@@ -364,6 +386,12 @@ class AddTasks(object):
                         post_responsible = self.request.form[field]
                     else:
                         post_responsible.append(self.request.form[field])
+                if field == 't_priority':
+                    if type(self.request.form[field]) == list:
+                        post_priority = self.request.form[field]
+                    else:
+                        post_priority.append(self.request.form[field])
+
 
         if self.request.method == 'POST':
             error = False
@@ -375,7 +403,7 @@ class AddTasks(object):
                     msg += 'Error: Responsible is wrong! \n'
                 else:
                     task.title = name.strip()
-                task.priority = 4
+                task.priority = int(post_priority[index])
                 if post_milestone[index] != '--NOVALUE--':
                     try:
                         task.milestone = int(post_milestone[index])

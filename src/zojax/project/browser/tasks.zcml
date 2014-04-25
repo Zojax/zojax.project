@@ -166,6 +166,10 @@
      factory=".tasks.SeverityColumn" />
 
   <adapter
+     name="priority"
+     factory=".tasks.PriorityColumn" />
+
+  <adapter
      name="milestone"
      factory=".tasks.MilestoneColumn" />
 

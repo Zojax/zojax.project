@@ -138,10 +138,18 @@
     <input tal:attributes='value string:${view/milestones}' type='hidden' class='milestones' />
         <span style="margin-right: 140px;">Title</span>
         <span style="margin-right: 50px;">Milestone</span>
+        <span style="margin-right: 50px;">Priority</span>
         <span>Assigned to</span>
         <div class='task template'>
             <input type='text' name='t_title' class='title'/>
             <select class='t_milestone' name='t_milestone' style='width:100px'></select>
+            <select class='t_priority' name='t_priority' style='width:100px'>
+               <tal:block repeat="priority view/priorities">
+                  <option tal:attributes="value priority/value;
+                                          selected python: priority.value == 4"
+                          tal:content="priority/title">no value</option>
+               </tal:block>
+            </select>
             <input type='text' name='t_responsible' class='responsible'/>
             <span class="assignment" style="display: none;"></span>
             <a class="remove_assignment" style="display: none;" onmouseover ="this.style.cursor='pointer'" >x </a>&nbsp;&nbsp;&nbsp;&nbsp;
